@@ -1,10 +1,14 @@
 import './App.css'
+import 'tailwindcss/tailwind.css'
+import Nav from '../components/Navbar/Navbar'
+import HomePage from '../components/HomePage'
 
 function App() {
   return (
     <>
-      <div className='bg-primary-color'>
-        <h1 className='text-3xl font-bold underline'>Hello world!</h1>
+      <div className='min-h-screen'>
+        <Nav></Nav>
+        <HomePage></HomePage>
       </div>
     </>
   )
