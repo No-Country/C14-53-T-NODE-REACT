@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --primary-color: teal;
+  --secondary-color: #000;
+}
+@layer base {
+  .btn {
+    @apply text-2xl font-bold bg-[#FF3E3E] text-[#fff] rounded-2xl text-center px-6 py-2;
+  }
+}
