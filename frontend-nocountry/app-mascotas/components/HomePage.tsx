@@ -1,3 +1,6 @@
+import Background from '../components/Background'
+
+
 function HomePage() {
   return (
     <>
@@ -20,6 +23,7 @@ function HomePage() {
           </div>
         </div>
       </main>
+      <Background></Background>
     </>
   )
 }
