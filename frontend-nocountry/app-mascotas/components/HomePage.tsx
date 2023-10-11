@@ -18,7 +18,7 @@ function HomePage() {
             </div>
 
             <div className='w-3/5 mx-auto flex justify-end items-end mb-7'>
-              <img src='../src/assets/img/home-dog.png' alt='Dog smiling' />
+              <img src='./public/img/home-dog.png' alt='Dog smiling' />
             </div>
           </div>
         </div>
