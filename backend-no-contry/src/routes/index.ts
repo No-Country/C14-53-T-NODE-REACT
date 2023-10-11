@@ -6,9 +6,9 @@ const router: Router = Router();
 
 /**
  * Rutas
- * Usuarios
+ * users (Usuarios)
  * etc...
  */
 router.use('/users', userRouter)
 
-export default router;
+export { router }

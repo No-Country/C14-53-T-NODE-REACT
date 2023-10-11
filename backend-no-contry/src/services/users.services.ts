@@ -1,25 +1,33 @@
-class UsersServices {
+import { CreateUserDTO } from '../dto/createUser.dto'
+import { UserInterface } from '../interfaces/user.interface'
+import { User } from '../models/user.model'
 
-  findAll() {
-    return "Servicio para buscar usuarios";
-  }
-
-  async create() {
-    return "Servicio para crear usuarios"
-  }
-
-  async find(id: number) {
-    return "Servicio para buscar usuario"
-  }
-
-  async update(id: number) {
-    return "Servicio para actualizar usuario"
-  }
-
-  async delete(id: number) {
-    return "Servicio para eliminar usuario"
-  }
-
+// Crear usuario
+const createById = async (user: CreateUserDTO) => {
+  const { name, email, password } = user
+  const saveUser = await User.create({
+    name,
+    email,
+    password
+  })
+  return saveUser
 }
 
-export default UsersServices
+// Buscar todos los usuarios
+const findAll = async () => {
+  const users = await User.findAll()
+  return users
+}
+
+// Buscar usuario por id
+const getById = async (id: string) => {
+  const user = await User.findOne({ where: { id } })
+  return user
+}
+
+
+
+const updateById = async (id: string, user: UserInterface) => { }
+const deleteByID = async (id: string) => { }
+
+export { findAll, getById, createById, updateById, deleteByID }
