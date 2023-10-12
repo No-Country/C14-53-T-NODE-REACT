@@ -4,7 +4,6 @@ import Nav from './components/Navbar/Navbar'
 import HomePage from './components/HomePage'
 import Login from './components/Login'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Sidebar from './components/Sidebar/Sidebar'
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
       <>
         <div className='min-h-screen'>
           <Nav></Nav>
-          {/* <Sidebar></Sidebar> */}
 
           <Routes>
             <Route path='/' element={<HomePage />} />
