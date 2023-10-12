@@ -7,10 +7,10 @@ interface UserModel extends Model, UserInterface { }
 const User = connetDB.define<UserModel>('User',
   {
     id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INTEGER
     },
     name: {
       type: DataTypes.STRING,
@@ -18,6 +18,7 @@ const User = connetDB.define<UserModel>('User',
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     password: {

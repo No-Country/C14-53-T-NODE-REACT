@@ -3,7 +3,7 @@ import { Sequelize } from 'sequelize';
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
 if (!DB_USER || !DB_PASSWORD || !DB_HOST || !DB_PORT || !DB_NAME) {
-  throw new Error('Faltan variables de entorno para la conexión a la base de datos.');
+  throw new Error('Falta variable de entorno para la conexión a la base de datos.');
 }
 
 const connetDB = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, { logging: false })
