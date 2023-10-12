@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "dev": "nodemon ./src/index.ts",
     "start": "node dist/index.js",
     "build": "tsc"
   },
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/uuid": "^9.0.5",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
@@ -20,7 +21,8 @@
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.33.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.14",
