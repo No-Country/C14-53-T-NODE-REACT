@@ -5,7 +5,7 @@ function Nav() {
   return (
     <>
       <nav className='container mx-auto'>
-        <div className='fixed left-0 w-full z-[1000] top-0'>
+        <div className='fixed left-0 w-full z-30 top-0'>
           <div className='max-w-screen-xl mx-auto py-4 px-3'>
             <div className='flex justify-between items-center'>
               <p className='logo'>
