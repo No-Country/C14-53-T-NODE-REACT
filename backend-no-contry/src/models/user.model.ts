@@ -4,6 +4,7 @@ import { UserInterface } from '../interfaces/user.interface'
 
 interface UserModel extends Model, UserInterface { }
 
+
 const User = connetDB.define<UserModel>('User',
   {
     id: {
@@ -16,6 +17,11 @@ const User = connetDB.define<UserModel>('User',
       type: DataTypes.STRING,
       allowNull: false,
     },
+    dni: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
+    ,
     email: {
       type: DataTypes.STRING,
       unique: true,
