@@ -4,7 +4,9 @@ export default {
   theme: {
     colors: {
       primary: '#2CA25F',
-      secondary: '#EDE6E7'
+      secondary: '#EDE6E7',
+      gray: '#d1d5db',
+      red: '#dc2626'
     },
     boxShadow: {
       custom: '0 5.5px 1.85px 0 rgba(0, 0, 0, 0.25)'
