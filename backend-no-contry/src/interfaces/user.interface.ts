@@ -1,6 +1,7 @@
-export interface UserInterface {
+import { AuthInterface } from "./auth.interface";
+
+export interface UserInterface extends AuthInterface {
   id: string;
   name: string;
-  email: string;
-  password: string;
+  dni: string;
 }
