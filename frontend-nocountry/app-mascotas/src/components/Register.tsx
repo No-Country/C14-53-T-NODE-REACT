@@ -28,7 +28,7 @@ const onSubmit = handleSubmit((values) => {
     <div className="flex justify-center">
       <div className="w-3/4 md:w-1/2 flex items-center justify-center bg-gray-100 min-h-screen">
         <div className="bg-white rounded-lg shadow-lg z-20 mt-14">
-            <h2 className="text-3xl sm:text-4xl w-3/4 mx-auto font-serif font-semibold mb-6 text-gray-800">
+            <h2 className="text-3xl sm:text-4xl w-3/4 font-serif font-semibold mb-6 text-gray-800">
             Regístrate
             </h2>
             <form className=' sm:w-3/4 mx-auto' onSubmit={onSubmit}>
@@ -172,7 +172,7 @@ const onSubmit = handleSubmit((values) => {
             </form>  
         </div>
       </div>
-      <div className="relative md:w-1/2 z-40">
+      <div className="hidden sm:block relative md:w-1/2 z-40">
         <img
           src="./img/register-dog.png"
           alt="Imagen de fondo"
@@ -181,7 +181,7 @@ const onSubmit = handleSubmit((values) => {
         <img
           src="./img/wrong-register-dog.png"
           alt="Imagen de fondo"
-          className={`object-cover w-full h-screen absolute top-0 left-0 ${
+          className={` hidden sm:block object-cover w-full h-screen absolute top-0 left-0 ${
             shouldDisplayDog('nombre') ||
             shouldDisplayDog('dni') ||
             shouldDisplayDog('email') ||
