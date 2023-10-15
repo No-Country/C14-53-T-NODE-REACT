@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { getAllUser, createUser, getUserById, updateUserById, deleteUserById } from "../controllers/users.controllers";
+import { getAllUser, getUserById, updateUserById, deleteUserById } from "../controllers/users.controllers";
+//import { checkJWT } from "../middleware/session.middleware";
 
 const router: Router = Router();
 
+// router.post('/', createUser);
 router.get('/', getAllUser);
-router.post('/', createUser);
 router.get('/:id', getUserById);
 router.patch('/:id', updateUserById);
 router.delete('/:id', deleteUserById);

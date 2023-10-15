@@ -2,16 +2,16 @@ import { CreateUserDTO } from '../dto/createUser.dto'
 import { UserInterface } from '../interfaces/user.interface'
 import { User } from '../models/user.model'
 
-// Crear usuario
-const createById = async (user: CreateUserDTO): Promise<UserInterface> => {
-  const { name, email, password } = user
-  const saveUser = await User.create({
-    name,
-    email,
-    password
-  })
-  return saveUser
-}
+// // Crear usuario
+// const createById = async (user: CreateUserDTO): Promise<UserInterface> => {
+//   const { name, email, password } = user
+//   const saveUser = await User.create({
+//     name,
+//     email,
+//     password
+//   })
+//   return saveUser
+// }
 
 // Buscar todos los usuarios
 const findAll = async (): Promise<UserInterface[]> => {
@@ -71,4 +71,4 @@ const deleteByID = async (id: string): Promise<{ msg: string }> => {
 
 }
 
-export { findAll, findById, createById, updateById, deleteByID }
+export { findAll, findById, updateById, deleteByID }
