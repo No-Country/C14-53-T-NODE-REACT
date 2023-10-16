@@ -22,7 +22,7 @@ const User = connetDB.define<UserModel>('User',
       allowNull: false,
     },
     role: {
-      type: DataTypes.ENUM(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.USER),
+      type: DataTypes.ENUM(...Object.values(UserRole)),
       allowNull: false,
       defaultValue: UserRole.USER
     }

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { findAll, findById, deleteByID, updateById } from "../services/users.services";
 import { UserInterface } from "../interfaces/user.interface";
 import { handleHttp } from "../utils/error.handle";
-import { CreateUserDTO } from "../dto/createUser.dto";
+//import { CreateUserDTO } from "../dto/createUser.dto";
 import { RequestExtends } from "../interfaces/reqExtends.interface";
 
 

@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 import { verifyToken } from "../utils/jwt.handle";
 import { RequestExtends } from "../interfaces/reqExtends.interface";
+import { User } from "../models/user.model";
 
 const checkJWT = (req: RequestExtends, res: Response, next: NextFunction) => {
 
@@ -22,9 +23,18 @@ const checkJWT = (req: RequestExtends, res: Response, next: NextFunction) => {
       return;
     }
 
-    const validUser = verifyToken(`${jwt}`)
+    (async () => {
+      if (typeof req.user === 'object' && req.user !== null) {
+        const { id } = req.user;
+        const findUser = await User.findOne({ where: { id: id } });
 
-    console.log(validUser);
+        if (!findUser) {
+          return res.status(401).json({ msg: "No tienes permisos para acceder a esta ruta" });
+        }
+      }
+    })()
+
+    const validUser = verifyToken(`${jwt}`)
 
     if (!validUser) {
       res.status(400).send("Token no válido");
