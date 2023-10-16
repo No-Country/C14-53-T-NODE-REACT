@@ -4,6 +4,7 @@ import Nav from './components/Navbar/Navbar'
 import HomePage from './components/HomePage'
 import Login from './components/Login'
 import Register from './components/Register'
+import Dashboard from './components/Dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
           <Routes>
             <Route path='/' element={<HomePage />} />
+            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
           </Routes>
