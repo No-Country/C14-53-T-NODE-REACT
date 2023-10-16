@@ -2,6 +2,7 @@ import { AuthInterface } from "../interfaces/auth.interface"
 import { UserInterface } from "../interfaces/user.interface"
 import { User } from "../models/user.model"
 import { encrypt, verified } from "../utils/hash.handle"
+import { generateToken } from "../utils/jwt.handle"
 
 
 const registerService = async (bodyAuth: UserInterface): Promise<UserInterface | { msg: string }> => {
@@ -27,7 +28,7 @@ const registerService = async (bodyAuth: UserInterface): Promise<UserInterface |
 }
 
 
-const loginService = async (bodyAuth: AuthInterface): Promise<AuthInterface | string> => {
+const loginService = async (bodyAuth: AuthInterface): Promise<AuthInterface | { token: string, user: string } | string> => {
 
   const findUser = await User.findOne({ where: { email: bodyAuth.email } })
 
@@ -39,7 +40,14 @@ const loginService = async (bodyAuth: AuthInterface): Promise<AuthInterface | st
   // Valido si los datos email y contraseña son validos
   if (!isCorrect) return "Datos inválidos"
 
-  return findUser
+  const token = await generateToken(findUser.id)
+
+  const data = {
+    token,
+    user: findUser.email
+  }
+
+  return data
 
 
 }

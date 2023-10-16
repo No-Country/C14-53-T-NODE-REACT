@@ -1,6 +1,6 @@
 import { Sequelize, Model, DataTypes } from 'sequelize'
 import { connetDB } from '../config/dbConfig'
-import { UserInterface } from '../interfaces/user.interface'
+import { UserInterface, UserRole } from '../interfaces/user.interface'
 
 interface UserModel extends Model, UserInterface { }
 
@@ -20,6 +20,11 @@ const User = connetDB.define<UserModel>('User',
     dni: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    role: {
+      type: DataTypes.ENUM(...Object.values(UserRole)),
+      allowNull: false,
+      defaultValue: UserRole.USER
     }
     ,
     email: {
