@@ -1,5 +1,5 @@
 import { app } from './app';
-import { connetDB } from "./config/dbConfig";
+import { connectDB } from "./config/dbConfig";
 import { syncModel } from './models/user.model';
 
 const PORT_SERVER: number = parseInt(process.env.PORT_SERVER || "")
@@ -7,7 +7,7 @@ const PORT_SECUNDARY: number = 4000
 
 const PORT: number = PORT_SERVER || PORT_SECUNDARY
 
-connetDB
+connectDB
   .authenticate()
   .then(() => {
     console.log("Conexion exitosa con la base de datos");
