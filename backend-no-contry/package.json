@@ -22,8 +22,7 @@
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.33.0",
-    "typescript": "^5.2.2",
-    "uuid": "^9.0.1"
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.4",
