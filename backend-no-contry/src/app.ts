@@ -3,7 +3,7 @@ import express, { Express } from 'express';
 import cors from 'cors'
 import { router } from './routes';
 import morgan from 'morgan';
-import { connetDB } from './config/dbConfig'
+import { connectDB } from './config/dbConfig'
 
 const app: Express = express();
 
@@ -15,4 +15,4 @@ app.use(express.json());
 app.use('/api/v1', router)
 
 
-export { app, connetDB }
+export { app, connectDB }
