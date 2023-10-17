@@ -1,11 +1,11 @@
 import { Sequelize, Model, DataTypes } from 'sequelize'
-import { connetDB } from '../config/dbConfig'
+import { connectDB } from '../config/dbConfig'
 import { UserInterface, UserRole } from '../interfaces/user.interface'
 
 interface UserModel extends Model, UserInterface { }
 
 
-const User = connetDB.define<UserModel>('User',
+const User = connectDB.define<UserModel>('User',
   {
     id: {
       type: DataTypes.UUID,
