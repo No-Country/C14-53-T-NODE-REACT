@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import userRouter from './users.routes';
+import petsRouter from './pets.routes'
 
 
 const router: Router = Router();
@@ -10,5 +11,6 @@ const router: Router = Router();
  * etc...
  */
 router.use('/users', userRouter)
+router.use('/pets', petsRouter)
 
 export { router }

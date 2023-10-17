@@ -6,8 +6,8 @@ import { CreateUserDTO } from "../dto/createUser.dto";
 
 
 const createUser = async (req: Request, res: Response): Promise<UserInterface> => {
-
   try {
+    console.log(req.body)
     const body: CreateUserDTO = req.body
     const user: UserInterface = await createById(body)
     res.json(user)
