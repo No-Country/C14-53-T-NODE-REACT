@@ -12,7 +12,7 @@ const router: Router = Router();
  * users (Usuarios)
  * etc...
  */
-router.use('/users', userRouter)
+//router.use('/users', userRouter)
 router.use('/pets', petsRouter)
 router.use('/users', checkJWT, userRouter)
 router.use('/auth', authRouter)
