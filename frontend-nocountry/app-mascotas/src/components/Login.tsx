@@ -64,7 +64,7 @@ function Login() {
               {generalError && <p className='text-red text-bold'>{generalError}</p>}
             </div>
             <div className='mt-5 md:mt-6 mb-6'>
-              <button type="submit" className="btn w-full text-sm sm:text-xl sm:w-2/4 shadow-custom shadow-outline">
+              <button type="submit" className="btn w-full text-sm sm:text-xl sm:w-2/4  md:w-full shadow-custom shadow-outline">
                 Entrar
               </button>
             </div>
