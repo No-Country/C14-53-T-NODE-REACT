@@ -10,11 +10,13 @@ export default {
       red: '#dc2626'
     },
     boxShadow: {
-      custom: '0 5.5px 1.85px 0 rgba(0, 0, 0, 0.25)'
+      custom: '0 5.5px 1.85px 0 rgba(0, 0, 0, 0.25)',
+      '3xl': '0 0 25px 0 rgba(0, 0, 0, 0.25)',
     },
     fontFamily: {
       sans: ['"Open Sans"', '"sans-serif"'],
-      serif: ['"Sansita"', '"Serif"']
+      serif: ['"Sansita"', '"Serif"'],
+      montserrat: ['"Montserrat"', '"serif"']
     }
   },
   plugins: []
