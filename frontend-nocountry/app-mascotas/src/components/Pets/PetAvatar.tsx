@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const PetAvatar = ({ img, name }: { img: string; name: string }) => {
   return (
     <div>

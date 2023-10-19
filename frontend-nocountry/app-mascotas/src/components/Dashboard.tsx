@@ -54,8 +54,8 @@ const Dashboard = () => {
             </div>
           </div>
           <div className='flex-col col-span-2 h-screen hidden md:block max-w-screen-xl px-3 pt-[150px] text-center'>
-            <div className='p-7 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
-              <p className='mb-4 text-2xl font-black font-montserrat'>Tus mascotas</p>
+            <div className='p-7 md:px-10 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
+              <p className='mb-5 text-2xl font-black font-montserrat'>Tus mascotas</p>
               <div className='grid gap-7 md:grid-cols-2'>
                 <PetAvatar img='./img/Chucky.png' name='Chucky'></PetAvatar>
                 <PetAvatar img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>
