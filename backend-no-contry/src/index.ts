@@ -1,6 +1,6 @@
 import { app } from './app';
 import { connectDB } from "./config/dbConfig";
-import { syncModel } from './models/user.model';
+import { syncModel } from './utils/syncModel';
 
 const PORT_SERVER: number = parseInt(process.env.PORT_SERVER || "")
 const PORT_SECUNDARY: number = 4000

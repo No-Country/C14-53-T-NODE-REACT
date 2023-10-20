@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize';
 
+
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
 if (!DB_USER || !DB_PASSWORD || !DB_HOST || !DB_PORT || !DB_NAME) {
@@ -8,7 +9,6 @@ if (!DB_USER || !DB_PASSWORD || !DB_HOST || !DB_PORT || !DB_NAME) {
 
 const connectDB = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, { logging: false, dialect: 'postgres' })
 
-//const connectDB = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, { host: DB_HOST, port: parseInt(DB_PORT, 10), dialect: 'postgres'});
 
 export { connectDB }
 
