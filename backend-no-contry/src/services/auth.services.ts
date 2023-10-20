@@ -1,6 +1,6 @@
 import { AuthInterface } from "../interfaces/auth.interface"
 import { UserInterface } from "../interfaces/user.interface"
-import { User } from "../models/user.model"
+import User from "../models/user.model"
 import { encrypt, verified } from "../utils/hash.handle"
 import { generateToken } from "../utils/jwt.handle"
 
