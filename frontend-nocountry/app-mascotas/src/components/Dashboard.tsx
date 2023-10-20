@@ -66,7 +66,6 @@ const Dashboard = () => {
           </div>
         </div>
       </main>
-      <Background></Background>
     </>
   )
 }

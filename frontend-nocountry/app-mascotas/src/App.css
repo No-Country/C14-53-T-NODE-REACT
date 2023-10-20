@@ -2,13 +2,15 @@ html,
 body {
   background-color: #f6f3e9;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
-body::after{
+html::before{
   content: url("../public/img/ellipse1.png");
   position: absolute;
   top: -15%;
   left: 20%;
+  z-index: 0;
 }
 
 body::before{
@@ -20,7 +22,7 @@ body::before{
 
 @media (min-width: 1024px) {
   /* … */
-  html::after{
+  #root::before{
 
   content: url("../public/img/ellipse3.png");
   position: absolute;
