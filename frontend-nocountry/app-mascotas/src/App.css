@@ -5,12 +5,13 @@ body {
   overflow-x: hidden;
 }
 
+
+
 html::before{
   content: url("../public/img/ellipse1.png");
   position: absolute;
   top: -15%;
   left: 20%;
-  z-index: 0;
 }
 
 body::before{

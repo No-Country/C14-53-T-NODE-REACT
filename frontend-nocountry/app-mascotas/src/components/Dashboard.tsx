@@ -1,5 +1,3 @@
-// import React from 'react'
-import Background from './Background'
 import { PetAvatar } from './Pets/PetAvatar'
 
 const Dashboard = () => {
