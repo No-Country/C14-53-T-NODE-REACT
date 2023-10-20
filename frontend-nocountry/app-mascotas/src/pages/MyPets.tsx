@@ -1,6 +1,6 @@
 
 export const MyPets = () => {
   return (
-    <div>MyPets</div>
+    <div> MyPets</div>
   )
 }
