@@ -1,7 +1,34 @@
 html,
 body {
   background-color: #f6f3e9;
+  overflow-y: hidden;
 }
+
+body::after{
+  content: url("../public/img/ellipse1.png");
+  position: absolute;
+  top: -15%;
+  left: 20%;
+}
+
+body::before{
+  content: url("../public/img/ellipse2.png");
+  position: absolute;
+  bottom: -10px;
+  right: 50px;
+}
+
+@media (min-width: 1024px) {
+  /* … */
+  html::after{
+
+  content: url("../public/img/ellipse3.png");
+  position: absolute;
+  bottom: -35px;
+  left: 15px;
+  }
+}
+
 
 .hamburgerMenu {
   display: block;
