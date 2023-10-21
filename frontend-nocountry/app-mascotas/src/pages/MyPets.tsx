@@ -6,7 +6,7 @@ export const MyPets = () => {
   return (
     <>
       <main className="flex z-20 relative ">
-        <div className="flex flex-col items-center z-90 lg:items-stretch">
+        <div className="flex flex-col gap-8 lg:gap-0 items-center z-90 lg:items-stretch">
 
           <div className=' text-montserrat relative  h-[160px] md:h-[220px] xl:h-[260px]   w-[85%] lg:w-[90%] xl:w-[90%] md:m-8 md:px-12    rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
             <h2 className='text-center py-2 font-black text-[1rem] xl:text-2xl'>Tus mascotas</h2>
@@ -26,17 +26,52 @@ export const MyPets = () => {
 
 
           {/* Luego hay que sacar el margen vertical que tengan, ya que estos seran componentes */}
-          <div className="h-[45vh] mt-8 lg:mt-0 relative w-[85%] lg:w-[90%] xl:w-[90%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+          <div className="h-[45vh] overflow-y-hidden flex flex-col   items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[90%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+            <img className="w-[100px] h-[100px]" src="./img/Chucky.png" alt="selected-pet-image" />
+            <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px]">
+              <div className="flex gap-1">
+                <h2 className="font-black">Nombre:</h2>
+                <p className="font-bold">Chucky</p>
+              </div>
+              <div className="flex gap-1">
+                <h2 className="font-black">Especie:</h2>
+                <p className="font-bold">Conejo</p>
+              </div>
+
+              <div className="flex gap-1">
+                <h2 className="font-black">Raza:</h2>
+                <p className="font-bold">N/A</p>
+              </div>
+
+              <div className="flex gap-1">
+                <h2 className="font-black">Peso:</h2>
+                <p className="font-bold">4.2kg</p>
+              </div>
+
+              <div className="flex gap-1 ml-20">
+                <h2 className="font-black whitespace-nowrap">Fecha de nacimiento:</h2>
+                <p className="font-bold">12/10/23</p>
+              </div>
+            </div>
+
+            <h2 className="text-[12px] font-black">Descripcion Adicional</h2>
+            <p className="text-[10px] px-4 font-[700] mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce convallis impherdiet nunc eget vehicula. Curabitur sed elementum turpis, in varius metus. Sed vehicula erat sed lacus pellentesque vulputate. Nullam nec felis a eros consectetur hendrerit in ac augue. Etiam aliquam, velit vel lobortis accumsan, elit ipsum accumsan ex, eu vestibulum orci lectus non metus. Sed ut diam ex. Donec sem turpis, sodales non lectus at, tempus pulvinar elit. Aliquam faucibus lobortis orci, vitae pulvinar tellus dapibus et.</p>
+
+
+
+
+
           </div>
 
-          <div className="mobilepanel relative h-[50px] w-[85%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+
+          <div className="mobilepanel relative h-[70px] w-[85%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
           </div>
 
 
         </div>
 
 
-        <div className="hidden lg:flex h-[78vh]   m-8 pl-[150px]  relative  lg:w-[300px] xl:w-[25%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+        <div className="hidden lg:flex h-[78vh]   m-8  relative  lg:w-[300px] xl:w-[25%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
 
         </div>
 
