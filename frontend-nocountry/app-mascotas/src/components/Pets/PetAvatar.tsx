@@ -1,8 +1,8 @@
 export const PetAvatar = ({ img, name }: { img: string; name: string }) => {
   return (
-    <div className="px-2 flex-shrink-0">
-      <img className='mb-2 w-[66px] h-[66px] md:w-[90px] md:h-[90px]' src={img} alt='{name}' />
-      <p className='md:text-lg text-[8px] text-center font-black font-montserray'>{name}</p>
+    <div className="xl:px-4 flex-shrink-0 flex flex-col items-center ">
+      <img className='mb-2 w-[66px] h-[66px] md:w-[120px] md:h-[120px] xl:w-[150px] xl:h-[150px]' src={img} alt='{name}' />
+      <p className='md:text-[20px] text-[8px] text-center font-black font-montserray'>{name}</p>
     </div>
   )
 }
