@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Background from './Background'
 
 function HomePage() {
   return (
@@ -23,7 +22,6 @@ function HomePage() {
           </div>
         </div>
       </main>
-      <Background></Background>
     </>
   )
 }

@@ -10,30 +10,32 @@ body {
 
 
 
-html::before{
-  content: url("../public/img/ellipse1.png");
-  position: absolute;
-  top: -15%;
-  left: 20%;
-}
+/* html::before{ */
+/*   content: url("../public/img/ellipse1.png"); */
+/*   position: absolute; */
+/*   top: -15%; */
+/*   left: 20%; */
+/* } */
 
-body::before{
-  content: url("../public/img/ellipse2.png");
-  position: absolute;
-  bottom: -10px;
-  right: 50px;
-}
+/* body::before{ */
+/*   content: url("../public/img/ellipse2.png"); */
+/*   position: absolute; */
+/*   bottom: -10px; */
+/*   right: 50px; */
+/* } */
 
-@media (min-width: 1024px) {
-  /* … */
-  #root::before{
+/* @media (min-width: 1024px) { */
+/*   /* … */ */
+/*   #root::before{ */
 
-  content: url("../public/img/ellipse3.png");
-  position: absolute;
-  bottom: -35px;
-  left: 15px;
-  }
-}
+/*   content: url("../public/img/ellipse3.png"); */
+/*   position: absolute; */
+/*   bottom: -35px; */
+/*   left: 15px; */
+/*   } */
+/* } */
+
+
 
 
 .hamburgerMenu {

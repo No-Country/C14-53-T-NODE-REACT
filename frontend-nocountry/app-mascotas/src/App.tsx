@@ -7,6 +7,7 @@ import Register from './components/Register'
 import Dashboard from './components/Dashboard'
 import { MyPets } from './pages/MyPets'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Background from './components/Background'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/mypets' element={<MyPets />} />
           </Routes>
         </div>
+        <Background />
       </>
     </Router>
   )
