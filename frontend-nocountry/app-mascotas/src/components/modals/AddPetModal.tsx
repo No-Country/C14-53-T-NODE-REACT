@@ -61,7 +61,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   Nombre
                 </label>
                 <input
-                  className=" rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  className="md:placeholder:text-lg rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
                   id="nombre-input"
                   type="name"
                   placeholder="Nombre"
@@ -74,7 +74,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   Especie
                 </label>
                 <input
-                  className="  rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  className=" md:placeholder:text-lg rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
                   id="especie-input"
                   type="text"
                   placeholder="Especie"
@@ -86,7 +86,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   Fecha de nacimiento
                 </label>
                 <input
-                  className="  rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  className=" md:placeholder:text-lg rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
                   id="date-input"
                   type="date"
                   placeholder="Fecha de nacimiento"
@@ -99,7 +99,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   Raza
                 </label>
                 <input
-                  className="  rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  className=" md:placeholder:text-lg rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
                   id="raza-input"
                   type="text"
                   placeholder="Raza"
@@ -111,7 +111,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   Peso
                 </label>
                 <input
-                  className="  rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  className=" md:placeholder:text-lg rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
                   id="peso-input"
                   type="number"
                   placeholder="Peso"
