@@ -9,29 +9,39 @@ export const MyPets = () => {
         <div className="flex flex-col gap-8 lg:gap-0 items-center z-90 lg:items-stretch">
 
           <div className=' text-montserrat relative  h-[160px] md:h-[220px] xl:h-[260px]   w-[85%] lg:w-[90%] xl:w-[90%] md:m-8 md:px-12    rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
+
             <h2 className='text-center py-2 font-black text-[1rem] xl:text-2xl'>Tus mascotas</h2>
-            <div className="flex items-center justify-around">
-              <div className="flex pl-2 md:pl-0 overflow-x-hidden py-2 w-[99%] lg:w-[89%] gap-2 lg:gap-6 xl:gap-3">
-                <PetAvatar img='./img/Chucky.png' name='Chucky'></PetAvatar>
-                <PetAvatar img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>
-                <PetAvatar img='./img/Lucifer.png' name='Lucifer'></PetAvatar>
-                <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
-                <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
-                <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
-                <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
+            <div className="flex items-center justify-between">
+              <a className="absolute left-2 top-[38%]" href="#firstslide">
+                <img className="hidden lg:flex  rotate-180 mb-12" src="../../public/img/arrow-right.svg" alt="carrousel-arrow-right" />
+              </a>
+              <div className="flex pl-2 md:pl-0 lg:pl-2 overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3">
+                <div id="firstslide" className="flex gap-4">
+                  <PetAvatar img='./img/Chucky.png' name='Chucky'></PetAvatar>
+                  <PetAvatar img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>
+                  <PetAvatar img='./img/Lucifer.png' name='Lucifer'></PetAvatar>
+                  <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
+                  <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
+                  <div id="anchor"></div>
+                </div>
+
+
               </div>
-              <img className="hidden lg:flex pl-8 mb-12" src="../../public/img/arrow-right.svg" alt="carrousel-arrow-right" />
+              <a className="absolute right-2 top-[38%]" href="#anchor">
+
+                <img className="hidden lg:flex  mb-12" src="../../public/img/arrow-right.svg" alt="carrousel-arrow-right" />
+
+              </a>
             </div>
           </div>
 
 
-          {/* Luego hay que sacar el margen vertical que tengan, ya que estos seran componentes */}
           <div className="h-[45vh] overflow-y-hidden flex flex-col  lg:flex-row  lg:gap-4 items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[90%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
             <button className="lg:hidden absolute right-8 ">
               <img className="md:scale-150" src="./img/addtasks.svg" alt="add-task-button" />
             </button>
-            <img className="w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] lg:ml-6 " src="./img/Chucky.png" alt="selected-pet-image" />
 
+            <img className="w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] xl:h-[230px] xl:w-[230px] lg:ml-6 " src="./img/Chucky.png" alt="selected-pet-image" />
             <div className="flex flex-col xl:gap-3">
               <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px] lg:text-sm xl:text-xl">
                 <div className="flex gap-1">
@@ -93,7 +103,7 @@ export const MyPets = () => {
 
         </div>
 
-        <div className="hidden lg:flex flex-col  text-montserrat py-8 items-center gap-12 h-[78vh]   m-8  relative  lg:w-[99%] xl:w-[75%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+        <div className="hidden lg:flex flex-col  text-montserrat py-8 items-center gap-12 h-[78vh]   m-8  relative  lg:w-[99%] xl:w-[90%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
           <h2 className="font-black text-3xl xl:text-4xl">Acciones</h2>
           <ul className="font-bold text-center lg:text-lg xl:text-2xl">
             <li className="py-4">
