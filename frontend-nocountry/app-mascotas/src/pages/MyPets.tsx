@@ -57,6 +57,7 @@ export const MyPets = () => {
             <img className="w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] xl:h-[230px] xl:w-[230px] lg:ml-6 " src="./img/Chucky.png" alt="selected-pet-image" />
             <div className="flex flex-col xl:gap-3">
               <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px] lg:text-sm xl:text-xl">
+
                 <div className="flex gap-1">
                   <h2 className="font-black">Nombre:</h2>
                   <p className="font-bold">Chucky</p>
@@ -96,8 +97,8 @@ export const MyPets = () => {
 
           </div>
 
-
           <div className="flex justify-center gap-7 md:justify-around  mobilepanel relative h-[70px] w-[85%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+
             <button onClick={e => openPetModal(e)}>
               <img src="./img/addpet.svg" alt="add-pet-button" />
             </button>
@@ -120,7 +121,8 @@ export const MyPets = () => {
           <h2 className="font-black text-3xl xl:text-4xl">Acciones</h2>
           <ul className="font-bold text-center lg:text-lg xl:text-2xl">
             <li className="py-4">
-              <button>Agregar mascota</button>
+              <button onClick={openPetModal}>Agregar mascota</button>
+
             </li>
             <li className="py-4 xl:py-7"><button>Ingresar historia medica </button></li>
             <li className="py-4 xl:py-7"><button>Agendar Actividad</button></li>

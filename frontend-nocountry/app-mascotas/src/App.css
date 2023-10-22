@@ -61,3 +61,12 @@ body {
 .text-montserrat {
 font-family: 'Montserrat', sans-serif;
 }
+
+#wrapper {
+  background-color: black;
+  opacity: 30%;
+}
+
+
+
+

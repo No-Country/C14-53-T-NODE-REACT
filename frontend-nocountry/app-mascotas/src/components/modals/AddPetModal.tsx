@@ -9,51 +9,137 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
   if (!isVisible) return
 
+  //Tener esto en cuenta para cuando queramos que previsualizar la imagen
+  // function previewImage(event) {
+  //   // Obtén la imagen seleccionada
+  //   const image = event.target.files[0];
 
-  const handleClose = (e: any) => {
-    if (e.target.id === "wrapper") {
-      onClose();
+  //   // Establece la imagen de fondo del input
+  //   const input = event.target;
+  //   input.style.backgroundImage = `url('${image.path}')`;
+  // }
 
-    }
+  // // Asigna el evento change al input
+  // input.addEventListener("change", previewImage);
+
+  const handleClose = () => {
+    onClose();
+
   };
 
   return (
-    <div
-      id="wrapper"
-      onClick={(e) => handleClose(e)}
-      className="backgrop-blur-sm fixed inset-0 z-20  flex items-center justify-center bg-black/50"
-    >
+    <div className="flex justify-center items-center text-montserrat">
       <div
-        className={` z-20 h-[235px] w-[200px] rounded-[20px] bg-white  md:h-[608px] md:w-[606px] md:mt-28 md:rounded-[64px]`}
+        id="wrapper" onClick={() => handleClose()} className=" fixed inset-0 z-30 "
       >
-        <div className="modalheader flex justify-between p-2 md:p-14">
-          <h3 className="ml-2  text-[13px] font-light md:text-[43px] ">
-            PULSO<span className="font-extrabold">365</span>
-          </h3>
-          <button >
-            <svg
-              className="md:h-[84px] md:w-[84px]"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_1993_1106)">
-                <path
-                  d="M12.0001 0.238281C18.5059 0.238281 23.7648 5.4971 23.7648 12.003C23.7648 18.5089 18.5059 23.7677 12.0001 23.7677C5.49417 23.7677 0.235352 18.5089 0.235352 12.003C0.235352 5.4971 5.49417 0.238281 12.0001 0.238281ZM16.2236 6.12063L12.0001 10.3442L7.77653 6.12063L6.1177 7.77946L10.3412 12.003L6.1177 16.2265L7.77653 17.8853L12.0001 13.6618L16.2236 17.8853L17.8824 16.2265L13.6589 12.003L17.8824 7.77946L16.2236 6.12063Z"
-                  fill="black"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_1993_1106">
-                  <rect width="24" height="24" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-          </button>
-        </div>
+      </div>
+      <div id="modal" className='  absolute right-[10%] md:right-[8%] lg:right-[18%] xl:right-[20%]    w-[80%] z-40 md:-[708px] lg:h-[670px]  xl:h-auto md:w-[656px] lg:w-[750px] xl:w-[60%] xl:-[90%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
 
+        <div className="relative flex flex-col items-center">
+
+          <button onClick={() => handleClose()} className="absolute right-4 top-4 scale-50 md:scale-100">
+            <img src="./img/close-button.svg" alt="close-button" />
+          </button>
+
+          <h2 className="text-lg lg:text-2xl xl:text-3xl font-extrabold py-3">Agregar Mascota</h2>
+
+
+          <form action="" className="flex flex-col items-center">
+
+            <div id="uploadimage" className="h-[130px] md:h-[200px]">
+              <label htmlFor="fileinput" className="">
+                <img className="cursor-pointer ml-24 lg:ml-[25%] scale-75 md:scale-100" src="./img/select-image.png" alt="image-input" />
+              </label>
+              <input id="fileinput" type="file" className="invisible" />
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-3 scale-75 md:scale-100 m-4 gap-2 ml-10 lg:ml-0 w-[80%]  text-[10px] lg:text-sm xl:text-xl">
+
+
+              <div>
+                <label className="text-[12px] md:text-xl font-normal " htmlFor="Nombre">
+                  Nombre
+                </label>
+                <input
+                  className=" rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  id="nombre-input"
+                  type="name"
+                  placeholder="Nombre"
+                />
+
+              </div>
+
+              <div>
+                <label className="text-sm md:text-xl font-normal " htmlFor="Especie">
+                  Especie
+                </label>
+                <input
+                  className="  rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  id="especie-input"
+                  type="text"
+                  placeholder="Especie"
+                />
+
+              </div>
+              <div>
+                <label className="text-sm md:text-xl font-normal whitespace-nowrap" htmlFor="Date">
+                  Fecha de nacimiento
+                </label>
+                <input
+                  className="  rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  id="date-input"
+                  type="date"
+                  placeholder="Fecha de nacimiento"
+                  pattern="^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$"
+                />
+
+              </div>
+              <div>
+                <label className="text-sm md:text-xl font-normal " htmlFor="Raza">
+                  Raza
+                </label>
+                <input
+                  className="  rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  id="raza-input"
+                  type="text"
+                  placeholder="Raza"
+                />
+
+              </div>
+              <div className="" >
+                <label className="text-sm md:text-xl font-normal " htmlFor="Peso">
+                  Peso
+                </label>
+                <input
+                  className="  rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
+                  id="peso-input"
+                  type="number"
+                  placeholder="Peso"
+                />
+
+              </div>
+
+
+
+            </div>
+
+            <div className="w-[70%] flex flex-col items-center gap-5 mt-[-30px] md:mt-0" >
+              <label className="text-sm md:text-xl font-normal " htmlFor="Peso">
+                Descripcion (Adicional)
+              </label>
+              <textarea
+                className="overflow-hidden   rounded  w-[90%] h-24 p-4 px-3 mb-2 lg:mb-auto focus:outline-none"
+                id="descripcion-input"
+              />
+
+            </div>
+
+
+
+          </form>
+          <button className="text-lg md:text-xl md:mb-12  font-bold scale-75 bg-[#20EA7D] md:mt-2 xl:mt-6  md:scale-100 text-[#fff] rounded-[3px] text-center px-6 py-4 inline-block;">Agregar nueva mascota</button>
+
+        </div>
 
       </div>
     </div>
