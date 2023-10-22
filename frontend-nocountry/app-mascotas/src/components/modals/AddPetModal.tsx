@@ -130,6 +130,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
               <textarea
                 className="overflow-hidden   rounded  w-[90%] h-24 p-4 px-3 mb-2 lg:mb-auto focus:outline-none"
                 id="descripcion-input"
+                maxLength={300}
               />
 
             </div>

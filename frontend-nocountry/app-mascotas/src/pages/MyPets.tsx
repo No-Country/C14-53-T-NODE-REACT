@@ -56,7 +56,7 @@ export const MyPets = () => {
 
             <img className="w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] xl:h-[230px] xl:w-[230px] lg:ml-6 " src="./img/Chucky.png" alt="selected-pet-image" />
             <div className="flex flex-col xl:gap-3">
-              <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px] lg:text-sm xl:text-xl">
+              <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px] md:text-sm xl:text-xl">
 
                 <div className="flex gap-1">
                   <h2 className="font-black">Nombre:</h2>
@@ -83,10 +83,10 @@ export const MyPets = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center gap-2">
 
                 <h2 className="text-[12px] font-black md:text-sm xl:text-xl">Descripcion Adicional</h2>
-                <p className="text-[10px] md:text-sm px-4 font-[700] mt-2 xl:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce convallis impherdiet nunc eget vehicula. Curabitur sed elementum turpis, in varius metus. Sed vehicula erat sed lacus pellentesque vulputate. Nullam nec felis a eros consectetur hendrerit in ac augue. Etiam aliquam, velit vel lobortis accumsan, elit ipsum accumsan ex, eu vestibulum orci lectus non metus. Sed ut diam ex. Donec sem turpis, sodales non lectus at, tempus pulvinar elit. Aliquam faucibus lobortis orci, vitae pulvinar tellus dapibus et.</p>
+                <p className="text-[10px] md:text-sm px-4 font-[700] mt-2  xl:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce convallis impherdiet nunc eget vehicula. Curabitur sed elementum turpis, in varius metus. Sed vehicula erat sed lacus pellentesque vulputate. Nullam nec felis a eros consectetur hendrerit in ac augue. </p>
               </div>
 
 
@@ -103,7 +103,7 @@ export const MyPets = () => {
               <img src="./img/addpet.svg" alt="add-pet-button" />
             </button>
             <button>
-              <img src="./img/addhistory.svg" alt="add-task-button" />
+              <img src="./img/addhistory.svg" alt="add-history-button" />
             </button>
             <button>
               <img src="./img/seetasks.svg" alt="see-tasks-button" />
