@@ -58,7 +58,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
               <label htmlFor="fileinput" className="">
                 <img className="cursor-pointer ml-24 lg:ml-[25%] scale-75 md:scale-100" src="./img/select-image.png" alt="image-input" />
               </label>
-              <input id="fileinput" type="file" className="invisible" />
+              <input id="fileinput" type="file" accept="image/png, image/gif, image/jpeg" className="invisible" />
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-3 scale-75 md:scale-100 m-4 gap-2 ml-10 lg:ml-0 w-[80%]  text-[10px] lg:text-sm xl:text-xl">

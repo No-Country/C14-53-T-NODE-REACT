@@ -55,8 +55,8 @@ export const MyPets = () => {
             </button>
 
             <img className="w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] xl:h-[230px] xl:w-[230px] lg:ml-6 " src="./img/Chucky.png" alt="selected-pet-image" />
-            <div className="flex flex-col xl:gap-3">
-              <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px] md:text-sm xl:text-xl">
+            <div className="flex flex-col lg:gap-3">
+              <div className="grid grid-cols-3 place-items-center m-4 gap-3  text-[10px] md:text-sm xl:text-xl">
 
                 <div className="flex gap-1">
                   <h2 className="font-black">Nombre:</h2>
@@ -117,9 +117,9 @@ export const MyPets = () => {
 
         </div>
 
-        <div className="hidden lg:flex flex-col  text-montserrat py-8 items-center gap-12 h-[78vh]   m-8  relative  lg:w-[99%] xl:w-[90%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+        <div className="hidden lg:flex flex-col  text-montserrat py-8 items-center gap-12 h-[78vh]   m-8  relative  lg:w-[90%] xl:w-[80%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
           <h2 className="font-black text-3xl xl:text-4xl">Acciones</h2>
-          <ul className="font-bold text-center lg:text-lg xl:text-2xl">
+          <ul className="font-bold text-left lg:text-lg xl:text-2xl">
             <li className="py-4">
               <button onClick={openPetModal}>Agregar mascota</button>
 
