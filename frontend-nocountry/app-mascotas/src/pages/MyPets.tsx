@@ -26,40 +26,47 @@ export const MyPets = () => {
 
 
           {/* Luego hay que sacar el margen vertical que tengan, ya que estos seran componentes */}
-          <div className="h-[45vh] overflow-y-hidden flex flex-col   items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[90%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+          <div className="h-[45vh] overflow-y-hidden flex flex-col  lg:flex-row  lg:gap-4 items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[90%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
             <button className="lg:hidden absolute right-8 ">
               <img className="md:scale-150" src="./img/addtasks.svg" alt="add-task-button" />
             </button>
-            <img className="w-[100px] h-[100px]" src="./img/Chucky.png" alt="selected-pet-image" />
-            <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px]">
-              <div className="flex gap-1">
-                <h2 className="font-black">Nombre:</h2>
-                <p className="font-bold">Chucky</p>
-              </div>
-              <div className="flex gap-1">
-                <h2 className="font-black">Especie:</h2>
-                <p className="font-bold">Conejo</p>
+            <img className="w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] lg:ml-6 " src="./img/Chucky.png" alt="selected-pet-image" />
+
+            <div className="flex flex-col xl:gap-3">
+              <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px] lg:text-sm xl:text-xl">
+                <div className="flex gap-1">
+                  <h2 className="font-black">Nombre:</h2>
+                  <p className="font-bold">Chucky</p>
+                </div>
+                <div className="flex gap-1">
+                  <h2 className="font-black">Especie:</h2>
+                  <p className="font-bold">Conejo</p>
+                </div>
+
+                <div className="flex gap-1">
+                  <h2 className="font-black">Raza:</h2>
+                  <p className="font-bold">N/A</p>
+                </div>
+
+                <div className="flex gap-1">
+                  <h2 className="font-black">Peso:</h2>
+                  <p className="font-bold">4.2kg</p>
+                </div>
+
+                <div className="flex gap-1 ml-20">
+                  <h2 className="font-black whitespace-nowrap">Fecha de nacimiento:</h2>
+                  <p className="font-bold">12/10/23</p>
+                </div>
               </div>
 
-              <div className="flex gap-1">
-                <h2 className="font-black">Raza:</h2>
-                <p className="font-bold">N/A</p>
+              <div className="flex flex-col items-center">
+
+                <h2 className="text-[12px] font-black md:text-sm xl:text-xl">Descripcion Adicional</h2>
+                <p className="text-[10px] md:text-sm px-4 font-[700] mt-2 xl:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce convallis impherdiet nunc eget vehicula. Curabitur sed elementum turpis, in varius metus. Sed vehicula erat sed lacus pellentesque vulputate. Nullam nec felis a eros consectetur hendrerit in ac augue. Etiam aliquam, velit vel lobortis accumsan, elit ipsum accumsan ex, eu vestibulum orci lectus non metus. Sed ut diam ex. Donec sem turpis, sodales non lectus at, tempus pulvinar elit. Aliquam faucibus lobortis orci, vitae pulvinar tellus dapibus et.</p>
               </div>
 
-              <div className="flex gap-1">
-                <h2 className="font-black">Peso:</h2>
-                <p className="font-bold">4.2kg</p>
-              </div>
 
-              <div className="flex gap-1 ml-20">
-                <h2 className="font-black whitespace-nowrap">Fecha de nacimiento:</h2>
-                <p className="font-bold">12/10/23</p>
-              </div>
             </div>
-
-            <h2 className="text-[12px] font-black">Descripcion Adicional</h2>
-            <p className="text-[10px] px-4 font-[700] mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce convallis impherdiet nunc eget vehicula. Curabitur sed elementum turpis, in varius metus. Sed vehicula erat sed lacus pellentesque vulputate. Nullam nec felis a eros consectetur hendrerit in ac augue. Etiam aliquam, velit vel lobortis accumsan, elit ipsum accumsan ex, eu vestibulum orci lectus non metus. Sed ut diam ex. Donec sem turpis, sodales non lectus at, tempus pulvinar elit. Aliquam faucibus lobortis orci, vitae pulvinar tellus dapibus et.</p>
-
 
 
 
@@ -86,7 +93,17 @@ export const MyPets = () => {
 
         </div>
 
-        <div className="hidden lg:flex h-[78vh]   m-8  relative  lg:w-[60%] xl:w-[45%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+        <div className="hidden lg:flex flex-col  text-montserrat py-8 items-center gap-12 h-[78vh]   m-8  relative  lg:w-[99%] xl:w-[75%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+          <h2 className="font-black text-3xl xl:text-4xl">Acciones</h2>
+          <ul className="font-bold text-center lg:text-lg xl:text-2xl">
+            <li className="py-4">
+              <button>Agregar mascota</button>
+            </li>
+            <li className="py-4 xl:py-7"><button>Ingresar historia medica </button></li>
+            <li className="py-4 xl:py-7"><button>Agendar Actividad</button></li>
+            <li className="py-4 xl:py-7"><button>Ver Actividades</button></li>
+            <li className="py-4 xl:py-7"><button>Eliminar</button></li>
+          </ul>
 
 
         </div>
