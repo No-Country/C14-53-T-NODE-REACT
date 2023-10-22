@@ -27,6 +27,9 @@ export const MyPets = () => {
 
           {/* Luego hay que sacar el margen vertical que tengan, ya que estos seran componentes */}
           <div className="h-[45vh] overflow-y-hidden flex flex-col   items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[90%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+            <button className="lg:hidden absolute right-8 ">
+              <img className="md:scale-150" src="./img/addtasks.svg" alt="add-task-button" />
+            </button>
             <img className="w-[100px] h-[100px]" src="./img/Chucky.png" alt="selected-pet-image" />
             <div className="grid grid-cols-3 place-items-center m-4 gap-2  text-[10px]">
               <div className="flex gap-1">
@@ -64,14 +67,27 @@ export const MyPets = () => {
           </div>
 
 
-          <div className="mobilepanel relative h-[70px] w-[85%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+          <div className="flex justify-center gap-7 md:justify-around  mobilepanel relative h-[70px] w-[85%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+            <button>
+              <img src="./img/addpet.svg" alt="add-pet-button" />
+            </button>
+            <button>
+              <img src="./img/addtask.svg" alt="add-task-button" />
+            </button>
+            <button>
+              <img src="./img/seetasks.svg" alt="see-tasks-button" />
+            </button>
+            <button>
+              <img src="./img/deletepet.svg" alt="delete-pet-button" />
+            </button>
+
           </div>
 
 
         </div>
 
+        <div className="hidden lg:flex h-[78vh]   m-8  relative  lg:w-[60%] xl:w-[45%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
 
-        <div className="hidden lg:flex h-[78vh]   m-8  relative  lg:w-[300px] xl:w-[25%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
 
         </div>
 
