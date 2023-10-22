@@ -1,7 +1,20 @@
 import { PetAvatar } from "../components/Pets/PetAvatar"
-
+import AddPetModal from "../components/modals/AddPetModal"
+import { useState } from "react";
 
 export const MyPets = () => {
+
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  function closePetModal() {
+    setShowModal(false)
+    document.body.style.overflowY = "auto"
+  }
+
+  function openPetModal(e: React.MouseEvent<HTMLElement>): void {
+    e.preventDefault()
+    setShowModal(true)
+  }
 
   return (
     <>
@@ -85,11 +98,11 @@ export const MyPets = () => {
 
 
           <div className="flex justify-center gap-7 md:justify-around  mobilepanel relative h-[70px] w-[85%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
-            <button>
+            <button onClick={e => openPetModal(e)}>
               <img src="./img/addpet.svg" alt="add-pet-button" />
             </button>
             <button>
-              <img src="./img/addtask.svg" alt="add-task-button" />
+              <img src="./img/addhistory.svg" alt="add-task-button" />
             </button>
             <button>
               <img src="./img/seetasks.svg" alt="see-tasks-button" />
@@ -119,6 +132,10 @@ export const MyPets = () => {
         </div>
 
 
+        <AddPetModal
+          isVisible={showModal}
+          onClose={() => closePetModal()}
+        />
 
 
 
