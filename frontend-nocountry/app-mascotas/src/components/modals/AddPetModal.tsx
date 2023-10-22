@@ -1,6 +1,7 @@
 // TODO 
 //
 // - [ ] Cuando carue una imagen debe poder previsualizarse
+// - [ ] Alinear iconos de menu mobiLe
 
 
 
@@ -136,7 +137,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                 Descripcion (Adicional)
               </label>
               <textarea
-                className="overflow-hidden   rounded  w-[90%] h-24 p-4 px-3 mb-2 lg:mb-auto focus:outline-none"
+                className="overflow-hidden  resize-none rounded  w-[90%] h-24 p-4 px-3 mb-2 lg:mb-auto focus:outline-none"
                 id="descripcion-input"
                 maxLength={300}
               />
