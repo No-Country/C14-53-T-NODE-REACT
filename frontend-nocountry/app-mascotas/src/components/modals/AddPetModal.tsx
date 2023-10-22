@@ -1,7 +1,15 @@
+// TODO 
+//
+// - [ ] Cuando carue una imagen debe poder previsualizarse
+
+
+
 interface ModalProps {
   isVisible: boolean;
   onClose: () => void;
 }
+
+
 
 
 
