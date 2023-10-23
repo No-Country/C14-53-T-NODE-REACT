@@ -25,7 +25,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
         id="wrapper" onClick={() => handleClose()} className=" fixed inset-0 z-30 "
       >
       </div>
-      <div id="modal" className='absolute right-[5%] md:right-[8%] lg:right-[18%] xl:right-[10%] overflow-hidden    w-[90%] z-40 h-[450px] md:h-[708px] lg:h-[670px] xl:h-[90%]   md:w-[656px] lg:w-[750px] xl:w-[80%]   rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
+      <div id="modal" className='absolute right-[5%] md:right-[8%] lg:right-[10%] xl:right-[10%] overflow-hidden    w-[90%] z-40 h-[450px] md:h-[708px] lg:h-[670px] xl:h-[90%]   md:w-[656px] lg:w-[850px] xl:w-[80%]   rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
 
         <div className="relative flex flex-col items-center">
 
@@ -68,16 +68,16 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
               <tbody>
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                    Tomar medicamento A
                   </th>
                   <td className="px-6 py-4">
-                    Silver
+                    23/07/23
                   </td>
                   <td className="px-6 py-4">
-                    Laptop
+                    09:00
                   </td>
                   <td className="px-6 py-4">
-                    $2999
+                    Medicamento
                   </td>
                   <td className=" px-6 py-4 gap-2 hidden lg:flex">
                     <button >
@@ -111,16 +111,16 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                 </tr>
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
+                    Vacuna contra X
                   </th>
                   <td className="px-6 py-4">
-                    White
+                    24/07/23
                   </td>
                   <td className="px-6 py-4">
-                    Laptop PC
+                    12:00
                   </td>
-                  <td className="px-6 py-4">
-                    $1999
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    Tratamiento medico
                   </td>
                   <td className=" px-6 py-4 gap-2 hidden lg:flex">
                     <button >
@@ -155,16 +155,16 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                 </tr>
                 <tr className="bg-white dark:bg-gray-800">
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Magic Mouse 2
+                    Pasear por parque
                   </th>
                   <td className="px-6 py-4">
-                    Black
+                    24/07/23
                   </td>
                   <td className="px-6 py-4">
-                    Accessories
+                    15:00
                   </td>
                   <td className="px-6 py-4">
-                    $99
+                    Tarea
                   </td>
                   <td className=" px-6 py-4 gap-2 hidden lg:flex">
                     <button >
