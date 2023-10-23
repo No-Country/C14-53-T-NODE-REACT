@@ -17,7 +17,7 @@ function Register() {
   let generalError = ''
   let dogImageURL = './img/register-dog.png'
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -34,15 +34,13 @@ function Register() {
 
     if (Object.keys(errors).length === 0) {
       axios
-        .post('https://petcare-app.onrender.com/api/v1/auth/register', {
-          data: JSON.stringify(values)
-        })
+        .post('https://petcare-app.onrender.com/api/v1/auth/register', values )
         .then((response: AxiosResponse) => {
           console.log(response)
         })
       // alert('Form submit: ' + JSON.stringify(values))
-      // reset()
-      // navigate('/dashboard')
+      reset()
+      navigate('/dashboard')
     }
   })
 
