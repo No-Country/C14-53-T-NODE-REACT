@@ -1,6 +1,6 @@
 import { NextFunction, Response } from "express"
 import { RequestExtends } from "../interfaces/reqExtends.interface"
-import { User } from "../models/user.model";
+import User from "../models/user.model";
 import { UserRole } from "../interfaces/user.interface";
 
 

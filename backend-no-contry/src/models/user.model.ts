@@ -1,6 +1,8 @@
-import { Sequelize, Model, DataTypes } from 'sequelize'
+import { Model, DataTypes } from 'sequelize'
 import { connectDB } from '../config/dbConfig'
 import { UserInterface, UserRole } from '../interfaces/user.interface'
+import Pet from './petModel'
+
 
 interface UserModel extends Model, UserInterface { }
 
@@ -42,13 +44,7 @@ const User = connectDB.define<UserModel>('User',
   }
 )
 
-const syncModel = async () => {
-  try {
-    await User.sync();
-    console.log('Modelo de usuario sincronizado correctamente con la base de datos.');
-  } catch (error) {
-    console.error('Error al sincronizar el modelo de usuario con la base de datos:', error);
-  }
-};
+User.hasMany(Pet, { foreignKey: 'userId' })
+Pet.belongsTo(User, { foreignKey: 'userId' })
 
-export { User, syncModel }
+export default User 
