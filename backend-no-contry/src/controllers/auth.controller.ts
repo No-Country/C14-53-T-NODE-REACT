@@ -8,7 +8,7 @@ import { AuthInterface } from "../interfaces/auth.interface"
 const registerControler = async (req: Request, res: Response): Promise<UserInterface | void> => {
   console.log("Controller", req.body);
   try {
-    const newUser = await registerService(req.body)
+    const newUser = await registerService(req.body.data)
     res.send(newUser)
   } catch (error) {
     handleHttp(res, "Error registrar la autenticacion del usuario", error)
