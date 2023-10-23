@@ -18,6 +18,7 @@ const Dashboard = () => {
                     <img className='transition-transform group-hover:scale-105' src='./img/dashboard-img-01.jpg' alt='Icono Calendario' />
                   </div>
                   <Link to='/calendar' className='font-bold group-hover:underline font-montserrat'>Calendario</Link>
+                  <p className='font-bold group-hover:underline font-montserrat'>Calendario</p>
                 </a>
               </div>
               <div className='flex flex-col'>
@@ -56,7 +57,7 @@ const Dashboard = () => {
           </div>
           <div className='flex-col col-span-2 h-screen hidden md:block max-w-screen-xl px-3 pt-[150px] text-center'>
             <div className='p-7 md:px-10 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
-              <p className='mb-5 text-2xl font-black font-montserrat'>Tus mascotas</p>
+              <a href="/mypets" className='mb-5 text-2xl font-black font-montserrat'>Tus mascotas</a>
               <div className='grid gap-7 md:grid-cols-2'>
                 <PetAvatar img='./img/Chucky.png' name='Chucky'></PetAvatar>
                 <PetAvatar img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>

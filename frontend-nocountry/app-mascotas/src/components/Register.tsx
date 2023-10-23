@@ -15,24 +15,23 @@ interface FormData {
   }
 
 function Register() {
-
 let generalError = "";
 let dogImageURL = "./img/register-dog.png";
-
+    
 const navigate = useNavigate();
 const { register, handleSubmit, reset, formState: { errors }, getValues } = useForm<FormData>()
-if(Object.keys(errors).length > 0){
-    dogImageURL = "./img/wrong-register-dog.png";
-    generalError = "Completa los campos correctamente.";
-  }
+    if(Object.keys(errors).length > 0){
+      dogImageURL = "./img/wrong-register-dog.png";
+      generalError = "Completa los campos correctamente.";
+}
 const onSubmit = handleSubmit((values) => {
-    if (Object.keys(errors).length === 0) {
-      alert('Form submit: ' + JSON.stringify(values));
-      reset();
-      navigate('/dashboard');
-    } 
-  });
-
+      if (Object.keys(errors).length === 0) {
+        alert('Form submit: ' + JSON.stringify(values));
+        reset();
+        navigate('/dashboard');
+      } 
+});
+    
   return (
     <div className="flex justify-center">
       <div className="w-3/4 md:w-1/2 flex items-center justify-center bg-gray-100 min-h-screen">
