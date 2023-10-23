@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap');
+
+
 html,
 body {
   background-color: #f6f3e9;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
+
+
+
 
 .hamburgerMenu {
   display: block;
@@ -49,3 +57,16 @@ body {
 .hamburgerMenu.active span:nth-last-child(2) {
   transform: rotate(-45deg) translate(-6px, 18px);
 }
+
+.text-montserrat {
+font-family: 'Montserrat', sans-serif;
+}
+
+#wrapper {
+  background-color: black;
+  opacity: 30%;
+}
+
+
+
+

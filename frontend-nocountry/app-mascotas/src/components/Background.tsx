@@ -1,7 +1,7 @@
 const Background = () => {
   return (
     <>
-      <div className='absolute z-10 top-0 left-0 w-full h-full overflow-hidden'>
+      <div id="background" className='absolute  top-0 left-0 w-full h-full overflow-hidden'>
         <div className='absolute top-[-30px] md:top-[-105px] left-[50%] md:left-80 w-2/6 md:w-1/4'>
           <img src='./img/ellipse1.png' alt='background shape' />
         </div>
