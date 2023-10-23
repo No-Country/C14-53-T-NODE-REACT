@@ -13,7 +13,7 @@ app.use(morgan("dev"))
 app.use(cors({
   origin: [
     'https://c14-53-t-node-react.vercel.app',
-    'http://localhost:3001',
+    'http://localhost:3000',
     'http://localhost:5173'
   ],
   credentials: true,
