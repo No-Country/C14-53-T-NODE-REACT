@@ -1,8 +1,3 @@
-// TODO 
-//
-// - [ ] Cuando carue una imagen debe poder previsualizarse
-// - [ ] Alinear iconos de menu mobiLe
-
 
 
 interface ModalProps {
@@ -14,7 +9,7 @@ interface ModalProps {
 
 
 
-const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
+const AddHistoryModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
   if (!isVisible) return
 
@@ -51,7 +46,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
             <img src="./img/close-button.svg" alt="close-button" />
           </button>
 
-          <h2 className="text-lg lg:text-2xl xl:text-3xl font-extrabold py-3">Agregar Mascota</h2>
+          <h2 className="text-lg lg:text-2xl xl:text-3xl font-extrabold py-3">Agregar historia medica</h2>
 
 
           <form action="" className="flex flex-col items-center">
@@ -157,4 +152,4 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
   );
 };
 
-export default AddPetModal;
+export default AddHistoryModal;

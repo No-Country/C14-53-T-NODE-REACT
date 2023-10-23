@@ -105,7 +105,7 @@ export const MyPets = () => {
             <button>
               <img src="./img/addhistory.svg" alt="add-history-button" />
             </button>
-            <button>
+            <button className="mb-2">
               <img src="./img/seetasks.svg" alt="see-tasks-button" />
             </button>
             <button>
