@@ -1,20 +1,24 @@
 import { PetAvatar } from "../components/Pets/PetAvatar"
 import AddPetModal from "../components/modals/AddPetModal"
+import AddHistoryModal from "../components/modals/AddHistoryModal";
 import { useState } from "react";
 
 export const MyPets = () => {
 
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [showAddPetModal, setShowAddPetModal] = useState<boolean>(false);
+  const [showAddHistoryModal, setShowAddHistoryModal] = useState<boolean>(false);
 
   function closePetModal() {
-    setShowModal(false)
+    setShowAddPetModal(false)
     document.body.style.overflowY = "auto"
   }
 
   function openPetModal(e: React.MouseEvent<HTMLElement>): void {
     e.preventDefault()
-    setShowModal(true)
+    setShowAddPetModal(true)
   }
+
+
 
   return (
     <>
@@ -102,7 +106,7 @@ export const MyPets = () => {
             <button onClick={e => openPetModal(e)}>
               <img src="./img/addpet.svg" alt="add-pet-button" />
             </button>
-            <button>
+            <button onClick={() => setShowAddHistoryModal(true)}>
               <img src="./img/addhistory.svg" alt="add-history-button" />
             </button>
             <button className="mb-2">
@@ -124,7 +128,7 @@ export const MyPets = () => {
               <button onClick={openPetModal}>Agregar mascota</button>
 
             </li>
-            <li className="py-4 xl:py-7"><button>Ingresar historia medica </button></li>
+            <li className="py-4 xl:py-7"><button onClick={() => setShowAddHistoryModal(true)}>Ingresar historia medica </button></li>
             <li className="py-4 xl:py-7"><button>Agendar Actividad</button></li>
             <li className="py-4 xl:py-7"><button>Ver Actividades</button></li>
             <li className="py-4 xl:py-7"><button>Eliminar</button></li>
@@ -135,9 +139,16 @@ export const MyPets = () => {
 
 
         <AddPetModal
-          isVisible={showModal}
+          isVisible={showAddPetModal}
           onClose={() => closePetModal()}
         />
+
+        <AddHistoryModal
+          isVisible={showAddHistoryModal}
+          onClose={() => setShowAddHistoryModal(false)}
+        />
+
+
 
 
 
