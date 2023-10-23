@@ -21,6 +21,8 @@ app.use(cors({
 }));
 app.use(express.json());
 
+
+// Ruta principal
 app.use('/api/v1', router)
 
 
