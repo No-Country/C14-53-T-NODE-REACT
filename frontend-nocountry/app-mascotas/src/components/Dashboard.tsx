@@ -1,3 +1,6 @@
+// import React from 'react'
+import { Link } from 'react-router-dom';
+import Background from './Background'
 import { PetAvatar } from './Pets/PetAvatar'
 
 const Dashboard = () => {
@@ -14,6 +17,7 @@ const Dashboard = () => {
                   <div className='overflow-hidden rounded-[20px] mb-4 shadow-3xl'>
                     <img className='transition-transform group-hover:scale-105' src='./img/dashboard-img-01.jpg' alt='Icono Calendario' />
                   </div>
+                  <Link to='/calendar' className='font-bold group-hover:underline font-montserrat'>Calendario</Link>
                   <p className='font-bold group-hover:underline font-montserrat'>Calendario</p>
                 </a>
               </div>
@@ -64,6 +68,7 @@ const Dashboard = () => {
           </div>
         </div>
       </main>
+      <Background></Background>
     </>
   )
 }

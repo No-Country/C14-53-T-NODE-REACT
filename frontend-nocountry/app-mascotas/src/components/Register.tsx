@@ -148,7 +148,7 @@ const onSubmit = handleSubmit((values) => {
             </form> 
         </div>
       </div>
-      <div className="hidden sm:block relative md:w-1/2 z-40">
+      <div className="hidden md:block relative md:w-1/2 z-40">
         <img
           src={dogImageURL}
           alt="Imagen de fondo"

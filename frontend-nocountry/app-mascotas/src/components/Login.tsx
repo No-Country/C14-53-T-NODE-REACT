@@ -9,7 +9,7 @@ interface FormData {
 }
 
 function Login() {
-
+  
   let generalError = "";
   let dogImageURL = "./img/login-dog.png";
 
@@ -26,7 +26,6 @@ function Login() {
       navigate('/dashboard');
     }
   });
-
 
   return (
     <div className="flex justify-center">

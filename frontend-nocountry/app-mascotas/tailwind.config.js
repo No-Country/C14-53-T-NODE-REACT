@@ -7,7 +7,8 @@ export default {
       secondary: '#EDE6E7',
       beige: '#f5f3e9',
       gray: '#d1d5db',
-      red: '#dc2626'
+      red: '#FF0000',
+      black: '#000000'
     },
     boxShadow: {
       custom: '0 5.5px 1.85px 0 rgba(0, 0, 0, 0.25)',
