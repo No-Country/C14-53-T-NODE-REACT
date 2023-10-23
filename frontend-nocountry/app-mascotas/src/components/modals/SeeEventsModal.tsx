@@ -59,7 +59,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   <th scope="col" className="px-6 py-3">
                     Tipo
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="px-6 py-3 hidden lg:block">
                     Acciones
                   </th>
 
@@ -79,7 +79,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   <td className="px-6 py-4">
                     $2999
                   </td>
-                  <td className=" flex px-6 py-4 gap-2">
+                  <td className=" px-6 py-4 gap-2 hidden lg:flex">
                     <button >
                       <svg width="32" height="32" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_455_3297)">
@@ -122,7 +122,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   <td className="px-6 py-4">
                     $1999
                   </td>
-                  <td className=" flex px-6 py-4 gap-2">
+                  <td className=" px-6 py-4 gap-2 hidden lg:flex">
                     <button >
                       <svg width="32" height="32" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_455_3297)">
@@ -166,7 +166,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   <td className="px-6 py-4">
                     $99
                   </td>
-                  <td className=" flex px-6 py-4 gap-2">
+                  <td className=" px-6 py-4 gap-2 hidden lg:flex">
                     <button >
                       <svg width="32" height="32" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_455_3297)">
