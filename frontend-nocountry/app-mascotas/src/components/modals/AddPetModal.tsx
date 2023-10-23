@@ -1,7 +1,6 @@
 // TODO 
 //
 // - [ ] Cuando carue una imagen debe poder previsualizarse
-// - [ ] Alinear iconos de menu mobiLe
 
 
 

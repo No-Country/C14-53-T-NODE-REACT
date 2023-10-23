@@ -2,11 +2,13 @@ import { PetAvatar } from "../components/Pets/PetAvatar"
 import AddPetModal from "../components/modals/AddPetModal"
 import AddHistoryModal from "../components/modals/AddHistoryModal";
 import { useState } from "react";
+import SeeEventsModal from "../components/modals/SeeEventsModal";
 
 export const MyPets = () => {
 
   const [showAddPetModal, setShowAddPetModal] = useState<boolean>(false);
   const [showAddHistoryModal, setShowAddHistoryModal] = useState<boolean>(false);
+  const [showEventsModal, setShowEventsModal] = useState<boolean>(false);
 
   function closePetModal() {
     setShowAddPetModal(false)
@@ -109,7 +111,7 @@ export const MyPets = () => {
             <button onClick={() => setShowAddHistoryModal(true)}>
               <img src="./img/addhistory.svg" alt="add-history-button" />
             </button>
-            <button className="mb-2">
+            <button onClick={() => setShowEventsModal(true)} className="mb-2">
               <img src="./img/seetasks.svg" alt="see-tasks-button" />
             </button>
             <button>
@@ -130,7 +132,7 @@ export const MyPets = () => {
             </li>
             <li className="py-4 xl:py-7"><button onClick={() => setShowAddHistoryModal(true)}>Ingresar historia medica </button></li>
             <li className="py-4 xl:py-7"><button>Agendar Actividad</button></li>
-            <li className="py-4 xl:py-7"><button>Ver Actividades</button></li>
+            <li className="py-4 xl:py-7"><button onClick={() => setShowEventsModal(true)}>Ver Actividades</button></li>
             <li className="py-4 xl:py-7"><button>Eliminar</button></li>
           </ul>
 
@@ -147,6 +149,11 @@ export const MyPets = () => {
           isVisible={showAddHistoryModal}
           onClose={() => setShowAddHistoryModal(false)}
         />
+        <SeeEventsModal
+          isVisible={showEventsModal}
+          onClose={() => setShowEventsModal(false)}
+        />
+
 
 
 
