@@ -7,6 +7,8 @@ import { generateToken } from "../utils/jwt.handle"
 
 const registerService = async (bodyAuth: UserInterface): Promise<UserInterface | { msg: string }> => {
 
+  console.log("Body Servicio:", bodyAuth)
+
   const findUser = await User.findOne({ where: { email: bodyAuth.email } })
 
   if (findUser) return { msg: "Usuario ya existe" }
