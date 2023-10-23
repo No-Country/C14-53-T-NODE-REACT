@@ -32,7 +32,7 @@ export const MyPets = () => {
             <h2 className='text-center py-2 font-black text-[1rem] xl:text-2xl'>Tus mascotas</h2>
             <div className="flex items-center justify-between">
               <a className="absolute left-2 top-[38%]" href="#firstslide">
-                <img className="hidden lg:flex  rotate-180 mb-12" src="../../public/img/arrow-right.svg" alt="carrousel-arrow-right" />
+                <img className="hidden lg:flex  rotate-180 mb-12" src="./img/arrow-right.svg" alt="carrousel-arrow-right" />
               </a>
               <div className="flex pl-2 md:pl-0 lg:pl-2 overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3">
                 <div id="firstslide" className="flex gap-4">
@@ -48,7 +48,7 @@ export const MyPets = () => {
               </div>
               <a className="absolute right-2 top-[38%]" href="#anchor">
 
-                <img className="hidden lg:flex  mb-12" src="../../public/img/arrow-right.svg" alt="carrousel-arrow-right" />
+                <img className="hidden lg:flex  mb-12" src="./img/arrow-right.svg" alt="carrousel-arrow-right" />
 
               </a>
             </div>
