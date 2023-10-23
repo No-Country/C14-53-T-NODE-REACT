@@ -120,7 +120,7 @@ const onSubmit = handleSubmit((values) => {
                             className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${
                                 errors.confirmarPassword ? 'border-red' : 'border-gray'
                               }`}
-                            id="password"
+                            id="confirmarPassword"
                             type="password"
                             placeholder="**********"
                             {...register('confirmarPassword', {pattern:  /^.{4,12}$/, required: true, validate: (value) => value === getValues('password')})}

@@ -5,6 +5,7 @@ import HomePage from './components/HomePage'
 import Login from './components/Login'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
+import MyCalendar from './components/MyCalendar'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/calendar' element={<MyCalendar />} />
           </Routes>
         </div>
       </>

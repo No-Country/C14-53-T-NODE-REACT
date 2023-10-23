@@ -8,6 +8,6 @@
 }
 @layer base {
   .btn {
-    @apply text-lg md:text-2xl font-bold bg-[#FF3E3E] text-[#fff] rounded-2xl text-center px-6 py-2 inline-block;
+    @apply text-lg md:text-2xl font-bold bg-[#FF3E3E] text-[#fff] rounded-[3px] text-center px-6 py-4 inline-block;
   }
 }

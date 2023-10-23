@@ -37,7 +37,7 @@ const onSubmit = handleSubmit((values) => {
             </h2>
           <form onSubmit={onSubmit}>
             <div className="mb-4">
-              <label className="text-sm md:text-xl font-semibold text-gray-800" htmlFor="email">
+              <label className="text-sm md:text-xl font-normal text-gray-800" htmlFor="email">
                 Email
               </label>
               <input
@@ -50,7 +50,7 @@ const onSubmit = handleSubmit((values) => {
               />
             </div>
             <div className="mb-6">
-              <label className="text-sm sm:text-xl font-semibold text-gray-800" htmlFor="password">
+              <label className="text-sm sm:text-xl font-normal text-gray-800" htmlFor="password">
                 Contraseña
               </label>
               <input
@@ -59,7 +59,6 @@ const onSubmit = handleSubmit((values) => {
                 type="password"
                 placeholder="**********"
                 {...register('password', { pattern:  /^.{4,12}$/, required: true })}
-
               />
             </div>
             <div className={`${generalError ? 'p-0' : 'p-3'}`}>
