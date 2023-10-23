@@ -5,6 +5,7 @@ import { router } from './routes';
 import morgan from 'morgan';
 import { connectDB } from './config/dbConfig'
 
+// Creo el servidor
 const app: Express = express();
 
 //Middlewares
