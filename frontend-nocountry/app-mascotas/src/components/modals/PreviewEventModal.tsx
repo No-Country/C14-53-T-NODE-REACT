@@ -2,16 +2,14 @@
 
 interface ModalProps {
   isVisible: boolean;
-  notes: string;
 }
 
 
 
 
 
-const PreviewEventModal: React.FC<ModalProps> = ({ isVisible, notes }) => {
+const PreviewEventModal: React.FC<ModalProps> = () => {
 
-  if (!isVisible) return
 
 
 

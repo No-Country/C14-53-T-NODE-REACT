@@ -15,7 +15,7 @@ interface ModalProps {
 const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
   const [showPreview, setShowPreview] = useState<boolean>(false);
-  const [notesInfo, setNotesInfo] = useState<string>('Test text');
+  // const [notesInfo, setNotesInfo] = useState<string>('Test text');
 
 
   if (!isVisible) return
@@ -215,8 +215,6 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
         </div>
         <PreviewEventModal
           isVisible={showPreview}
-          onClose={() => setShowPreview(false)}
-          notes={notesInfo}
 
         ></PreviewEventModal>
 
