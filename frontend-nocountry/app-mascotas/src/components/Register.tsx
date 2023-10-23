@@ -4,13 +4,13 @@ import Background from './Background'
 import axios, { AxiosResponse } from 'axios'
 
 interface FormData {
-  nombre: string
+  name: string
   dni: string
   email: string
-  telefono: string
+  phone: string
   password: string
-  confirmarPassword: string
-  aceptarTerminos: boolean
+  passwordConfirm: string
+  terms: boolean
 }
 
 function Register() {
@@ -33,11 +33,13 @@ function Register() {
     // console.log(values);
 
     if (Object.keys(errors).length === 0) {
-      axios.post('https://petcare-app.onrender.com/api/v1/auth/register', {
-        data: JSON.stringify(values)
-      }).then( (response: AxiosResponse) => {
-        console.log(response)}
-        )
+      axios
+        .post('https://petcare-app.onrender.com/api/v1/auth/register', {
+          data: JSON.stringify(values)
+        })
+        .then((response: AxiosResponse) => {
+          console.log(response)
+        })
       // alert('Form submit: ' + JSON.stringify(values))
       // reset()
       // navigate('/dashboard')
@@ -55,7 +57,7 @@ function Register() {
                 <label className='text-sm font-semibold text-gray-800 md:text-base' htmlFor='email'>
                   Nombre
                 </label>
-                <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.nombre ? 'border-red' : 'border-gray'}`} id='nombre' type='text' placeholder='Nombre' {...register('nombre', { pattern: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, required: true })} />
+                <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.name ? 'border-red' : 'border-gray'}`} id='nombre' type='text' placeholder='Nombre' {...register('name', { pattern: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, required: true })} />
               </div>
               <div className='mb-4 w-[49%]'>
                 <label className='text-sm font-semibold text-gray-800 md:text-base' htmlFor='email'>
@@ -73,7 +75,7 @@ function Register() {
                 <label className='text-sm font-semibold text-gray-800 md:text-base' htmlFor='email'>
                   Teléfono
                 </label>
-                <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.telefono ? 'border-red' : 'border-gray'}`} id='telefono' type='text' placeholder='Telefono' {...register('telefono', { pattern: /^\d{7,14}$/, required: true })} />
+                <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.phone ? 'border-red' : 'border-gray'}`} id='telefono' type='text' placeholder='Telefono' {...register('phone', { pattern: /^\d{7,14}$/, required: true })} />
               </div>
               <div className='mb-6 w-[49%]'>
                 <label className='text-sm font-semibold text-gray-800 sm:text-base' htmlFor='password'>
@@ -85,12 +87,12 @@ function Register() {
                 <label className='text-sm font-semibold text-gray-800 sm:text-base' htmlFor='password'>
                   Repetir contraseña
                 </label>
-                <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.confirmarPassword ? 'border-red' : 'border-gray'}`} id='confirmarPassword' type='password' placeholder='**********' {...register('confirmarPassword', { pattern: /^.{4,12}$/, required: true, validate: value => value === getValues('password') })} />
+                <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.passwordConfirm ? 'border-red' : 'border-gray'}`} id='confirmarPassword' type='password' placeholder='**********' {...register('passwordConfirm', { pattern: /^.{4,12}$/, required: true, validate: value => value === getValues('password') })} />
               </div>
             </div>
             <div className='mb-6'>
               <label className='flex text-sm text-center'>
-                <input type='checkbox' className='w-5' {...register('aceptarTerminos', { required: true })} />
+                <input type='checkbox' className='w-5' {...register('terms', { required: true })} />
                 <span className=''>He leído las Políticas de privacidad y acepto los términos y condiciones del uso de datos.</span>
               </label>
             </div>
