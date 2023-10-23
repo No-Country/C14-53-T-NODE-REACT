@@ -1,3 +1,5 @@
+import { useState } from "react";
+import PreviewEventModal from "./PreviewEventModal";
 
 interface ModalProps {
   isVisible: boolean;
@@ -8,7 +10,13 @@ interface ModalProps {
 
 
 
+
+
 const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
+
+  const [showPreview, setShowPreview] = useState<boolean>(false);
+  const [notesInfo, setNotesInfo] = useState<string>('Test text');
+
 
   if (!isVisible) return
 
@@ -80,7 +88,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                     Medicamento
                   </td>
                   <td className=" px-6 py-4 gap-2 hidden lg:flex">
-                    <button >
+                    <button className="cursor-default " onMouseEnter={() => setShowPreview(true)} onMouseLeave={() => setShowPreview(false)}>
                       <svg width="32" height="32" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_455_3297)">
                           <path d="M4.16014 2.94945C4.59055 2.81301 5.03952 2.74416 5.49104 2.74538C7.34633 2.74538 8.60891 3.85447 9.36176 4.83224C9.73885 5.3229 9.9274 5.56734 9.9274 6.29446C9.9274 7.02202 9.73885 7.26647 9.36176 7.75668C8.60891 8.73446 7.34633 9.84355 5.49104 9.84355C3.63576 9.84355 2.37317 8.73446 1.62032 7.75668C1.24323 7.26691 1.05469 7.02158 1.05469 6.29446C1.05469 5.5669 1.24323 5.32246 1.62032 4.83224C1.85029 4.53177 2.10638 4.25222 2.38559 3.99687" stroke="#636870" stroke-width="0.665453" stroke-linecap="round" />
@@ -180,6 +188,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                         </defs>
                       </svg>
                     </button>
+
                     <button>
                       <svg width="32" height="32" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.6487 3.59912L8.26965 1.2205C8.19056 1.14138 8.09665 1.07862 7.9933 1.0358C7.88995 0.992986 7.77918 0.970947 7.66731 0.970947C7.55544 0.970947 7.44466 0.992986 7.34131 1.0358C7.23796 1.07862 7.14406 1.14138 7.06496 1.2205L0.500649 7.78514C0.421213 7.86395 0.358234 7.95776 0.315373 8.06113C0.272511 8.1645 0.250623 8.27535 0.250981 8.38725V10.7664C0.250981 10.9923 0.340718 11.209 0.500452 11.3687C0.660186 11.5285 0.876831 11.6182 1.10273 11.6182H3.48177C3.59366 11.6186 3.70451 11.5967 3.80787 11.5538C3.91123 11.5109 4.00504 11.448 4.08385 11.3685L8.53795 6.91472L8.72321 7.65471L6.76419 9.6133C6.68428 9.69314 6.63936 9.80146 6.63931 9.91443C6.63926 10.0274 6.68408 10.1358 6.76392 10.2157C6.84376 10.2956 6.95208 10.3405 7.06504 10.3406C7.178 10.3406 7.28636 10.2958 7.36627 10.2159L9.49564 8.08646C9.54772 8.03447 9.58544 7.96988 9.60513 7.89897C9.62481 7.82806 9.62579 7.75326 9.60796 7.68186L9.24064 6.21199L10.6487 4.80387C10.7278 4.72478 10.7906 4.63087 10.8334 4.52751C10.8762 4.42415 10.8982 4.31337 10.8982 4.2015C10.8982 4.08962 10.8762 3.97884 10.8334 3.87549C10.7906 3.77213 10.7278 3.67822 10.6487 3.59912ZM1.10273 9.23904L2.63002 10.7664H1.10273V9.23904ZM3.65797 10.5902L1.27893 8.21104L5.78734 3.7024L8.16638 6.08156L3.65797 10.5902ZM8.76846 5.47945L6.38995 3.10029L7.66757 1.82261L10.0461 4.20177L8.76846 5.47945Z" fill="#636870" />
@@ -204,7 +213,12 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
 
         </div>
+        <PreviewEventModal
+          isVisible={showPreview}
+          onClose={() => setShowPreview(false)}
+          notes={notesInfo}
 
+        ></PreviewEventModal>
 
 
       </div>
