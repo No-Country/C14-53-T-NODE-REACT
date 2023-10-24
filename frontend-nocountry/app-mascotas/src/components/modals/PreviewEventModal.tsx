@@ -8,8 +8,9 @@ interface ModalProps {
 
 
 
-const PreviewEventModal: React.FC<ModalProps> = () => {
+const PreviewEventModal: React.FC<ModalProps> = ({ isVisible }) => {
 
+  if (!isVisible) return
 
 
 
