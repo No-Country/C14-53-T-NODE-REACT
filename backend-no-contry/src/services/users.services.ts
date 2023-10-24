@@ -1,6 +1,6 @@
 import { CreateUserDTO } from '../dto/createUser.dto'
 import { UserInterface } from '../interfaces/user.interface'
-import { User } from '../models/user.model'
+import User from '../models/user.model'
 
 // // Crear usuario
 // const createById = async (user: CreateUserDTO): Promise<UserInterface> => {

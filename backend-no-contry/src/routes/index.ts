@@ -8,6 +8,7 @@ import { checkJWT } from '../middleware/session.middleware';
 import medicalRouter  from './medical.router'
 
 
+
 const router: Router = Router();
 
 /**
@@ -15,7 +16,7 @@ const router: Router = Router();
  * users (Usuarios)
  * etc...
  */
-router.use('/users', userRouter)
+//router.use('/users', userRouter)
 router.use('/pets', petsRouter)
 router.use('/users', checkJWT, userRouter)
 router.use('/auth', authRouter)
