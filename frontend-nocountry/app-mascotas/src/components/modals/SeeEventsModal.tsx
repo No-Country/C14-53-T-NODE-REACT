@@ -52,7 +52,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
           </div>
 
           <div className=" overflow-x-hidden overflow-y-auto mt-[-x] md:mt-0    xl:w-[95%]">
-            <table className="w-full md:text-left text-gray-500 dark:text-gray-400">
+            <table className="w-full text-center text-gray-500 dark:text-gray-400">
               <thead className="text-[10px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 bg-[#F0F0F1] w-[99%]">
                 <tr>
                   <th scope="col" className="md:px-6 py-3">
@@ -125,7 +125,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                     09:00
                   </td>
                   <td className="px-2 md:px-6 py-4">
-                    Medicamento
+                    Tratamiento medico
                   </td>
                   <td className=" px-6 py-4 gap-2 hidden lg:flex">
                     <button className="cursor-default " onMouseOver={() => setShowPreview(true)} onMouseLeave={() => setShowPreview(false)}>
