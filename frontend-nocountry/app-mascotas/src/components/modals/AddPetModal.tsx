@@ -38,10 +38,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
   return (
     <div className="flex justify-center items-center text-montserrat">
 
-      <div
-        id="wrapper" onClick={() => handleClose()} className=" fixed inset-0 z-30 "
-      >
-      </div>
+      <div id="wrapper" onClick={() => handleClose()} className=" fixed inset-0 z-30 "> </div>
       <div id="modal" className='  absolute right-[10%] md:right-[8%] lg:right-[18%] xl:right-[20%]    w-[80%] z-40 md:-[708px] lg:h-[670px]  xl:h-auto md:w-[656px] lg:w-[750px] xl:w-[60%] xl:-[90%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
 
         <div className="relative flex flex-col items-center">

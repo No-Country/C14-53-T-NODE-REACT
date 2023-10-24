@@ -6,7 +6,11 @@ interface ModalProps {
   onClose: () => void;
 }
 
-
+//To do
+// Need to work on preview of modal for mobileview 
+// Need to add modal for editin tasks 
+// out of this, need to work with adding activities modal
+// Need to manage the background color, right now 2 rows can be selected
 
 
 
@@ -15,13 +19,10 @@ interface ModalProps {
 const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
   const [showPreview, setShowPreview] = useState<boolean>(false);
-  const [previewNote, setPreviewNote] = useState<string>('');
   // const [notesInfo, setNotesInfo] = useState<string>('Test text');
   //
   function handleClick(e: BaseSyntheticEvent) {
-
     const row = e.target.closest("tr");
-
     row.classList.toggle("bg-black/30");
   }
 
@@ -472,6 +473,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
         </div>
         <PreviewEventModal
           isVisible={showPreview}
+          onClose={() => setShowPreview(false)}
 
         ></PreviewEventModal>
 
@@ -482,7 +484,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
       <div className="flex justify-center gap-3 md:justify-around  bottom-0 absolute z-50 left-[20%] mobilepanel   h-[70px] w-[55%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
 
-        <button >
+        <button onClick={() => setShowPreview(true)}>
           <svg width="48" height="48" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_455_3297)">
               <path d="M4.16014 2.94945C4.59055 2.81301 5.03952 2.74416 5.49104 2.74538C7.34633 2.74538 8.60891 3.85447 9.36176 4.83224C9.73885 5.3229 9.9274 5.56734 9.9274 6.29446C9.9274 7.02202 9.73885 7.26647 9.36176 7.75668C8.60891 8.73446 7.34633 9.84355 5.49104 9.84355C3.63576 9.84355 2.37317 8.73446 1.62032 7.75668C1.24323 7.26691 1.05469 7.02158 1.05469 6.29446C1.05469 5.5669 1.24323 5.32246 1.62032 4.83224C1.85029 4.53177 2.10638 4.25222 2.38559 3.99687" stroke="#636870" stroke-width="0.665453" stroke-linecap="round" />
