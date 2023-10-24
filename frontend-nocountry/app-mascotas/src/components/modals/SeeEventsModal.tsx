@@ -33,7 +33,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
         id="wrapper" onClick={() => handleClose()} className=" fixed inset-0 z-30 "
       >
       </div>
-      <div id="modal" className='absolute right-[5%] md:right-[8%] lg:right-[10%] xl:right-[10%] overflow-hidden    w-[90%] z-40 h-[450px] md:h-[708px] lg:h-[670px] xl:h-[90%]   md:w-[656px] lg:w-[850px] xl:w-[80%]   rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
+      <div id="modal" className='absolute right-[5%] md:right-[8%] lg:right-[10%] xl:right-[10%] overflow-hidden md:bottom-24 lg:bottom-8   w-[90%] z-40 h-[450px] md:h-[708px] lg:h-[670px] xl:h-[90%]   md:w-[656px] lg:w-[850px] xl:w-[80%]   rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
 
         <div className="relative flex flex-col items-center">
 
