@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BaseSyntheticEvent, useState } from "react";
 import PreviewEventModal from "./PreviewEventModal";
 
 interface ModalProps {
@@ -15,7 +15,15 @@ interface ModalProps {
 const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
   const [showPreview, setShowPreview] = useState<boolean>(false);
+  const [previewNote, setPreviewNote] = useState<string>('');
   // const [notesInfo, setNotesInfo] = useState<string>('Test text');
+  //
+  function handleClick(e: BaseSyntheticEvent) {
+
+    const row = e.target.closest("tr");
+
+    row.classList.toggle("bg-black/30");
+  }
 
 
   if (!isVisible) return
@@ -74,7 +82,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="bg-white border-b dark:bg-gray-800 text-[9px] md:text-[1rem] dark:border-gray-700">
+                <tr onClick={(e) => handleClick(e)} className="bg-white bg-black/39 border-b dark:bg-gray-800 text-[9px] md:text-[1rem]">
                   <th scope="row" className="px-6 py-4 text-   font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     Tomar medicamento A
                   </th>
@@ -114,7 +122,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   </td>
                 </tr>
 
-                <tr className="bg-white border-b dark:bg-gray-800 text-[9px] md:text-[1rem] dark:border-gray-700">
+                <tr onClick={(e) => handleClick(e)} className="lg:bg-white border-b dark:bg-gray-800 text-[9px] md:text-[1rem] dark:border-gray-700">
                   <th scope="row" className="px-6 py-4 text-   font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     Tomar medicamento A
                   </th>
