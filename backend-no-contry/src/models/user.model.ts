@@ -1,6 +1,7 @@
 import { Sequelize, Model, DataTypes } from 'sequelize'
 import { connectDB } from '../config/dbConfig'
 import { UserInterface, UserRole } from '../interfaces/user.interface'
+import { Pet } from './petModel'
 
 interface UserModel extends Model, UserInterface { }
 
@@ -41,6 +42,9 @@ const User = connectDB.define<UserModel>('User',
     timestamps: false,
   }
 )
+
+User.hasMany(Pet, { foreignKey: 'userId' }); // Establece la relación uno a muchos
+
 
 const syncModel = async () => {
   try {

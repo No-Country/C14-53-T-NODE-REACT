@@ -1,6 +1,10 @@
 import { app } from './app';
 import { connectDB } from "./config/dbConfig";
 import { syncModel } from './models/user.model';
+import { syncModelPet} from './models/petModel';
+import { syncModelTypeSupplier} from './models/typeSupplier.model'
+import {syncModelSupplie} from './models/Supplier.model'
+import {syncModelMedicalRecord} from './models/medicalRecord.model'
 
 const PORT_SERVER: number = parseInt(process.env.PORT_SERVER || "")
 const PORT_SECUNDARY: number = 4000
@@ -11,7 +15,11 @@ connectDB
   .authenticate()
   .then(() => {
     console.log("Conexion exitosa con la base de datos");
-    syncModel()
+    syncModel(),
+    syncModelPet(),
+    syncModelTypeSupplier(),
+    syncModelSupplie(),
+    syncModelMedicalRecord(),
     app.listen(PORT, () => console.log(`Servidor escuchando en el puerto ${PORT}`))
   })
   .catch((error: any) => {

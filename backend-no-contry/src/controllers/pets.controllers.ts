@@ -4,14 +4,16 @@ import { Pet } from "../models/petModel";
 
 export const createPets = async(req: Request<unknown, unknown, CreatePetType>, res: Response) => {
     try {
-        console.log(req.body)
-        const  { name, surname, birthdate, image, breed } = req.body
+        const  { name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
         const savePet: PetSchemaType = await Pet.create({
             name,
             surname, 
             birthdate,
+            weight,
             image,
-            breed
+            species,
+            breed,
+            descriptions,
         })
         return res.status(200).json({ message: 'created pet', data: savePet });
     } catch (error) {
@@ -47,7 +49,6 @@ export const deletePets = async(req: Request<FindPetType>, res: Response) =>{
         const petDestroy = await Pet.destroy({ where: { id } })
         if(!petDestroy) return res.status(404).json({ message: 'No pet found' })
         const pet = await Pet.findByPk(id,{paranoid: false })
-        console.log(pet)
         return res.status(200).json({message:'pet removed', data: pet}) 
     } catch (error) {
         return res.status(500).json({message:'unexpected error'})
@@ -58,15 +59,19 @@ export const deletePets = async(req: Request<FindPetType>, res: Response) =>{
 export const updatePet = async(req: Request<FindPetType, unknown,PutPetType>, res: Response) => {
     try {
         const {id} = req.params
-        const { name, surname, birthdate, image, breed } = req.body
+        const { name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
         const petId = await Pet.findOne({ where: { id }  })
         if (!petId) return res.status(404).json({ message: "no pet found"});
         const petUpdate = await Pet.update({
-            name, 
+            name,
             surname, 
-            birthdate, 
-            image, 
-            breed},
+            birthdate,
+            weight,
+            image,
+            species,
+            breed,
+            descriptions,
+        },
             {where:{id}})
         if (petUpdate[0]>0){
             const updatePet = await Pet.findByPk(id)

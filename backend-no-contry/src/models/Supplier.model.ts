@@ -1,10 +1,11 @@
 import { Sequelize, DataTypes, UUIDV4, Model } from "sequelize";
 import { connectDB } from '../config/dbConfig'
-import { PetSchemaType } from "../interfaces/petSchema";
+import {SupplierSchemaType } from '../interfaces/supplierSchema'
 
-interface PetModel extends Model, PetSchemaType { }
 
-export const Pet = connectDB.define<PetModel>('Pet',
+interface SupplierModel extends Model, SupplierSchemaType { }
+
+export const Supplier = connectDB.define<SupplierModel>('Supplier',
     {
         id: {
             type: DataTypes.UUID,
@@ -16,45 +17,32 @@ export const Pet = connectDB.define<PetModel>('Pet',
             type: DataTypes.STRING,
             allowNull: false,
         },
-        surname: {
+            surname: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        birthdate: {
+        address: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        weight:{
-            type:DataTypes.STRING,
-            allowNull: true,
-        },
-        image: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        species: {
-            type: DataTypes.STRING,
+        }, 
+        number: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        breed: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        descriptions: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-         
+
     },
     {
-        paranoid: true,
-        deletedAt: 'eliminadoEn',
+        // paranoid: true,
+        // deletedAt: 'eliminadoEn',
         timestamps: false,
-})
+    }
+    )
 
-export const syncModelPet = async () => {
+
+
+export const syncModelSupplie = async () => {
   try {
-    await Pet.sync();
+    await Supplier.sync();
     console.log('Modelo de pet sincronizado correctamente con la base de datos.');
   } catch (error) {
     console.error('Error al sincronizar el modelo de usuario con la base de datos:', error);
