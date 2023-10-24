@@ -4,11 +4,13 @@ import cors from 'cors'
 import { router } from './routes';
 import morgan from 'morgan';
 import { connectDB } from './config/dbConfig'
+import cookieParser from 'cookie-parser';
 
 // Creo el servidor
 const app: Express = express();
 
 //Middlewares
+app.use(cookieParser());
 app.use(morgan("dev"))
 app.use(cors({
   origin: [
