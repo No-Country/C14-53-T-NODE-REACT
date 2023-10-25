@@ -8,11 +8,6 @@ interface PetModel extends Model, PetSchemaType { }
 
 const Pet = connectDB.define<PetModel>('Pet',
     {
-        // userId: {
-        //     type: DataTypes.UUID,
-        //     allowNull: false,
-   
-        // },
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
