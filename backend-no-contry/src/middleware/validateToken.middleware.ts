@@ -13,7 +13,6 @@ export const validateToken = (req: Request, res: Response, next: NextFunction) =
 
   if (!token) return res.status(401).json({ message: "No hay token" });
 
-  console.log(token);
 
   jwt.verify(token, JWT_SECRET, (err: any, user: any) => {
     if (err) return res.status(401).json({ message: "No autorizado" });

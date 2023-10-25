@@ -9,7 +9,6 @@ import { RequestExtends } from "../interfaces/reqExtends.interface"
 
 
 const registerControler = async (req: Request, res: Response): Promise<UserInterface | void> => {
-  console.log("Controller", req.body);
   try {
     const newUser = await registerService(req.body)
     res.send(newUser)
