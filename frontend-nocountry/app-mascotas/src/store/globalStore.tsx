@@ -3,14 +3,20 @@ import { devtools } from 'zustand/middleware'
 
 interface IApp {
   sidebarToggle: boolean
-  session: boolean
+  isAutenticated: boolean
+  user: string
+  token: string
+  updateUser: (newValue: string, newToken: string, newAuth: boolean) => void
   updateSession: (newValue: boolean) => void
 }
 
 export const useGlobalStore = create<IApp>()(
   devtools(set => ({
     sidebarToggle: false,
-    session: false,
-    updateSession: (newValue: boolean) => set({ session: newValue })
+    isAutenticated: false,
+    user: '',
+    token: '',
+    updateUser: (newValue: string, newToken: string, newAuth: boolean) => set({ user: newValue, token: newToken, isAutenticated: newAuth }),
+    updateSession: (newValue: boolean) => set({ isAutenticated: newValue })
   }))
 )
