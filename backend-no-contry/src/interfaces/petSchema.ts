@@ -1,16 +1,16 @@
 import { z } from "zod"
 
-const trimTransform = (value: string) => value.trim();
-
 export const CreatePetSchema = z.object({
     body: z.object({
-        // // name: z.string().trim().toUpperCase().min(4, "Too short name").max(20, "Too long name"),
-        // name: z.string().refine((val)=> val.trim()),
-        name: z.string().nonempty("Name is required").min(3, "Too short name").max(15, "Too long name").refine(trimTransform),
-        surname: z.string().trim().nonempty("Name is required").min(3, "Too short surname").max(15, "Too long surname").toUpperCase(),
+        userId: z.string().uuid(),
+        name: z.string().nonempty("Name is required").min(3, "Too short name").max(15, "Too long name"),
+        surname: z.string().nonempty("Name is required").min(3, "Too short surname").max(15, "Too long surname"),
         birthdate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        weight: z.string().regex(/^\d+(\.\d+)?\s?kg$/),
         image: z.string().optional(),
-        breed: z.string().toUpperCase().optional() 
+        species: z.string().max(15, "Too long species"),
+        breed: z.string().max(15, "Too long breede"),
+        descriptions: z.string().max(180, "Too descriptions"), 
     }),
 })
 
@@ -19,21 +19,35 @@ export const FindPetSchema = z.object({
         id: z.string().uuid()
     }),
     body: z.object({
-        name: z.string().trim().min(3, "Too short name").max(15, "Too long name").toUpperCase().optional(),
-        surname: z.string().trim().min(4, "Too short surname").max(15, "Too long surname").toUpperCase().optional(),
+        userId: z.string().uuid(),
+        name: z.string().trim().min(3, "Too short name").max(15, "Too long name").optional(),
+        surname: z.string().trim().min(3, "Too short surname").max(15, "Too long surname").optional(),
         birthdate: z.string().optional(),
+        weight: z.string(),
         image: z.string().optional(),
-        breed: z.string().toUpperCase().optional() 
+        species: z.string().max(15, "Too long species").optional(),
+        breed: z.string().max(15, "Too long breede").optional(),
+        descriptions: z.string().max(180, "Too descriptions"), 
     }),
+})
+
+export const ParamsFindPetSchema = z.object({
+    params: z.object({
+        id: z.string().uuid()
+    })
 })
 
 export const PetSchema = z.object({
         id: z.string().uuid(),
-        name: z.string().trim().nonempty("Name is required").min(3, "Too short name").max(15, "Too long name").toUpperCase(),
-        surname: z.string().trim().nonempty("Name is required").min(3, "Too short surname").max(15, "Too long surname").toUpperCase(),
+        userId: z.string().uuid(),
+        name: z.string(),
+        surname: z.string(),
         birthdate: z.string(),
-        image: z.string().optional(),
-        breed: z.string().toUpperCase().optional() 
+        weight: z.string(),
+        image: z.string(),
+        species: z.string(),
+        breed: z.string(),
+        descriptions: z.string(),
 }) 
 
 export type CreatePetType = z.infer<typeof CreatePetSchema>["body"]
