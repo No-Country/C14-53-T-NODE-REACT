@@ -1,0 +1,13 @@
+
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DATABASE: postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pw1234
+      PGHOST: localhost
+      PGPORT: 5432
+    ports:
+      - "5432:5432"
