@@ -7,6 +7,9 @@ export const validateToken = (req: Request, res: Response, next: NextFunction) =
   const authorizationHeader = req.headers.authorization;
   const token = authorizationHeader && authorizationHeader.split(' ')[1];
 
+  console.log("HEADER", authorizationHeader);
+  console.log("TOKEN", token);
+
   if (!JWT_SECRET) {
     return res.status(500).json({ msg: "JWT_SECRET no está definido en las variables de entorno" });
   }
