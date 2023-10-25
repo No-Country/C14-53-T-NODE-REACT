@@ -28,7 +28,6 @@ const validateUser = async (req: RequestExtends, res: Response, next: NextFuncti
         if (findUser.role === UserRole.SUPER_ADMIN) {
           const userParams = await User.findOne({ where: { id: idParams } })
           if (userParams?.role === UserRole.USER) {
-            console.log("Ingeso aca!!");
             next()
           } else if (idUser !== idParams) {
             return res.status(401).json({ msg: "No tienes permisos para acceder a esta ruta" });
