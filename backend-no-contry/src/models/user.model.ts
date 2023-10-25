@@ -3,9 +3,7 @@ import { connectDB } from '../config/dbConfig'
 import { UserInterface, UserRole } from '../interfaces/user.interface'
 import Pet from './petModel'
 
-
 interface UserModel extends Model, UserInterface { }
-
 
 const User = connectDB.define<UserModel>('User',
   {

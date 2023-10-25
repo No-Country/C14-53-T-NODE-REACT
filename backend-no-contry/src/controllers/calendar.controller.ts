@@ -20,8 +20,6 @@ const getCalendarRedirect = async (req: Request, res: Response) => {
   const { tokens } = await oauth2Client.getToken(code)
   oauth2Client.setCredentials(tokens)
 
-  console.log(tokens);
-
   res.send({
     msg: "Token ok",
   })
@@ -52,9 +50,7 @@ const getSchedulEvent = async (req: Request, res: Response) => {
     })
 
     const supplierType = result.data.summary?.split('-')[0]
-    console.log(supplierType);
 
-    console.log(req.params.id);
 
     const newEventCalendar = await createEvent({
       htmlLink: result.data.htmlLink!,
@@ -64,7 +60,6 @@ const getSchedulEvent = async (req: Request, res: Response) => {
       end: result.data.end?.dateTime!
     })
 
-    console.log(newEventCalendar);
 
     res.send(newEventCalendar)
 
