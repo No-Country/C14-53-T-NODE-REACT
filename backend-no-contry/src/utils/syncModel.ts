@@ -4,8 +4,6 @@ import User from "../models/user.model";
 
 const syncModel = async () => {
   try {
-    User.hasMany(Pet)
-    Pet.belongsTo(User)
 
     await User.sync();
     await Pet.sync();

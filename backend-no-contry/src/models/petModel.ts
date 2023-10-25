@@ -3,7 +3,6 @@ import { connectDB } from '../config/dbConfig'
 import { PetSchemaType } from "../interfaces/petSchema";
 import User from "./user.model";
 
-
 interface PetModel extends Model, PetSchemaType { }
 
 const Pet = connectDB.define<PetModel>('Pet',
@@ -46,7 +45,14 @@ const Pet = connectDB.define<PetModel>('Pet',
             type: DataTypes.STRING,
             allowNull: false,
         },
-         
+        userId: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            references: {
+                model: User,
+                key: 'id'
+            }
+        },
     },
     {
         paranoid: true,

@@ -1,4 +1,3 @@
-import { connect } from 'http2';
 import {Sequelize, Model, DataTypes } from 'sequelize';
 import { connectDB } from '../config/dbConfig';
 import { MedicalSchemaType } from '../interfaces/medicalSchema';

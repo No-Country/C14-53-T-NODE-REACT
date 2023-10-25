@@ -5,8 +5,9 @@ import Pet from "../models/petModel";
 export const createPets = async (req: Request<unknown, unknown, CreatePetType>, res: Response) => {
     console.log(req.body)
     try {
-        const  { name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
+        const  { userId, name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
         const savePet: PetSchemaType = await Pet.create({
+            userId,
             name,
             surname,
             birthdate,

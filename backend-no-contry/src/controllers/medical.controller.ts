@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateMedicalType, MedicalSchemaType, FindMedicalType } from "../interfaces/medicalSchema";
+import { CreateMedicalType, MedicalSchemaType, FindMedicalType} from "../interfaces/medicalSchema";
 import { MedicalRecord } from "../models/medicalRecord.model";
 
 
@@ -30,4 +30,14 @@ export const findMedicalController = async (req: Request<FindMedicalType>, res: 
     } catch (error) {
         return res.status(500).json({message:'unexpected error'}) 
     }
+}
+
+export const findAllMedicalController = async (_req: Request, res:Response) => {
+    try {
+        const medical: MedicalSchemaType[] = await MedicalRecord.findAll()
+        return res.status(200).json({ message: 'all medical record', data: medical})
+    } catch (error) {
+        return res.status(500).json({ error, message: 'unexpected error' })
+    }
+
 }
