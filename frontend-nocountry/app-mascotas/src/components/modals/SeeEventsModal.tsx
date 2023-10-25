@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import PreviewEventModal from "./PreviewEventModal";
 
 interface ModalProps {
@@ -14,8 +13,6 @@ interface ModalProps {
 
 const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
-  // const [showPreview, setShowPreview] = useState<boolean>(false);
-  // const [notesInfo, setNotesInfo] = useState<string>('Test text');
 
 
   if (!isVisible) return
