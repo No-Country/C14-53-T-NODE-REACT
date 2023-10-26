@@ -24,9 +24,9 @@ body {
 
 .hamburgerMenu span {
   display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 6px;
+  width: 32px;
+  height: 3px;
+  margin-bottom: 5px;
   position: relative;
   background: #000;
   border-radius: 3px;
@@ -45,7 +45,7 @@ body {
 
 .hamburgerMenu.active span {
   opacity: 1;
-  transform: rotate(45deg) translate(-7px, -18px);
+  transform: rotate(45deg) translate(-7px, -13px);
   background: #232323;
 }
 
@@ -55,7 +55,7 @@ body {
 }
 
 .hamburgerMenu.active span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(-6px, 18px);
+  transform: rotate(-45deg) translate(-6px, 13px)
 }
 
 .text-montserrat {

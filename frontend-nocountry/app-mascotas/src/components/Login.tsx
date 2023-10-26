@@ -2,6 +2,12 @@ import Background from './Background'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { useGlobalStore } from '../store/globalStore'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import Cookies from 'js-cookie'
+
+import axios, { AxiosResponse } from 'axios'
+import { useEffect } from 'react'
 
 interface FormData {
   email: string
@@ -11,13 +17,27 @@ interface FormData {
 function Login() {
   let generalError = ''
   let dogImageURL = './img/login-dog.png'
-  const updateSession = useGlobalStore(state => state.updateSession)
+  const isAutenticated = useGlobalStore(state => state.isAutenticated)
+  const updateUser = useGlobalStore(state => state.updateUser)
+  const MySwal = withReactContent(Swal)
 
   const navigate = useNavigate()
+  
+  useEffect(() => {
+    
+    if(Cookies.get('token')){
+      
+
+      navigate('/dashboard')
+    } else{
+      // Permanece
+    }
+  
+  }, [isAutenticated, navigate])
+  
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors }
   } = useForm<FormData>()
   if (Object.keys(errors).length > 0) {
@@ -26,10 +46,25 @@ function Login() {
   }
   const onSubmit = handleSubmit(values => {
     if (Object.keys(errors).length === 0) {
-      alert('Form submit: ' + JSON.stringify(values))
-      reset()
-      navigate('/dashboard')
-      updateSession(true)
+      axios.post('https://petcare-app.onrender.com/api/v1/auth/login', values).then((response: AxiosResponse) => {
+        if (response.status === 200) {
+          MySwal.fire({
+            position: 'center',
+            icon: 'success',
+            title: <strong>Success</strong>,
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            navigate('/dashboard')
+          })
+
+          const user = response.data.user
+          const token = response.data.token
+
+          Cookies.set('token', token)
+          updateUser(user, token, true)
+        }
+      })
     }
   })
 
