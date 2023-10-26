@@ -5,6 +5,10 @@ interface ModalProps {
   onClose: () => void
 }
 
+//Todo 
+// - [ ] Debo poder visualizar las notas
+// - [ ] Debo poder seleccionar solo un item
+
 
 
 
