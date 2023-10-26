@@ -1,6 +1,5 @@
 import './App.css'
 import 'tailwindcss/tailwind.css'
-import Cookies from 'js-cookie'
 import Navbar from './components/Navbar/Navbar'
 import HomePage from './components/HomePage'
 import Login from './components/Login'
@@ -16,7 +15,7 @@ import { useGlobalStore } from './store/globalStore'
 
 function App() {
   const isAuth = useGlobalStore(state => state.isAuth)
-  
+
   return (
     <Router>
       <>
