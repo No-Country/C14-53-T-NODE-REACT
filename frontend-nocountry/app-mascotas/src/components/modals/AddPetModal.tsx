@@ -1,10 +1,15 @@
 // TODO 
 //
+// - [ ] Pueda verse cuando estoy creando exitosamente una mascota
+// - [ ] Agregar validaciones
+// - [ ] Pasar token por headers
 // - [ ] Cuando carue una imagen debe poder previsualizarse
 
 import axios, { AxiosResponse } from 'axios'
 import { useForm } from 'react-hook-form'
-
+import withReactContent from 'sweetalert2-react-content'
+import Swal from 'sweetalert2'
+import Cookies from 'js-cookie'
 
 interface ModalProps {
   isVisible: boolean;
@@ -26,6 +31,7 @@ interface FormData {
 
 const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
+  const MySwal = withReactContent(Swal)
   const {
     register,
     handleSubmit,
@@ -55,22 +61,49 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
   const submitPet = handleSubmit(values => {
     values.userId = "07ae9daf-cb5d-42ab-a97a-e34b504b641e"
     values.surname = "perez"
+    console.log("cookie token" + Cookies.get('token'))
+    MySwal.fire({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 1000,
+      title: `¡Estamos en registrandote, esperanos unos segundo!`
+    })
+
     if (Object.keys(errors).length === 0) {
-      axios.post('https://petcare-app.onrender.com/api/v1/pets', values).then((response: AxiosResponse) => {
-        if (response.status === 200) {
-          // MySwal.fire({
-          //   position: 'center',
-          //   icon: 'success',
-          //   title: <strong>Success</strong>,
-          //   showConfirmButton: false,
-          //   timer: 1500
-          // })
-
-
-        }
-      })
+      axios.post('https://petcare-app.onrender.com/api/v1/pets', values, { headers: { Authorization: `Bearer ${Cookies.get('token')}` } })
+        .then((response: AxiosResponse) => {
+          console.log(response)
+          if (response.status === 200) {
+            MySwal.fire({
+              toast: true,
+              position: 'bottom-end',
+              showConfirmButton: false,
+              timer: 2500,
+              title: `¡Bienvenido ${values.name}!`
+            })
+          }
+        }).catch(function(error) {
+          console.log(error.response.data)
+          if (error.response.data === "No se recibió el token") {
+            MySwal.fire({
+              toast: true,
+              position: 'bottom-end',
+              showConfirmButton: false,
+              timer: 2500,
+              title: `¡No has iniciado sesion ${values.name}!.  ¡Intruso!, te han dejado entrar los devs!`
+            })
+          }
+        })
     } else {
-      console.log(Object.keys(errors))
+      MySwal.fire({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 2500,
+        title: `¡Ha ocurrido un problema!`
+      })
+
     }
   })
 
