@@ -74,13 +74,14 @@ function Login() {
               <label className='text-sm font-normal text-gray-800 md:text-xl' htmlFor='email'>
                 Email
               </label>
-              <input className='w-full h-10 px-3 py-2 mb-2 border rounded appearance-none focus:outline-none' id='email' type='email' placeholder='Email' {...register('email', { pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, required: true })} />
+              
+              <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.email ? 'border-red' : 'border-gray'}`} id='email' type='email' placeholder='Email' {...register('email', { pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, required: true })} />
             </div>
             <div className='mb-6'>
               <label className='text-sm font-normal text-gray-800 sm:text-xl' htmlFor='password'>
                 Contraseña
               </label>
-              <input className='w-full h-10 px-3 py-2 border rounded focus:outline-none' id='password' type='password' placeholder='**********' {...register('password', { pattern: /^.{4,12}$/, required: true })} />
+              <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.password ? 'border-red' : 'border-gray'}`} id='password' type='password' placeholder='**********' {...register('password', { pattern: /^.{4,12}$/, required: true })} />
             </div>
             <div className={`${generalError ? 'p-0' : 'p-3'}`}>{generalError && <p className='text-red text-bold'>{generalError}</p>}</div>
             <div className='mt-5 mb-6 md:mt-6'>
