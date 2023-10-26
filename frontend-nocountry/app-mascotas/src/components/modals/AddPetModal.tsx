@@ -2,6 +2,8 @@
 //
 // - [ ] Cuando carue una imagen debe poder previsualizarse
 
+import axios, { AxiosResponse } from 'axios'
+import { useForm } from 'react-hook-form'
 
 
 interface ModalProps {
@@ -9,11 +11,27 @@ interface ModalProps {
   onClose: () => void;
 }
 
-
+interface FormData {
+  name: string
+  species: string
+  birthdate: string
+  breed: string
+  weight: string
+  descriptions: string
+  userId: string
+  surname: string
+}
 
 
 
 const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormData>()
+
 
   if (!isVisible) return
 
@@ -32,8 +50,32 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
   const handleClose = () => {
     onClose();
-
   };
+
+  const submitPet = handleSubmit(values => {
+    values.userId = "07ae9daf-cb5d-42ab-a97a-e34b504b641e"
+    values.surname = "perez"
+    console.log(values)
+    if (Object.keys(errors).length === 0) {
+      axios.post('https://petcare-app.onrender.com/api/v1/pets', values).then((response: AxiosResponse) => {
+        console.log(response)
+        if (response.status === 200) {
+          // MySwal.fire({
+          //   position: 'center',
+          //   icon: 'success',
+          //   title: <strong>Success</strong>,
+          //   showConfirmButton: false,
+          //   timer: 1500
+          // })
+
+
+        }
+      })
+    } else {
+      console.log(Object.keys(errors))
+    }
+  })
+
 
   return (
     <div className="flex justify-center items-center text-montserrat">
@@ -50,7 +92,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
           <h2 className="text-lg lg:text-2xl xl:text-3xl font-extrabold py-3">Agregar Mascota</h2>
 
 
-          <form action="" className="flex flex-col items-center">
+          <form onSubmit={submitPet} className="flex flex-col items-center">
 
             <div id="uploadimage" className="h-[130px] md:h-[200px]">
               <label htmlFor="fileinput" className="">
@@ -71,6 +113,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   id="nombre-input"
                   type="name"
                   placeholder="Nombre"
+                  {...register('name')}
                 />
 
               </div>
@@ -84,6 +127,8 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   id="especie-input"
                   type="text"
                   placeholder="Especie"
+                  {...register('species')}
+
                 />
 
               </div>
@@ -97,6 +142,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   type="date"
                   placeholder="Fecha de nacimiento"
                   pattern="^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$"
+                  {...register('birthdate')}
                 />
 
               </div>
@@ -109,6 +155,9 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   id="raza-input"
                   type="text"
                   placeholder="Raza"
+                  {...register('breed')}
+
+
                 />
 
               </div>
@@ -119,8 +168,10 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                 <input
                   className=" md:placeholder:text-lg rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
                   id="peso-input"
-                  type="number"
+                  type="text"
                   placeholder="Peso"
+                  {...register('weight')}
+
                 />
 
               </div>
@@ -137,14 +188,16 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                 className="overflow-hidden  resize-none rounded  w-[90%] h-24 p-4 px-3 mb-2 lg:mb-auto focus:outline-none"
                 id="descripcion-input"
                 maxLength={300}
+                {...register('descriptions')}
+
               />
 
             </div>
 
 
 
+            <button className="text-lg md:text-xl md:mb-12  font-bold scale-75 bg-[#20EA7D] md:mt-2 xl:mt-6  md:scale-100 text-[#fff] rounded-[3px] text-center px-6 py-4 inline-block;">Agregar nueva mascota</button>
           </form>
-          <button className="text-lg md:text-xl md:mb-12  font-bold scale-75 bg-[#20EA7D] md:mt-2 xl:mt-6  md:scale-100 text-[#fff] rounded-[3px] text-center px-6 py-4 inline-block;">Agregar nueva mascota</button>
 
         </div>
 

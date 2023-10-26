@@ -4,10 +4,14 @@ import AddHistoryModal from '../components/modals/AddHistoryModal'
 import { useState } from 'react'
 import SeeEventsModal from '../components/modals/SeeEventsModal'
 
+
 export const MyPets = () => {
   const [showAddPetModal, setShowAddPetModal] = useState<boolean>(false)
   const [showAddHistoryModal, setShowAddHistoryModal] = useState<boolean>(false)
   const [showEventsModal, setShowEventsModal] = useState<boolean>(false)
+
+
+
 
   function closePetModal() {
     setShowAddPetModal(false)
