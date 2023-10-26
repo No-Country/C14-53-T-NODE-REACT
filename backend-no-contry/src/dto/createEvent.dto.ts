@@ -4,6 +4,7 @@ class CreateEventDTO {
   description: string
   start: string
   end: string
+  petId: string;
 }
 
 export { CreateEventDTO }

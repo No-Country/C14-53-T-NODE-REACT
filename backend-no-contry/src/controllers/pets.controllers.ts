@@ -1,17 +1,19 @@
 import { Request, Response } from "express";
 import { CreatePetType, FindPetType, PetSchemaType, PutPetType } from "../interfaces/petSchema";
 import Pet from "../models/petModel";
+import { RequestExtends } from "../interfaces/reqExtends.interface";
 
+export const createPets = async (req: RequestExtends, res: Response) => {
 
-
-
-
-
-export const createPets = async (req: Request<unknown, unknown, CreatePetType>, res: Response) => {
+  if (typeof req.user === 'string') {
+    res.status(401).json({ msg: "Token de usuario no válido" });
+    return;
+  }
   try {
-    const { userId, name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
+    const userId = req.user?.id;
+    const { name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
     const savePet: PetSchemaType = await Pet.create({
-      userId,
+      userId: userId,
       name,
       surname,
       birthdate,
