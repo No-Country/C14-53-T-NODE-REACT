@@ -488,10 +488,10 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
         <PreviewEventModal
           isVisible={showPreview}
           onClose={() => setShowPreview(false)}
-          notes={notesInfo}
+          notes={notesInfo} />
 
 
-      
+
 
 
       </div>
