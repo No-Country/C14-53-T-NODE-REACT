@@ -99,7 +99,7 @@ const SeeEventsModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   </td>
                   <td className=" px-6 py-4 gap-2 hidden lg:flex">
                     <button className="cursor-default " onMouseOver={() => {
-                      setNotesInfo("Texto de prueba")
+                      setNotesInfo("aca viene informacion del backend, res escritorio")
                       setShowPreview(true)
                     }} onMouseLeave={() => setShowPreview(false)}>
                       <svg width="32" height="32" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
