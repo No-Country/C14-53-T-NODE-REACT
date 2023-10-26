@@ -6,6 +6,8 @@ import { UserRole } from "../interfaces/user.interface";
 
 const validateUser = async (req: RequestExtends, res: Response, next: NextFunction) => {
 
+  console.log(req.user);
+
   try {
     if (typeof req.user === 'object' && req.user !== null) {
 
@@ -19,7 +21,7 @@ const validateUser = async (req: RequestExtends, res: Response, next: NextFuncti
       const findUser = await User.findOne({ where: { id: idUser } })
 
       if (!findUser) {
-        return res.status(401).json({ msg: "No tienes permisos para acceder a esta ruta" });
+        return res.status(401).json({ msg: "No tienes permisos para acceder a esta ruta findUser" });
       }
 
       if (findUser.role === UserRole.ADMIN) {

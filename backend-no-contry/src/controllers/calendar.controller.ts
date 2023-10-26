@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { calendar, oauth2Client, scopes } from "../config/calendarApi"
 import dayjs from "dayjs"
 import { createEvent } from "../services/calendar.services"
+import { RequestExtends } from "../interfaces/reqExtends.interface"
 
 
 
@@ -21,12 +22,13 @@ const getCalendarRedirect = async (req: Request, res: Response) => {
   oauth2Client.setCredentials(tokens)
 
   res.send({
-    msg: "Token ok",
+    msg: "ok",
+    oauth2Client
   })
 
 }
 
-const getSchedulEvent = async (req: Request, res: Response) => {
+const getSchedulEvent = async (req: RequestExtends, res: Response) => {
 
   try {
 
@@ -57,7 +59,8 @@ const getSchedulEvent = async (req: Request, res: Response) => {
       summary: result.data.summary!,
       description: result.data.description!,
       start: result.data.start?.dateTime!,
-      end: result.data.end?.dateTime!
+      end: result.data.end?.dateTime!,
+      petId: req.params.id,
     })
 
 
@@ -65,7 +68,7 @@ const getSchedulEvent = async (req: Request, res: Response) => {
 
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: "Ha ocurrido un error al agregar el evento." });
+    res.status(500).json({ error: "Ha ocurrido un error al agregar el evento" });
   }
 
 

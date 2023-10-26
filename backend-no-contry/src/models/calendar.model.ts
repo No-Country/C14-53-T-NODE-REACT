@@ -1,6 +1,7 @@
 import { DataTypes, Model } from 'sequelize'
 import { connectDB } from '../config/dbConfig'
 import { CalendarInterface } from '../interfaces/calendar.interface'
+import Pet from './petModel'
 
 interface CalendarModel extends Model, CalendarInterface { }
 
@@ -28,6 +29,14 @@ const Calendar = connectDB.define<CalendarModel>('Calendar',
     },
     end: {
       type: DataTypes.DATE,
+    },
+    petId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: Pet,
+        key: 'id'
+      }
     }
   },
   {

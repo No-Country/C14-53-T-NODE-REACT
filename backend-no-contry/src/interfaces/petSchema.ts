@@ -2,7 +2,6 @@ import { z } from "zod"
 
 export const CreatePetSchema = z.object({
   body: z.object({
-    userId: z.string().uuid(),
     name: z.string().nonempty("Name is required").min(3, "Too short name").max(15, "Too long name"),
     surname: z.string().nonempty("Name is required").min(3, "Too short surname").max(15, "Too long surname"),
     birthdate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
