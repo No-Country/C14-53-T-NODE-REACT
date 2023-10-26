@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import axios, {AxiosResponse} from 'axios'
+import { useEffect } from 'react'
 
 function HomePage() {
   return (

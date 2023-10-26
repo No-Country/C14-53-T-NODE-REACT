@@ -1,6 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useGlobalStore } from '../store/globalStore'
 
 export const Profile = () => {
+  const logout = useGlobalStore(state => state.logout)
+
+  const navigate = useNavigate()
+
+  const handleLogout = (e: { preventDefault: () => void }) => {
+    logout()
+
+    navigate('/')
+
+    e.preventDefault()
+  }
+
   return (
     <main className='container relative z-20 mx-auto'>
       <div className='grid h-screen gap-10 px-3 md:grid-cols-6 py-7 md:py-0'>
@@ -15,6 +28,9 @@ export const Profile = () => {
             <Link className='block py-3 mb-2 text-base font-black border-b hover:underline font-montserrat' to='/profile'>
               Seguridad
             </Link>
+            <a className='block py-3 mb-2 text-base font-black border-b hover:underline font-montserrat' href='#' onClick={handleLogout}>
+              Cerrar Sesión
+            </a>
           </div>
         </div>
         <div className='col-span-4 px-3 pt-[150px] text-center'>

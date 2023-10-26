@@ -3,11 +3,9 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { useGlobalStore } from '../store/globalStore'
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+// import withReactContent from 'sweetalert2-react-content'
 import Cookies from 'js-cookie'
-
-import axios, { AxiosResponse } from 'axios'
-import { useEffect } from 'react'
+import { LoginRequest } from '../api/auth'
 
 interface FormData {
   email: string
@@ -17,24 +15,21 @@ interface FormData {
 function Login() {
   let generalError = ''
   let dogImageURL = './img/login-dog.png'
-  const isAutenticated = useGlobalStore(state => state.isAutenticated)
-  const updateUser = useGlobalStore(state => state.updateUser)
-  const MySwal = withReactContent(Swal)
+  // const isAllowed = useGlobalStore(state => state.isAuth)
+  const setUser = useGlobalStore(state => state.setUser)
+  const setToken = useGlobalStore(state => state.setToken)
+  // const MySwal = withReactContent(Swal)
 
   const navigate = useNavigate()
-  
-  useEffect(() => {
-    
-    if(Cookies.get('token')){
-      
 
-      navigate('/dashboard')
-    } else{
-      // Permanece
-    }
-  
-  }, [isAutenticated, navigate])
-  
+  // useEffect(() => {
+  //   if (Cookies.get('token')) {
+  //     const token = Cookies.get('token') as string
+  //     setToken(token)
+  //     navigate('/dashboard')
+  //   }
+  // }, [isAllowed, navigate])
+
   const {
     register,
     handleSubmit,
@@ -44,36 +39,37 @@ function Login() {
     dogImageURL = './img/wrong-login-dog.png'
     generalError = 'Completa los campos correctamente.'
   }
-  const onSubmit = handleSubmit(values => {
+  const onSubmit = async (values: object) => {
     if (Object.keys(errors).length === 0) {
-      axios.post('https://petcare-app.onrender.com/api/v1/auth/login', values).then((response: AxiosResponse) => {
-        if (response.status === 200) {
-          MySwal.fire({
-            position: 'center',
-            icon: 'success',
-            title: <strong>Success</strong>,
-            showConfirmButton: false,
-            timer: 1500
-          }).then(() => {
-            navigate('/dashboard')
-          })
+      try {
+        const response = await LoginRequest(values)
 
+        if (response.status === 200) {
           const user = response.data.user
           const token = response.data.token
-
           Cookies.set('token', token)
-          updateUser(user, token, true)
+
+          setUser(user, true)
+          setToken(token)
+          navigate('/dashboard')
         }
-      })
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+      }
     }
-  })
+  }
 
   return (
     <div className='flex justify-center'>
       <div className='flex items-center justify-center w-3/4 min-h-screen bg-gray-100 md:w-1/2'>
         <div className='z-20 bg-white rounded-lg shadow-lg'>
           <h2 className='mb-6 font-serif text-3xl font-semibold text-gray-800 sm:text-4xl'>Iniciar Sesión</h2>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className='mb-4'>
               <label className='text-sm font-normal text-gray-800 md:text-xl' htmlFor='email'>
                 Email
