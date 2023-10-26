@@ -19,7 +19,7 @@ const Dashboard = () => {
                   <Link to='/calendar' className='font-bold group-hover:underline font-montserrat'>
                     Calendario
                   </Link>
-                  <p className='font-bold group-hover:underline font-montserrat'>Calendario</p>
+
                 </a>
               </div>
               <div className='flex flex-col'>

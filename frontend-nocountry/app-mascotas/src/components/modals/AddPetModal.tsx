@@ -55,10 +55,8 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
   const submitPet = handleSubmit(values => {
     values.userId = "07ae9daf-cb5d-42ab-a97a-e34b504b641e"
     values.surname = "perez"
-    console.log(values)
     if (Object.keys(errors).length === 0) {
       axios.post('https://petcare-app.onrender.com/api/v1/pets', values).then((response: AxiosResponse) => {
-        console.log(response)
         if (response.status === 200) {
           // MySwal.fire({
           //   position: 'center',
