@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { PetAvatar } from '../Pets/PetAvatar';
-import './CostumCalendar.css'
+import './CustomCalendar.css'
 
 
 const localizer = momentLocalizer(moment);
@@ -29,7 +29,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ events }) => {
 
  
   return (
-<div className="p-4 mt-2 relative z-20">
+<div className="p-4 mt-20 relative z-20">
   <div className="mb-3 flex justify-between">
     <div className="ml-8 text-center pr-3 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
       <div className="md:w-[270px] h-[500px] p-5 overflow-auto">
