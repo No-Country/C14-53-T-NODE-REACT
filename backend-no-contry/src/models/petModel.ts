@@ -2,6 +2,7 @@ import { Sequelize, DataTypes, UUIDV4, Model } from "sequelize";
 import { connectDB } from '../config/dbConfig'
 import { PetSchemaType } from "../interfaces/petSchema";
 import User from "./user.model";
+import Calendar from "./calendar.model";
 
 interface PetModel extends Model, PetSchemaType { }
 
@@ -25,8 +26,8 @@ const Pet = connectDB.define<PetModel>('Pet',
             type: DataTypes.STRING,
             allowNull: false,
         },
-        weight:{
-            type:DataTypes.STRING,
+        weight: {
+            type: DataTypes.STRING,
             allowNull: true,
         },
         image: {
@@ -60,5 +61,8 @@ const Pet = connectDB.define<PetModel>('Pet',
         timestamps: false,
     }
 )
+
+Pet.hasMany(Calendar, { foreignKey: 'petId' })
+Calendar.belongsTo(Pet, { foreignKey: 'petId' })
 
 export default Pet

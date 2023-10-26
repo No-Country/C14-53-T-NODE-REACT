@@ -20,6 +20,7 @@ const User = connectDB.define<UserModel>('User',
     dni: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     role: {
       type: DataTypes.ENUM(...Object.values(UserRole)),
