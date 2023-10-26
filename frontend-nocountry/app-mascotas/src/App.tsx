@@ -1,6 +1,6 @@
 import './App.css'
 import 'tailwindcss/tailwind.css'
-import Nav from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import HomePage from './components/HomePage'
 import Login from './components/Login'
 import Register from './components/Register'
@@ -9,13 +9,15 @@ import MyCalendar from './components/MyCalendar'
 import { MyPets } from './pages/MyPets'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Background from './components/Background'
+import { Profile } from './components/Profile'
+
 
 function App() {
   return (
     <Router>
       <>
-        <div className='min-h-screen'>
-          <Nav></Nav>
+        <div>
+          <Navbar></Navbar>
 
           <Routes>
             <Route path='/' element={<HomePage />} />
@@ -24,6 +26,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/calendar' element={<MyCalendar />} />
             <Route path='/mypets' element={<MyPets />} />
+            <Route path='/profile' element={<Profile />} />
           </Routes>
         </div>
         <Background />
