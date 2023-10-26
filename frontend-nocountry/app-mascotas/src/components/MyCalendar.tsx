@@ -1,4 +1,4 @@
-import CostumCalendar from './CostumCalendar'
+import CostumCalendar from './CostumCalendar/CostumCalendar'
 
 const MyCalendar = () => {
     const events = [

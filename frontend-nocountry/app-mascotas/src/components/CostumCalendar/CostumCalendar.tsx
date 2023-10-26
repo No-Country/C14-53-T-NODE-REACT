@@ -2,9 +2,12 @@ import React from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { PetAvatar } from './Pets/PetAvatar';
+import { PetAvatar } from '../Pets/PetAvatar';
+import './CostumCalendar.css'
+
 
 const localizer = momentLocalizer(moment);
+
 
 interface Event {
   id: number;
@@ -13,20 +16,24 @@ interface Event {
   end: Date;
 }
 
+
 interface CustomCalendarProps {
   events: Event[];
 }
 
+
 const CustomCalendar: React.FC<CustomCalendarProps> = ({ events }) => {
 
 
-  
+
+
+ 
   return (
-<div className="h-screen p-4 mt-20">
-  <div className="h-screen mb-3 flex justify-between">
-    <div className="h-screen w-1/6 mx-8 text-center">
-      <div className="p-7 md:px-10 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9] overflow-auto">
-        <p className="mb-5 text-xl font-bold font-montserrat">Tus Mascotas</p>
+<div className="p-4 mt-2 relative z-20">
+  <div className="mb-3 flex justify-between">
+    <div className="ml-8 text-center pr-3 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+      <div className="md:w-[270px] h-[500px] p-5 overflow-auto">
+        <p className="mb-5 p-3 text-xl font-bold font-montserrat">Tus Mascotas</p>
         <div className="grid gap-7">
           <PetAvatar img="./img/Chucky.png" name="Chucky"></PetAvatar>
           <PetAvatar img="./img/Darth_Vader.png" name="Darth Vader"></PetAvatar>
@@ -35,15 +42,15 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ events }) => {
         </div>
       </div>
     </div>
-    <div className="h-screen w-4/6 mx-20 text-center">
-      <div className="p-7 md:px-10 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
-        <div className="h-screen p-4 rounded shadow-lg">
+    <div className="w-4/6 mx-20 text-center">
+      <div className="p-7 md:px-10 rounded-2xl overflow-hidden h-[500px] shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+        <div className="h-[450px] p-4">
           <Calendar
             localizer={localizer}
             events={events}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: '100%', background: '#FAFAFA' }}
+            style={{ background: '#F6F3E9' }}
             views={['month', 'week', 'day']}
           />
         </div>
@@ -51,9 +58,8 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ events }) => {
     </div>
   </div>
 </div>
-
-
   );
 };
+
 
 export default CustomCalendar;
