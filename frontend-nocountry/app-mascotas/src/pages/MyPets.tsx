@@ -29,7 +29,7 @@ export const MyPets = () => {
               <a className='absolute left-2 top-[38%]' href='#firstslide'>
                 <img className='hidden mb-12 rotate-180 lg:flex' src='./img/arrow-right.svg' alt='carrousel-arrow-right' />
               </a>
-              <div className='flex pl-2 md:pl-0 lg:pl-2 overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3'>
+              <div className='.n-scrollbar flex pl-2 md:pl-0 lg:pl-2 overflow-x-scroll lg:overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3'>
                 <div id='firstslide' className='flex gap-4'>
                   <PetAvatar img='./img/Chucky.png' name='Chucky'></PetAvatar>
                   <PetAvatar img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>
