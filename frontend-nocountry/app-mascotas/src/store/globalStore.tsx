@@ -1,16 +1,34 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { devtools, persist } from 'zustand/middleware'
 
 interface IApp {
-  sidebarToggle: boolean
-  session: boolean
-  updateSession: (newValue: boolean) => void
+  isAuth: boolean
+  user: any
+  token: string
 }
 
-export const useGlobalStore = create<IApp>()(
-  devtools(set => ({
-    sidebarToggle: false,
-    session: false,
-    updateSession: (newValue: boolean) => set({ session: newValue })
-  }))
+type Actions = {
+  setUser: (state: any, newAuth: boolean) => void
+  setToken: (state: string) => void
+  logout: () => void
+}
+
+export const useGlobalStore = create<IApp & Actions>()(
+  devtools(
+    persist(
+      set => ({
+        isAuth: false,
+        user: '',
+        token: '',
+        setUser: (state: any, newAuth: boolean) => set({ user: state, isAuth: newAuth }),
+        setToken: (state: string) => set({ token: state, isAuth: true }),
+        logout: () => set({ token: '', user: '', isAuth: false })
+      }),
+      {
+        name: 'auth'
+      }
+    )
+  )
 )

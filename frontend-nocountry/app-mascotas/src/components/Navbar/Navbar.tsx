@@ -6,8 +6,8 @@ import { PetAvatar } from '../Pets/PetAvatar'
 
 function Navbar() {
   const [toggle, setToggle] = useState(false)
-  const session = useGlobalStore(state => state.session)
-  const updateSession = useGlobalStore(state => state.updateSession)
+  const isAllowed = useGlobalStore(state => state.isAuth)
+  const logout = useGlobalStore(state => state.logout)
   return (
     <>
       <nav className='container mx-auto'>
@@ -19,7 +19,7 @@ function Navbar() {
                   PetCare
                 </Link>
               </p>
-              {!session ? (
+              {!isAllowed ? (
                 <ul className='items-center hidden mt-2 md:flex'>
                   <li>
                     <Link className='inline p-4 font-semibold hover:underline' to='/about'>
@@ -67,7 +67,7 @@ function Navbar() {
 
       <div className={`fixed flex flex-col overflow-hidden right-0 top-0 bg-beige h-screen z-30 pt-24 w-3/6 transition-transform ease-in-out md:hidden ${toggle ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className='flex flex-col w-full h-full overflow-y-scroll'>
-          {!session ? (
+          {!isAllowed ? (
             <ul className='items-center flex-auto h-full md:hidden'>
               <li>
                 <Link className='block p-4 text-lg font-semibold hover:underline' to='/about'>
@@ -95,7 +95,7 @@ function Navbar() {
                   Perfil
                 </Link>
 
-                <button className='block mb-3 text-xl font-black font-montserray' onClick={() => updateSession(false)}>
+                <button className='block mb-3 text-xl font-black font-montserray' onClick={() => logout()}>
                   Cerrar Sesión
                 </button>
               </div>
