@@ -29,12 +29,12 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ events }) => {
 
  
   return (
-<div className="p-4 mt-20 relative z-20">
-  <div className="mb-3 flex justify-between">
-    <div className="ml-8 text-center pr-3 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
-      <div className="md:w-[270px] h-[500px] p-5 overflow-auto">
-        <p className="mb-5 p-3 text-xl font-bold font-montserrat">Tus Mascotas</p>
-        <div className="grid gap-7">
+<div className="p-4 mx-4 mt-16 md:mt-20 relative z-20">
+  <div className="mb-3 md:flex md:justify-between">
+    <div className="text-center py-3 md:py-0 md:ml-3 lg:ml-8 md:pr-3 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+      <div className="h-[150px] md:w-[180px] md:min-h-[500px] md:p-5 lg:min-w-[270px] overflow-auto">
+        <p className="text-[15px] my-2 md:mb-5 md:text-xl font-bold font-montserrat">Tus Mascotas</p>
+        <div className="flex justify-center gap-3 md:gap-7 md:grid">
           <PetAvatar img="./img/Chucky.png" name="Chucky"></PetAvatar>
           <PetAvatar img="./img/Darth_Vader.png" name="Darth Vader"></PetAvatar>
           <PetAvatar img="./img/Lucifer.png" name="Lucifer"></PetAvatar>
@@ -42,9 +42,9 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ events }) => {
         </div>
       </div>
     </div>
-    <div className="w-4/6 mx-20 text-center">
-      <div className="p-7 md:px-10 rounded-2xl overflow-hidden h-[500px] shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
-        <div className="h-[450px] p-4">
+    <div className="md:w-4/6 my-4 md:my-0 md:mx-6 lg:mx-20">
+      <div className="p-5 md:p-7 md:min-h-[500px] md:px-10 rounded-2xl overflow-hidden shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+        <div className="h-[300px] md:h-[400px] lg:h-[450px]">
           <Calendar
             localizer={localizer}
             events={events}
