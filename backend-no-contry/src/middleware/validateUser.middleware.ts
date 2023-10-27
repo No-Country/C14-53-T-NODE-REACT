@@ -6,8 +6,6 @@ import { UserRole } from "../interfaces/user.interface";
 
 const validateUser = async (req: RequestExtends, res: Response, next: NextFunction) => {
 
-  console.log(req.user);
-
   try {
     if (typeof req.user === 'object' && req.user !== null) {
 
