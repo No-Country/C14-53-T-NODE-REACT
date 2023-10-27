@@ -3,6 +3,7 @@ import { connectDB } from '../config/dbConfig'
 import { PetSchemaType } from "../interfaces/petSchema";
 import User from "./user.model";
 import Calendar from "./calendar.model";
+import { MedicalRecord } from "./medicalRecord.model";
 
 interface PetModel extends Model, PetSchemaType { }
 
@@ -64,5 +65,8 @@ const Pet = connectDB.define<PetModel>('Pet',
 
 Pet.hasMany(Calendar, { foreignKey: 'petId' })
 Calendar.belongsTo(Pet, { foreignKey: 'petId' })
+
+Pet.hasMany(MedicalRecord, { foreignKey: 'petMedicalId' })
+MedicalRecord.belongsTo(Pet, { foreignKey: 'petMedicalId' })
 
 export default Pet
