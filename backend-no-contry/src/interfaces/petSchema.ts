@@ -50,10 +50,25 @@ export const PetSchema = z.object({
         descriptions: z.string(),
 }) 
 
+export const uploadFiles = z.object({
+    
+    name: z.string(),
+    data: z.string(),
+    size: z.string(),
+    encoding:z.string(),
+    tempFilePath: z.string(),
+    truncated: z.string(),
+    mimetype: z.string(),
+    md5: z.string(),
+    mv: z.string(),
+  
+})
+
 export type CreatePetType = z.infer<typeof CreatePetSchema>["body"]
 export type FindPetType = z.infer<typeof FindPetSchema>["params"]
 export type PetSchemaType = z.infer<typeof PetSchema>
 export type PutPetType = z.infer<typeof FindPetSchema>["body"]
+export type uploadFilesType = z.infer<typeof uploadFiles>
 
 
 

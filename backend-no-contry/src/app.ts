@@ -4,6 +4,7 @@ import cors from 'cors'
 import { router } from './routes';
 import morgan from 'morgan';
 import { connectDB } from './config/dbConfig'
+import fileUpload from 'express-fileupload'
 
 // Creo el servidor
 const app: Express = express();
@@ -21,6 +22,11 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json());
+
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: './src/uploads'
+}))
 
 
 // Ruta principal

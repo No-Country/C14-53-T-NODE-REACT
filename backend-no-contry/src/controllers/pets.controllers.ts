@@ -1,18 +1,28 @@
 import { Request, Response } from "express";
 import { CreatePetType, FindPetType, PetSchemaType, PutPetType } from "../interfaces/petSchema";
 import Pet from "../models/petModel";
+import {uploadImage} from "../middleware/cloudinary"
+import { FileArray, UploadedFile } from "express-fileupload";
+
+// interface tempFilePath extends UploadedFile {}
+   
 
 export const createPets = async (req: Request<unknown, unknown, CreatePetType>, res: Response) => {
-    console.log(req.body)
-    try {
-        const  { userId, name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
+     try {
+         const file = req?.files[0] as UploadedFile[]
+        console.log(file)
+        // const resultImage:   = await uploadImage(file)
+        
+        
+        const  { userId, name, surname, birthdate, breed, species, descriptions, weight } = req.body
+
         const savePet: PetSchemaType = await Pet.create({
             userId,
             name,
             surname,
             birthdate,
             weight,
-            image,
+            // image,
             species,
             breed,
             descriptions,
