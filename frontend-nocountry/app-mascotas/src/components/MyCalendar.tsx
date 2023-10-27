@@ -12,7 +12,7 @@ const MyCalendar = () => {
 
   return (
     <div>
-      <CustomCalendar events={events}/>  
+      <CustomCalendar events={events} />  
     </div>
   )
 }
