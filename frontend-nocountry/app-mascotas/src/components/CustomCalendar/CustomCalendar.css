@@ -14,5 +14,12 @@
 ::-webkit-scrollbar-track:vertical {
   background: #f1f1f1;
   border-radius: 5px;
-  border: 10px solid DCDCDC;
+}
+
+@media screen and (max-width: 400px) {
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+  }
 }
