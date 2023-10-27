@@ -3,7 +3,7 @@ import { calendar, oauth2Client, scopes } from "../config/calendarApi"
 import dayjs from "dayjs"
 import { createEvent } from "../services/calendar.services"
 import { RequestExtends } from "../interfaces/reqExtends.interface"
-
+import { MedicalRecord } from "../models/medicalRecord.model"
 
 
 const getCalendar = async (req: Request, res: Response) => {
@@ -52,6 +52,18 @@ const getSchedulEvent = async (req: RequestExtends, res: Response) => {
     })
 
     const supplierType = result.data.summary?.split('-')[0]
+
+
+    if (supplierType?.trim() === "Registro Medico") {
+      const bodyMedical = {
+        date: dayjs(result.data.start?.dateTime).format("YYYY-MM-DD"),
+        type: result.data.summary?.split('-')[1].split('.')[0],
+        treatment: result.data.summary?.split('-')[1].split('.')[1],
+        note: result.data.description,
+        petMedicalId: req.params.id
+      }
+      await MedicalRecord.create(bodyMedical)
+    }
 
 
     const newEventCalendar = await createEvent({

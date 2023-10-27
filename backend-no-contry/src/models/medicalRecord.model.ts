@@ -1,13 +1,14 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 import { connectDB } from '../config/dbConfig';
 import { MedicalSchemaType } from '../interfaces/medicalSchema';
+import Pet from './petModel';
 
 interface MedicalModel extends Model, MedicalSchemaType { }
 
 export const MedicalRecord = connectDB.define<MedicalModel>('MedicalRecord',
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
@@ -27,11 +28,17 @@ export const MedicalRecord = connectDB.define<MedicalModel>('MedicalRecord',
     note: {
       type: DataTypes.TEXT,
       allowNull: true,
+    },
+    petMedicalId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: Pet,
+        key: 'id'
+      }
     }
   },
   {
-    // paranoid: true,
-    // deletedAt: 'eliminadoEn',
     timestamps: false,
   }
 )
