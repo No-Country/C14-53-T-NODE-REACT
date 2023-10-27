@@ -30,11 +30,9 @@ function Register() {
     generalError = 'Completa los campos correctamente.'
   }
   const onSubmit = handleSubmit(values => {
-    // console.log(values);
 
     if (Object.keys(errors).length === 0) {
       axios.post('https://petcare-app.onrender.com/api/v1/auth/register', values).then((response: AxiosResponse) => {
-        console.log(response)
       })
       // alert('Form submit: ' + JSON.stringify(values))
       reset()
