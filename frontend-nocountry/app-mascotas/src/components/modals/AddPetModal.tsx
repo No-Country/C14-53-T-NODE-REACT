@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form'
 import withReactContent from 'sweetalert2-react-content'
 import Swal from 'sweetalert2'
 import Cookies from 'js-cookie'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface ModalProps {
   isVisible: boolean;
@@ -23,10 +23,10 @@ interface FormData {
   name: string
   species: string
   birthdate: string
-  breed: string
   weight: string
+  image?: File
+  breed: string
   descriptions: string
-  userId: string
   surname: string
 }
 
@@ -61,6 +61,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
   };
 
   const submitPet = handleSubmit(values => {
+    console.log(values)
     values.surname = "perez"
     MySwal.fire({
       toast: true,
@@ -69,6 +70,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
       timer: 1000,
       title: `¡Estamos en registrandote, esperanos unos segundo!`
     })
+
 
     if (Object.keys(errors).length === 0) {
       axios.post('https://petcare-app.onrender.com/api/v1/pets', values, { headers: { Authorization: `Bearer ${Cookies.get('token')}` } })
@@ -85,8 +87,10 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
             setTimeout(() => {
               onClose()
             }, 600);
+
           }
         }).catch(function(error) {
+
           if (error.response.data === "No se recibió el token") {
             MySwal.fire({
               toast: true,
@@ -95,6 +99,15 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
               timer: 2500,
               title: `¡No has iniciado sesion ${values.name}!.  ¡Intruso!, te han dejado entrar los devs!`
             })
+          } else {
+            MySwal.fire({
+              toast: true,
+              position: 'bottom-end',
+              showConfirmButton: false,
+              timer: 2500,
+              title: `Ha ocurrido un error inesperado`
+            })
+
           }
         })
     } else {
@@ -108,6 +121,8 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
 
     }
   })
+
+
 
 
   return (
@@ -131,7 +146,15 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
               <label htmlFor="fileinput" className="">
                 <img className="cursor-pointer ml-24 lg:ml-0 scale-75 md:scale-100 rounded-full w-[200px] h-[200px]" src={picture} alt="image-input" />
               </label>
-              <input onChange={e => previewImage(e)} id="fileinput" type="file" accept="image/png, image/gif, image/jpeg" className="invisible" />
+              <input
+                {...register("image")}
+                id="fileinput"
+                type="file"
+                accept="image/png, image/gif, image/jpeg"
+                className="invisible"
+                onChange={previewImage}
+
+              />
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-3 scale-75 md:scale-100 m-4 gap-2 ml-10 lg:ml-0 w-[80%]  text-[10px] lg:text-sm xl:text-xl">
@@ -183,6 +206,8 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                 />
 
               </div>
+
+
               <div>
                 <label className="text-sm md:text-xl font-normal " htmlFor="Raza">
                   Raza
@@ -194,25 +219,21 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                   required
                   placeholder="Raza"
                   {...register('breed')}
-
-
                 />
-
               </div>
-              <div className="" >
+
+              <div>
                 <label className="text-sm md:text-xl font-normal " htmlFor="Peso">
                   Peso
                 </label>
                 <input
+                  {...register('weight')}
                   className=" md:placeholder:text-lg rounded h-10 w-full py-2 px-3 mb-2 focus:outline-none"
                   id="peso-input"
-                  required
                   type="text"
+                  required
                   placeholder="Peso"
-                  {...register('weight', { pattern: /^[0-9]+(\.[0-9]+)?$/ })}
-
                 />
-
               </div>
 
 
@@ -232,8 +253,6 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
               />
 
             </div>
-
-
 
             <button className="text-lg md:text-xl md:mb-12  font-bold scale-75 bg-[#20EA7D] md:mt-2 xl:mt-6  md:scale-100 text-[#fff] rounded-[3px] text-center px-6 py-4 inline-block;">Agregar nueva mascota</button>
           </form>
