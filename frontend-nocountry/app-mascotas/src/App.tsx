@@ -26,13 +26,12 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/calendar' element={<MyCalendar />} />
-
 
             <Route element={<ProtectedRoute isAllowed={isAuth} />}>
               <Route path='/mypets' element={<MyPets />} />
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/calendar' element={<MyCalendar />} />
             </Route>
           </Routes>
         </div>
