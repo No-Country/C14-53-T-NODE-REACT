@@ -3,11 +3,15 @@ import AddPetModal from '../components/modals/AddPetModal'
 import AddHistoryModal from '../components/modals/AddHistoryModal'
 import { useState } from 'react'
 import SeeEventsModal from '../components/modals/SeeEventsModal'
+import AddActivityModal from '../components/modals/AddActivityModal'
+
 
 export const MyPets = () => {
   const [showAddPetModal, setShowAddPetModal] = useState<boolean>(false)
   const [showAddHistoryModal, setShowAddHistoryModal] = useState<boolean>(false)
   const [showEventsModal, setShowEventsModal] = useState<boolean>(false)
+  const [showActivityModal, setShowActivityModal] = useState<boolean>(false)
+
 
   function closePetModal() {
     setShowAddPetModal(false)
@@ -111,7 +115,7 @@ export const MyPets = () => {
               <button onClick={() => setShowAddHistoryModal(true)}>Ingresar historia medica </button>
             </li>
             <li className='py-4 xl:py-7'>
-              <button>Agendar Actividad</button>
+              <button onClick={() => setShowActivityModal(true)}>Agendar Actividad</button>
             </li>
             <li className='py-4 xl:py-7'>
               <button onClick={() => setShowEventsModal(true)}>Ver Actividades</button>
@@ -126,6 +130,8 @@ export const MyPets = () => {
 
         <AddHistoryModal isVisible={showAddHistoryModal} onClose={() => setShowAddHistoryModal(false)} />
         <SeeEventsModal isVisible={showEventsModal} onClose={() => setShowEventsModal(false)} />
+        <AddActivityModal isVisible={showActivityModal} onClose={() => setShowActivityModal(false)} />
+
       </main>
     </>
   )
