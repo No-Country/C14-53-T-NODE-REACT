@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Background from './Background'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { useGlobalStore } from '../store/globalStore'
 import Swal from 'sweetalert2'
-// import withReactContent from 'sweetalert2-react-content'
 import Cookies from 'js-cookie'
 import { LoginRequest } from '../api/auth'
+import { useState } from 'react'
 
 interface FormData {
   email: string
@@ -18,7 +19,19 @@ function Login() {
   // const isAllowed = useGlobalStore(state => state.isAuth)
   const setUser = useGlobalStore(state => state.setUser)
   const setToken = useGlobalStore(state => state.setToken)
-  // const MySwal = withReactContent(Swal)
+  const [invalidPassword, setInvalidPassword] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: toast => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   const navigate = useNavigate()
 
@@ -41,24 +54,28 @@ function Login() {
   }
   const onSubmit = async (values: object) => {
     if (Object.keys(errors).length === 0) {
+      setInvalidPassword(false)
+      setLoading(true)
       try {
         const response = await LoginRequest(values)
-
         if (response.status === 200) {
           const user = response.data.user
           const token = response.data.token
           Cookies.set('token', token)
-
+          setLoading(false)
           setUser(user, true)
           setToken(token)
           navigate('/dashboard')
         }
-      } catch (error) {
+      } catch (error: any) {
         console.log(error)
-        Swal.fire({
+        setLoading(false)
+        if (error.response.data.msg) {
+          setInvalidPassword(true)
+        }
+        Toast.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!'
+          title: error.response.data.msg
         })
       }
     }
@@ -74,19 +91,30 @@ function Login() {
               <label className='text-sm font-normal text-gray-800 md:text-xl' htmlFor='email'>
                 Email
               </label>
-              
+
               <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.email ? 'border-red' : 'border-gray'}`} id='email' type='email' placeholder='Email' {...register('email', { pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, required: true })} />
             </div>
-            <div className='mb-6'>
+            <div className='mb-2'>
               <label className='text-sm font-normal text-gray-800 sm:text-xl' htmlFor='password'>
                 Contraseña
               </label>
               <input className={`border rounded h-12 w-full py-2 px-3 mb-2 focus:outline-none ${errors.password ? 'border-red' : 'border-gray'}`} id='password' type='password' placeholder='**********' {...register('password', { pattern: /^.{4,12}$/, required: true })} />
             </div>
-            <div className={`${generalError ? 'p-0' : 'p-3'}`}>{generalError && <p className='text-red text-bold'>{generalError}</p>}</div>
+            {generalError && <p className='text-red text-bold'>{generalError}</p>}
+            {invalidPassword && <p className='text-red text-bold'>Datos invalidos</p>}
             <div className='mt-5 mb-6 md:mt-6'>
-              <button type='submit' className='w-full text-sm shadow-outline btn sm:text-xl sm:w-2/4 md:w-full shadow-custom'>
-                Entrar
+              <button type='submit' className={`w-full text-sm shadow-outline btn sm:text-xl sm:w-2/4 md:w-full shadow-custom ${loading ? 'cursor-not-allowed' : ''}`}>
+                {loading ? (
+                  <span className='flex justify-center'>
+                    <svg className='w-5 mr-2 text-white animate-spin' viewBox='0 0 24 24'>
+                      <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4'></circle>
+                      <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
+                    </svg>
+                    Procesando...
+                  </span>
+                ) : (
+                  'Entrar'
+                )}
               </button>
             </div>
           </form>
