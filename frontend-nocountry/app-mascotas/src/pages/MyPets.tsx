@@ -1,9 +1,10 @@
 import { PetAvatar } from '../components/Pets/PetAvatar'
 import AddPetModal from '../components/modals/AddPetModal'
 import AddHistoryModal from '../components/modals/AddHistoryModal'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SeeEventsModal from '../components/modals/SeeEventsModal'
 import AddActivityModal from '../components/modals/AddActivityModal'
+import { GetPets } from '../api/pets'
 
 
 
@@ -13,6 +14,20 @@ export const MyPets = () => {
   const [showEventsModal, setShowEventsModal] = useState<boolean>(false)
   const [showActivityModal, setShowActivityModal] = useState<boolean>(false)
 
+  const [pets, setPets] = useState<any>([1, 2, 3, 4])
+
+  async function getPets() {
+    return await GetPets()
+  }
+
+
+  useEffect(() => {
+    getPets().then(res => {
+      setPets(res.data?.pets)
+    })
+    console.log("renderizando")
+
+  }, [])
 
 
 
@@ -39,11 +54,11 @@ export const MyPets = () => {
               </a>
               <div className='.n-scrollbar flex pl-2 md:pl-0 lg:pl-2 overflow-x-scroll lg:overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3'>
                 <div id='firstslide' className='flex gap-4'>
-                  <PetAvatar img='./img/Chucky.png' name='Chucky'></PetAvatar>
-                  <PetAvatar img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>
-                  <PetAvatar img='./img/Lucifer.png' name='Lucifer'></PetAvatar>
-                  <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
-                  <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
+                  {pets
+                    .slice(0, 6)
+                    .map((pet: any) => (
+                      <PetAvatar img={pet.image} name={pet.name}></PetAvatar>
+                    ))}
                   <div id='anchor'></div>
                 </div>
               </div>

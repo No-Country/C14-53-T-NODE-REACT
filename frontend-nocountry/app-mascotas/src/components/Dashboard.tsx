@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom'
 // import { Link, useNavigate } from 'react-router-dom'
 import { PetAvatar } from './Pets/PetAvatar'
+
 // import axios, { AxiosResponse } from 'axios'
 // import Cookies from 'js-cookie'
 // import { useGlobalStore } from '../store/globalStore'
@@ -43,6 +44,9 @@ const Dashboard = () => {
   //     }
   //   }
   // }, [isAuth])
+  //
+  //
+
 
   return (
     <>
