@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom'
 import { PetAvatar } from './Pets/PetAvatar'
 
+
 const Dashboard = () => {
   return (
     <>
@@ -59,10 +60,10 @@ const Dashboard = () => {
                 Tus mascotas
               </a>
               <div className='grid mb-10 gap-7 md:grid-cols-2'>
-                <PetAvatar img='./img/Chucky.png' name='Chucky'></PetAvatar>
-                <PetAvatar img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>
-                <PetAvatar img='./img/Lucifer.png' name='Lucifer'></PetAvatar>
-                <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
+                <PetAvatar fn={null} img='./img/Chucky.png' name='Chucky'></PetAvatar>
+                <PetAvatar fn={null} img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>
+                <PetAvatar fn={null} img='./img/Lucifer.png' name='Lucifer'></PetAvatar>
+                <PetAvatar fn={null} img='./img/Juan.png' name='Juan'></PetAvatar>
               </div>
             </div>
           </div>
