@@ -10,7 +10,7 @@ import { validateUser } from "../middleware/validateUser.middleware";
 const router: Router = Router()
 
 router.post('/', checkJWT, schemaValidator(CreatePetSchema), createPets)
-router.get('/:userId', findPetsByUserId)
+router.get('/mypets', checkJWT, findPetsByUserId)
 router.get('/admin/:id', schemaValidator(ParamsFindPetSchema), findPet)
 router.get('/', findAllPets)
 router.delete('/:id', schemaValidator(ParamsFindPetSchema), deletePets)

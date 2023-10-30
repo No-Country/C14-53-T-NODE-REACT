@@ -39,12 +39,18 @@ export const findPet = async (req: Request<FindPetType>, res: Response) => {
     return res.status(500).json({ message: 'unexpected error' })
   }
 }
-export const findPetsByUserId = async (req: Request<{ userId: string }>, res: Response) => {
+export const findPetsByUserId = async (req: RequestExtends, res: Response) => {
+  if (typeof req.user === 'string') {
+    res.status(401).json({ msg: "Token de usuario no válido" });
+    return;
+  }
+
+  const user = req.user?.id
+
   try {
-    const { userId } = req.params
-    const pet = await Pet.findAndCountAll({ where: { userId: userId } })
+    const pet = await Pet.findAll({ where: { userId: user } })
     if (!pet) return res.status(404).json({ message: 'No pet found' });
-    return res.status(200).json({ message: 'Found your pets!', data: pet })
+    return res.status(200).json({ message: 'Found your pets!', pets: pet })
   } catch (error) {
     return res.status(500).json({ message: 'unexpected error', error: error })
   }
