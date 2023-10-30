@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Background from './components/Background'
 import { Profile } from './components/Profile'
 import { ProtectedRoute } from './components/ProtectedRoute'
+import { ProtectedRouteAfterLogin } from './components/ProtectedRouteAfterLogin'
 import { useGlobalStore } from './store/globalStore'
 
 function App() {
@@ -19,15 +20,17 @@ function App() {
   return (
     <Router>
       <>
-        <div>
+        <div className='relative'>
           <Navbar></Navbar>
 
           <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
             <Route path='/calendar' element={<MyCalendar />} />
 
+            <Route element={<ProtectedRouteAfterLogin isAllowed={isAuth} />}>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+            </Route>
 
             <Route element={<ProtectedRoute isAllowed={isAuth} />}>
               <Route path='/mypets' element={<MyPets />} />
@@ -35,8 +38,8 @@ function App() {
               <Route path='/profile' element={<Profile />} />
             </Route>
           </Routes>
+          <Background />
         </div>
-        <Background />
       </>
     </Router>
   )

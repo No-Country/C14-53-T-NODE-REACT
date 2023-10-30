@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <>
       <main className='relative z-20'>
-        <div className='h-screen max-w-screen-xl px-3 pt-20 mx-auto homepage md:pt-0'>
+        <div className='container h-screen px-3 pt-20 mx-auto homepage md:pt-0'>
           <div className='grid h-full gap-1 md:grid-cols-2 py-7 md:py-0'>
             <div className='flex flex-col justify-center order-2 px-3 text-center w-100 2xl:w-3/4 md:order-1 md:text-left'>
               <h1 className='mb-6 font-serif text-4xl leading-tight md:text-6xl'>Un registro seguro y completo de tu mascota.</h1>
