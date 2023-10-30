@@ -56,7 +56,6 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
   };
 
   const submitPet = handleSubmit(values => {
-    console.log(values)
     values.surname = "perez"
     MySwal.fire({
       toast: true,
