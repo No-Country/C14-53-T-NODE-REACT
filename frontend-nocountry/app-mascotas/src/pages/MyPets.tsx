@@ -6,11 +6,15 @@ import SeeEventsModal from '../components/modals/SeeEventsModal'
 import AddActivityModal from '../components/modals/AddActivityModal'
 
 
+
 export const MyPets = () => {
   const [showAddPetModal, setShowAddPetModal] = useState<boolean>(false)
   const [showAddHistoryModal, setShowAddHistoryModal] = useState<boolean>(false)
   const [showEventsModal, setShowEventsModal] = useState<boolean>(false)
   const [showActivityModal, setShowActivityModal] = useState<boolean>(false)
+
+
+
 
 
   function closePetModal() {
