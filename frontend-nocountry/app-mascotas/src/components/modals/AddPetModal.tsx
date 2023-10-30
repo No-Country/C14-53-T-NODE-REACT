@@ -1,10 +1,5 @@
 // TODO 
 //
-// - [X] Pueda verse cuando estoy creando exitosamente una mascota
-// - [X] Agregar validaciones
-// - [X] Pasar token por headers
-// - [X] Agregar campo surname para la mascota
-// - [ ] Cuando carue una imagen debe poder previsualizarse
 // - [ ] Refactorizar llamado de sweetalert
 
 import axios, { AxiosResponse } from 'axios'
@@ -12,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import withReactContent from 'sweetalert2-react-content'
 import Swal from 'sweetalert2'
 import Cookies from 'js-cookie'
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 
 interface ModalProps {
   isVisible: boolean;
@@ -147,7 +142,6 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
                 <img className="cursor-pointer ml-24 lg:ml-0 scale-75 md:scale-100 rounded-full w-[200px] h-[200px]" src={picture} alt="image-input" />
               </label>
               <input
-                {...register("image")}
                 id="fileinput"
                 type="file"
                 accept="image/png, image/gif, image/jpeg"
