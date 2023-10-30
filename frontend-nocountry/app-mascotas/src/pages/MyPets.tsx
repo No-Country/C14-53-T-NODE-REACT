@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import SeeEventsModal from '../components/modals/SeeEventsModal'
 import AddActivityModal from '../components/modals/AddActivityModal'
 import { GetPets } from '../api/pets'
+import { PetAvatarSkeleton } from '../components/skeletons/PetAvatarSkeleton'
 
 type Pet = {
   name: string
@@ -72,11 +73,11 @@ export const MyPets = () => {
               </a>
               <div className='.n-scrollbar flex pl-2 md:pl-0 lg:pl-2 overflow-x-scroll lg:overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3'>
                 <div id='firstslide' className='flex gap-4'>
-                  {pets
+                  {pets ? pets
                     ?.slice(0, 6)
                     .map((pet: any, index: any) => (
                       <PetAvatar fn={() => setPet(index)} img={pet.image} name={pet.name}></PetAvatar>
-                    ))}
+                    )) : <PetAvatarSkeleton />}
                   <div id='anchor'></div>
                 </div>
               </div>

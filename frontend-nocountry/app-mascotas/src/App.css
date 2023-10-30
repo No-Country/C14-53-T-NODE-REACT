@@ -8,8 +8,9 @@ body {
   overflow-x: hidden; */
 }
 
-
-
+#root{
+  position: relative;
+}
 
 .hamburgerMenu {
   display: block;
