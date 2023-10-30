@@ -1,8 +1,49 @@
 // import React from 'react'
 import { Link } from 'react-router-dom'
+// import { Link, useNavigate } from 'react-router-dom'
 import { PetAvatar } from './Pets/PetAvatar'
+// import axios, { AxiosResponse } from 'axios'
+// import Cookies from 'js-cookie'
+// import { useGlobalStore } from '../store/globalStore'
+// import { useEffect } from 'react'
 
 const Dashboard = () => {
+  // const updateUser = useGlobalStore(state => state.setUser)
+  // const isAuth = useGlobalStore(state => state.isAuth)
+  // const navigate = useNavigate()
+
+  // useEffect(() => {
+  //   if (!isAuth && token) {
+  //     console.log()
+  //     try {
+  //       axios
+  //         .get('https://petcare-app.onrender.com/api/v1/auth/profile', {
+  //           headers: {
+  //             Authorization: 'Bearer ' + token
+  //           }
+  //         })
+  //         .then((response: AxiosResponse) => {
+  //           console.log(response)
+  //           setToken(response.data.token)
+  //           setUser(response.data.email, response.data.password)
+  //           // data:
+  //           //   email:
+  //           //   "dmz.mata@gmail.com"
+  //           //   id:
+  //           //   "cd34c3f2-f95e-424d-a73d-e70565d1912a"
+  //           //   name:
+  //           //   "David Alberto Martinez Mata"
+  //         })
+  //         .catch(error => {
+  //           logout()
+  //           console.log(error)
+  //         })
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  // }, [isAuth])
+
   return (
     <>
       <main className='container relative z-20 mx-auto pt-[86px] md:pt-[150px]'>
@@ -19,7 +60,6 @@ const Dashboard = () => {
                   <Link to='/calendar' className='font-bold group-hover:underline font-montserrat'>
                     Calendario
                   </Link>
-
                 </a>
               </div>
               <div className='flex flex-col'>

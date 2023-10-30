@@ -1,7 +1,9 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import Background from './Background'
-import axios, { AxiosResponse } from 'axios'
+import { RegisterRequest } from '../api/auth'
+import Swal from 'sweetalert2'
+import Cookies from 'js-cookie'
+import { useGlobalStore } from '../store/globalStore'
 
 interface FormData {
   name: string
@@ -16,8 +18,10 @@ interface FormData {
 function Register() {
   let generalError = ''
   let dogImageURL = './img/register-dog.png'
+  const setToken = useGlobalStore(state => state.setToken)
 
   const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -29,23 +33,39 @@ function Register() {
     dogImageURL = './img/wrong-register-dog.png'
     generalError = 'Completa los campos correctamente.'
   }
-  const onSubmit = handleSubmit(values => {
-
+  const onSubmit = async (values: object) => {
     if (Object.keys(errors).length === 0) {
-      axios.post('https://petcare-app.onrender.com/api/v1/auth/register', values).then((response: AxiosResponse) => {
-      })
-      // alert('Form submit: ' + JSON.stringify(values))
-      reset()
-      navigate('/dashboard')
+      try {
+        const response = await RegisterRequest(values)
+
+        console.log(response)
+
+        if (response.status === 200) {
+          const token = response.data.token
+
+          Cookies.set('token', token)
+          setToken(token)
+          navigate('/dashboard')
+          reset()
+        }
+      } catch (error) {
+        console.log(error)
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+      }
     }
-  })
+  }
 
   return (
     <div className='flex justify-center'>
       <div className='flex items-center justify-center w-3/4 min-h-screen bg-gray-100 md:w-1/2'>
         <div className='z-20 bg-white rounded-lg shadow-lg mt-14'>
           <h2 className='w-3/4 mx-0 mb-6 font-serif text-3xl font-semibold text-gray-800 sm:text-4xl sm:mx-auto'>Regístrate</h2>
-          <form className='mx-auto sm:w-3/4' onSubmit={onSubmit}>
+          <form className='mx-auto sm:w-3/4' onSubmit={handleSubmit(onSubmit)}>
             <div className='flex flex-wrap justify-between'>
               <div className='mb-4 w-[49%]'>
                 <label className='text-sm font-semibold text-gray-800 md:text-base' htmlFor='email'>
@@ -103,7 +123,6 @@ function Register() {
       <div className='relative z-40 hidden sm:block md:w-1/2'>
         <img src={dogImageURL} alt='Imagen de fondo' className='object-cover w-full h-screen' />
       </div>
-      <Background></Background>
     </div>
   )
 }

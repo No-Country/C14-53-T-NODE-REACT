@@ -1,12 +1,13 @@
-version: '3.7'
+
+version: '3'
 services:
-  postgres:
-    image: postgres:15-alpine
-    container_name: postgres
-    restart: always
+  db:
+    image: postgres:latest
     environment:
+      POSTGRES_DATABASE: postgres
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pw1234
-      POSTGRES_DB: mi-base-de-datos
+      PGHOST: localhost
+      PGPORT: 5432
     ports:
-      - 5432:5432
+      - "5432:5432"

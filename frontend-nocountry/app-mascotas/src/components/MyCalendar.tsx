@@ -1,4 +1,4 @@
-import CostumCalendar from './CostumCalendar'
+import CustomCalendar from './CustomCalendar/CustomCalendar'
 
 const MyCalendar = () => {
     const events = [
@@ -12,7 +12,7 @@ const MyCalendar = () => {
 
   return (
     <div>
-      <CostumCalendar events={events}/>  
+      <CustomCalendar events={events} />  
     </div>
   )
 }
