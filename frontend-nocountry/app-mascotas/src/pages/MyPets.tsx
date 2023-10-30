@@ -91,7 +91,7 @@ export const MyPets = () => {
               <img className='md:scale-150' src='./img/addtasks.svg' alt='add-task-button' />
             </button>
 
-            <img className='w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] xl:h-[200px] xl:w-[200px] lg:ml-5 rounded-full xl:rounded-full   ' src={selectedPet?.image || './img/anonym-pet.jpeg'} alt='selected-pet-image' />
+            <img className='w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] xl:h-[200px] xl:w-[330px] lg:ml-5 rounded-full xl:rounded-full   ' src={selectedPet?.image || './img/anonym-pet.jpeg'} alt='selected-pet-image' />
             <div className='flex flex-col lg:gap-3' >
               <div className='grid grid-cols-3 place-items-center m-4 gap-3  text-[10px] md:text-sm xl:text-xl'>
                 <div className='flex gap-1'>
