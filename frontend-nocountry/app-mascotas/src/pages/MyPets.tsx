@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PetAvatar } from '../components/Pets/PetAvatar'
 import AddPetModal from '../components/modals/AddPetModal'
 import AddHistoryModal from '../components/modals/AddHistoryModal'
@@ -6,6 +7,7 @@ import SeeEventsModal from '../components/modals/SeeEventsModal'
 import AddActivityModal from '../components/modals/AddActivityModal'
 import { GetPets } from '../api/pets'
 import { PetAvatarSkeleton } from '../components/skeletons/PetAvatarSkeleton'
+import { useGlobalStore } from '../store/globalStore'
 
 type Pet = {
   name: string
@@ -18,8 +20,6 @@ type Pet = {
   breed: string
   descriptions: string
   weight: string
-
-
 }
 
 export const MyPets = () => {
@@ -28,7 +28,7 @@ export const MyPets = () => {
   const [showEventsModal, setShowEventsModal] = useState<boolean>(false)
   const [showActivityModal, setShowActivityModal] = useState<boolean>(false)
   const [selectedPet, setSelectedPet] = useState<Pet>()
-
+  const setMyPets = useGlobalStore(state => state.setPets)
 
   const [pets, setPets] = useState<Pet[]>()
 
@@ -36,19 +36,17 @@ export const MyPets = () => {
     return await GetPets()
   }
 
-
   useEffect(() => {
     getPets().then(res => {
       setPets(res.data?.pets)
+      setMyPets(res.data?.pets)
       setPet(0)
     })
   }, [showAddPetModal])
 
-
   function setPet(index: number) {
     if (pets === undefined) return
     setSelectedPet(pets[index])
-
   }
 
   function closePetModal() {
@@ -73,11 +71,7 @@ export const MyPets = () => {
               </a>
               <div className='.n-scrollbar flex pl-2 md:pl-0 lg:pl-2 overflow-x-scroll lg:overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3'>
                 <div id='firstslide' className='flex gap-4'>
-                  {pets ? pets
-                    ?.slice(0, 6)
-                    .map((pet: any, index: any) => (
-                      <PetAvatar fn={() => setPet(index)} img={pet.image} name={pet.name}></PetAvatar>
-                    )) : <PetAvatarSkeleton />}
+                  {pets ? pets?.slice(0, 6).map((pet: any, index: any) => <PetAvatar fn={() => setPet(index)} key={index} img={pet.image} name={pet.name}></PetAvatar>) : <PetAvatarSkeleton />}
                   <div id='anchor'></div>
                 </div>
               </div>
@@ -93,7 +87,7 @@ export const MyPets = () => {
             </button>
 
             <img className='w-[100px] h-[100px] lg:w-[180px] lg:h-[180px] xl:h-[200px] xl:w-[330px] lg:ml-5 rounded-full xl:rounded-full   ' src={selectedPet?.image || './img/anonym-pet.jpeg'} alt='selected-pet-image' />
-            <div className='flex flex-col lg:gap-3' >
+            <div className='flex flex-col lg:gap-3'>
               <div className='grid grid-cols-3 place-items-center m-4 gap-3  text-[10px] md:text-sm xl:text-xl'>
                 <div className='flex gap-1'>
                   <h2 className='font-black'>Nombre:</h2>
@@ -169,7 +163,6 @@ export const MyPets = () => {
         <AddHistoryModal isVisible={showAddHistoryModal} onClose={() => setShowAddHistoryModal(false)} />
         <SeeEventsModal isVisible={showEventsModal} onClose={() => setShowEventsModal(false)} />
         <AddActivityModal isVisible={showActivityModal} onClose={() => setShowActivityModal(false)} />
-
       </main>
     </>
   )
