@@ -40,9 +40,9 @@ export const MyPets = () => {
   useEffect(() => {
     getPets().then(res => {
       setPets(res.data?.pets)
+      setPet(0)
     })
-
-  }, [])
+  }, [showAddPetModal])
 
 
   function setPet(index: number) {
