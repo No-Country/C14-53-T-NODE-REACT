@@ -66,4 +66,12 @@ const profileUser = async (req: RequestExtends, res: Response) => {
 
 }
 
-export { registerControler, loginControler, profileUser }
+const logoutUser = async (req: Request, res: Response) => {
+  res.cookie('token', "", {
+    expires: new Date(0)
+  })
+  res.status(200).json({ msg: "Sesion cerrada" })
+}
+
+
+export { registerControler, loginControler, profileUser, logoutUser }
