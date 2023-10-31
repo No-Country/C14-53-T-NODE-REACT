@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { CreatePetType, FindPetType, PetSchemaType, PutPetType } from "../interfaces/petSchema";
 import Pet from "../models/petModel";
 import { RequestExtends } from "../interfaces/reqExtends.interface";
+import { uploadImage } from "../config/cloudinary";
+import fs from "fs-extra"
 
 export const createPets = async (req: RequestExtends, res: Response) => {
 
@@ -9,9 +11,23 @@ export const createPets = async (req: RequestExtends, res: Response) => {
     res.status(401).json({ msg: "Token de usuario no válido" });
     return;
   }
+
   try {
     const userId = req.user?.id;
-    const { name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
+    let { name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
+
+    if (req.file) {
+      const urlCloudinary = await uploadImage(req.file.path)
+      if (urlCloudinary) {
+        // Asigna la URL a image
+        image = urlCloudinary.url
+        // Borra la imagen que se guarda en el path uploads
+        await fs.unlink(req.file.path)
+      } else {
+        return res.status(400).json({ message: 'error uploading image' })
+      }
+
+    }
     const savePet: PetSchemaType = await Pet.create({
       userId: userId,
       name,
@@ -29,6 +45,7 @@ export const createPets = async (req: RequestExtends, res: Response) => {
     return res.status(500).json({ message: 'unexpected error' })
   }
 }
+
 export const findPet = async (req: Request<FindPetType>, res: Response) => {
   try {
     const { id } = req.params
