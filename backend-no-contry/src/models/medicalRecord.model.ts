@@ -9,9 +9,9 @@ export const MedicalRecord = connectDB.define<MedicalModel>('MedicalRecord',
   {
     id: {
       type: DataTypes.UUID,
-      autoIncrement: true,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      allowNull: false,
+      allowNull: false
     },
     date: {
       type: DataTypes.DATEONLY,

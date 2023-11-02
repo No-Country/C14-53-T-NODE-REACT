@@ -1,89 +1,25 @@
-import { Request, Response } from "express"
-import { calendar, oauth2Client, scopes } from "../config/calendarApi"
-import dayjs from "dayjs"
-import { createEvent } from "../services/calendar.services"
-import { RequestExtends } from "../interfaces/reqExtends.interface"
-import { MedicalRecord } from "../models/medicalRecord.model"
-
+import { Request, Response } from "express";
+import { handleHttp } from "../utils/error.handle";
+import { createEvent, findAllEvent } from "../services/calendar.services";
+import { RequestExtends } from "../interfaces/reqExtends.interface";
+import Pet from "../models/petModel";
 
 const getCalendar = async (req: Request, res: Response) => {
-  const url = oauth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope: scopes
-  })
-
-  res.redirect(url)
-}
-
-const getCalendarRedirect = async (req: Request, res: Response) => {
-  const code = req.query.code as string;
-
-  const { tokens } = await oauth2Client.getToken(code)
-  oauth2Client.setCredentials(tokens)
-
-  res.send({
-    msg: "ok",
-    oauth2Client
-  })
-
-}
-
-const getSchedulEvent = async (req: RequestExtends, res: Response) => {
-
   try {
-
-    const { summary, description, startDateTime, endDateTime } = req.body;
-
-    const result = await calendar.events.insert({
-      calendarId: 'primary',
-      auth: oauth2Client,
-      requestBody: {
-        summary: summary,
-        description: description || "",
-        start: {
-          dateTime: startDateTime,
-          timeZone: "America/Bogota"
-        },
-        end: {
-          dateTime: endDateTime,
-          timeZone: "America/Bogota"
-        }
-      }
-    })
-
-    const supplierType = result.data.summary?.split('-')[0]
-
-
-    if (supplierType?.trim() === "Registro Medico") {
-      const bodyMedical = {
-        date: dayjs(result.data.start?.dateTime).format("YYYY-MM-DD"),
-        type: result.data.summary?.split('-')[1].split('.')[0],
-        treatment: result.data.summary?.split('-')[1].split('.')[1],
-        note: result.data.description,
-        petMedicalId: req.params.id
-      }
-      await MedicalRecord.create(bodyMedical)
-    }
-
-
-    const newEventCalendar = await createEvent({
-      htmlLink: result.data.htmlLink!,
-      summary: result.data.summary!,
-      description: result.data.description!,
-      start: result.data.start?.dateTime!,
-      end: result.data.end?.dateTime!,
-      petId: req.params.id,
-    })
-
-
-    res.send(newEventCalendar)
-
+    const getAllEvent = await findAllEvent();
+    return res.status(200).json(getAllEvent);
   } catch (error) {
-    console.error("Error:", error);
-    res.status(500).json({ error: "Ha ocurrido un error al agregar el evento" });
+    handleHttp(res, "Error al registrar el evento", error)
   }
-
-
 }
 
-export { getCalendar, getCalendarRedirect, getSchedulEvent }
+const createEventCalendar = async (req: RequestExtends, res: Response) => {
+  try {
+    const newEventCalendar = await createEvent(req.body)
+    return res.status(200).json(newEventCalendar);
+  } catch (error) {
+    handleHttp(res, "Error al registrar el evento", error)
+  }
+}
+
+export { createEventCalendar, getCalendar }
