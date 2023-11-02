@@ -15,13 +15,10 @@ export const createPets = async (req: RequestExtends, res: Response) => {
 
   try {
     const userId = req.user?.id;
-    console.log("USERID: ", userId);
     let { name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
 
     if (req.file) {
-      console.log("Ingreso al if REQ.FILE");
       const urlCloudinary = await uploadImage(req.file.path)
-      console.log(urlCloudinary);
       if (urlCloudinary) {
         // Asigna la URL a image
         image = urlCloudinary.url
