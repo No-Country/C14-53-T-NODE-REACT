@@ -15,8 +15,8 @@ const createEvent = async ({ description, summary, time, start, petId }: CreateE
 
 }
 
-const findAllEvent = async () => {
-  const events = await Calendar.findAll()
+const findAllEvent = async (petId: string) => {
+  const events = await Calendar.findAll({ where: { petId: petId } })
   return events
 
 }

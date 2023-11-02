@@ -4,7 +4,7 @@ import { checkJWT } from "../middleware/session.middleware";
 
 const router = Router();
 
-router.get("/", checkJWT, getCalendar)
+router.get("/:petId", checkJWT, getCalendar)
 router.post("/", checkJWT, createEventCalendar)
 //router.get("/redirect", getCalendarRedirect)
 //router.post("/schedule_event/:id", getSchedulEvent)
