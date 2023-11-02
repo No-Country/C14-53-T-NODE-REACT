@@ -6,6 +6,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
 import MyCalendar from './components/MyCalendar'
+import { PageNotFound } from './pages/PageNotFound'
 import { MyPets } from './pages/MyPets'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Background from './components/Background'
@@ -35,8 +36,9 @@ function App() {
               <Route path='/mypets' element={<MyPets />} />
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/profile' element={<Profile />} />
-              <Route path='/calendar' element={<MyCalendar />} />
             </Route>
+
+            <Route path='*' element={<PageNotFound />}></Route>
           </Routes>
           <Background />
         </div>

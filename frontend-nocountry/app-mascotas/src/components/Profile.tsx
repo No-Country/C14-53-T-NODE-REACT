@@ -8,16 +8,14 @@ export const Profile = () => {
 
   const handleLogout = (e: { preventDefault: () => void }) => {
     logout()
-
     navigate('/')
-
     e.preventDefault()
   }
 
   return (
     <main className='container relative z-20 mx-auto'>
-      <div className='grid h-screen gap-10 px-3 md:grid-cols-6 py-7 md:py-0'>
-        <div className='col-span-2 pt-[86px] md:pt-[150px]'>
+      <div className='grid h-screen grid-cols-1 gap-10 px-3 md:grid-cols-6 py-7 md:py-0'>
+        <div className='md:col-span-2 px-3 pt-[86px] md:pt-[150px]'>
           <div className='px-10 py-10 flex flex-col max-w-screen-xl rounded-2xl p-7 shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
             <Link className='block py-3 mb-2 text-base font-black border-b hover:underline font-montserrat' to='/profile'>
               Perfil
@@ -33,7 +31,7 @@ export const Profile = () => {
             </a>
           </div>
         </div>
-        <div className='col-span-4 px-3 pt-[150px] text-center'>
+        <div className='md:col-span-4 px-3 md:pt-[150px] text-center'>
           <div className='p-7 md:px-10 rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
             <form action=''>
               <div className='w-full mb-4 text-center'>

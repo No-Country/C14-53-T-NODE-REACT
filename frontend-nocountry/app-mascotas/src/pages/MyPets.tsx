@@ -5,9 +5,10 @@ import AddHistoryModal from '../components/modals/AddHistoryModal'
 import { useState, useEffect } from 'react'
 import SeeEventsModal from '../components/modals/SeeEventsModal'
 import AddActivityModal from '../components/modals/AddActivityModal'
-import { GetPets } from '../api/pets'
+import { DeletePet, GetPets } from '../api/pets'
 import { PetAvatarSkeleton } from '../components/skeletons/PetAvatarSkeleton'
 import { useGlobalStore } from '../store/globalStore'
+import Swal from 'sweetalert2'
 
 type Pet = {
   name: string
@@ -29,29 +30,73 @@ export const MyPets = () => {
   const [showActivityModal, setShowActivityModal] = useState<boolean>(false)
   const [selectedPet, setSelectedPet] = useState<Pet>()
   const setMyPets = useGlobalStore(state => state.setPets)
-
+  const MyPets = useGlobalStore(state => state.pets)
   const [pets, setPets] = useState<Pet[]>()
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: toast => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   async function getPets() {
     return await GetPets()
   }
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const indexPet = Number(params.get('pet'))
+
+    indexPet ? setPet(indexPet) : setPet(0)
+  }, [])
+
+  useEffect(() => {
     getPets().then(res => {
       setPets(res.data?.pets)
       setMyPets(res.data?.pets)
-      setPet(0)
+      // setPet(0)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showAddPetModal])
 
   function setPet(index: number) {
-    if (pets === undefined) return
-    setSelectedPet(pets[index])
+    if (MyPets === undefined) return
+    setSelectedPet(MyPets[index])
   }
 
   function closePetModal() {
     setShowAddPetModal(false)
     document.body.style.overflowY = 'auto'
+  }
+
+  function deletePet(id: string) {
+    Swal.fire({
+      title: `¿Estas seguro de que quieres eliminar a ${selectedPet?.name}`,
+      text: 'No seras capaz de revertir esto',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, borrar!'
+    }).then(result => {
+      if (result.isConfirmed) {
+        DeletePet(id).then(res => {
+          if (res.status == 200 && res.data.message == 'pet removed') {
+
+            Toast.fire({
+              icon: 'success',
+              title: 'Mascota eliminada'
+            })
+          }
+        })
+      }
+    })
   }
 
   function openPetModal(e: React.MouseEvent<HTMLElement>): void {
@@ -65,20 +110,26 @@ export const MyPets = () => {
         <div className='flex flex-col items-center gap-8 lg:gap-0 z-90 lg:items-stretch'>
           <div className=' text-montserrat relative  h-[160px] md:h-[220px] xl:h-[260px]   w-[85%] lg:w-[90%] xl:w-[95%] md:mx-8 md:mb-8 md:px-12    rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
             <h2 className='text-center py-2 font-black text-[1rem] xl:text-2xl'>Tus mascotas</h2>
-            <div className='flex items-center justify-between'>
-              <a className='absolute left-2 top-[38%]' href='#firstslide'>
-                <img className='hidden mb-12 rotate-180 lg:flex' src='./img/arrow-right.svg' alt='carrousel-arrow-right' />
-              </a>
-              <div className='.n-scrollbar flex pl-2 md:pl-0 lg:pl-2 overflow-x-scroll lg:overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3'>
-                <div id='firstslide' className='flex gap-4'>
-                  {pets ? pets?.slice(0, 6).map((pet: any, index: any) => <PetAvatar fn={() => setPet(index)} key={index} img={pet.image} name={pet.name}></PetAvatar>) : <PetAvatarSkeleton />}
-                  <div id='anchor'></div>
+            {MyPets.length ? (
+              <>
+                <div className='flex items-center justify-between'>
+                  <a className='absolute left-2 top-[38%]' href='#firstslide'>
+                    <img className='hidden mb-12 rotate-180 lg:flex' src='./img/arrow-right.svg' alt='carrousel-arrow-right' />
+                  </a>
+                  <div className='.n-scrollbar flex pl-2 md:pl-0 lg:pl-2 overflow-x-scroll lg:overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3'>
+                    <div id='firstslide' className='flex gap-4'>
+                      {pets ? pets?.slice(0, 6).map((pet: any, index: any) => <PetAvatar fn={() => setPet(index)} key={index} img={pet.image} name={pet.name}></PetAvatar>) : <PetAvatarSkeleton />}
+                      <div id='anchor'></div>
+                    </div>
+                  </div>
+                  <a className='absolute right-2 top-[38%]' href='#anchor'>
+                    <img className='hidden mb-12 lg:flex' src='./img/arrow-right.svg' alt='carrousel-arrow-right' />
+                  </a>
                 </div>
-              </div>
-              <a className='absolute right-2 top-[38%]' href='#anchor'>
-                <img className='hidden mb-12 lg:flex' src='./img/arrow-right.svg' alt='carrousel-arrow-right' />
-              </a>
-            </div>
+              </>
+            ) : (
+              ''
+            )}
           </div>
 
           <div className='h-[45vh] overflow-y-hidden flex flex-col  lg:flex-row  lg:gap-4 items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[95%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
@@ -152,9 +203,7 @@ export const MyPets = () => {
             <li className='py-4 xl:py-7'>
               <button onClick={() => setShowEventsModal(true)}>Ver Actividades</button>
             </li>
-            <li className='py-4 xl:py-7'>
-              <button>Eliminar</button>
-            </li>
+            <li className='py-4 xl:py-7'>{selectedPet ? <button onClick={() => deletePet(selectedPet.id!)}>Eliminar</button> : ''}</li>
           </ul>
         </div>
 

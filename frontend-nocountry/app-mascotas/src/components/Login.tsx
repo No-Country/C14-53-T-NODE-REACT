@@ -35,14 +35,6 @@ function Login() {
 
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   if (Cookies.get('token')) {
-  //     const token = Cookies.get('token') as string
-  //     setToken(token)
-  //     navigate('/dashboard')
-  //   }
-  // }, [isAllowed, navigate])
-
   const {
     register,
     handleSubmit,

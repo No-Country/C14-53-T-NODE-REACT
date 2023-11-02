@@ -1,18 +1,25 @@
-import { useState } from 'react'
 import './navbar.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useGlobalStore } from '../../store/globalStore'
-import { PetAvatar } from '../Pets/PetAvatar'
+import { Sidebar } from './Sidebar'
+import { shallow } from 'zustand/shallow'
 
 function Navbar() {
-  const [toggle, setToggle] = useState(false)
-  const isAllowed = useGlobalStore(state => state.isAuth)
-  const logout = useGlobalStore(state => state.logout)
+  // const isAllowed = useGlobalStore(state => state.isAuth)
+  // const toggle = useGlobalStore(state => state.toggle)
+  // const setToggle = useGlobalStore(state => state.setToggle)
+  const { isAllowed, toggle, setToggle } = useGlobalStore(
+    state => ({
+      isAllowed: state.isAuth,
+      toggle: state.toggle,
+      setToggle: state.setToggle
+    }),
+    shallow
+  )
   const navigate = useNavigate()
   const location = useLocation()
   const primaryPaths = ['/', '/dashboard', '/register', '/login']
   const backHandler = () => {
-    // console.log(navigate(-1))
     navigate(-1)
   }
   return (
@@ -87,59 +94,7 @@ function Navbar() {
         </div>
       </nav>
 
-      <div className={`fixed flex flex-col overflow-hidden right-0 top-0 bg-beige h-screen z-30 pt-24 w-3/6 transition-transform ease-in-out md:hidden ${toggle ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className='flex flex-col w-full h-full overflow-y-scroll'>
-          {!isAllowed ? (
-            <ul className='items-center flex-auto h-full md:hidden'>
-              <li>
-                <Link className='block p-4 text-lg font-semibold hover:underline' to='/about'>
-                  Sobre Nosotros
-                </Link>
-              </li>
-
-              <li>
-                <Link className='block p-4 text-lg font-semibold hover:underline' to='/contact-us'>
-                  Contacto
-                </Link>
-              </li>
-              <li>
-                <Link className='block p-4 text-lg font-semibold hover:underline' to='/login'>
-                  Iniciar Sesion
-                </Link>
-              </li>
-            </ul>
-          ) : (
-            <div className='flex-auto'>
-              <div className='px-8 mb-10'>
-                <p className='mb-3 text-xl font-black font-montserray'>Buscar Mascota</p>
-
-                <Link className='block mb-3 text-xl font-black font-montserray' to='/profile'>
-                  Perfil
-                </Link>
-
-                <button className='block mb-3 text-xl font-black font-montserray' onClick={() => logout()}>
-                  Cerrar Sesión
-                </button>
-              </div>
-
-              <div className='text-center'>
-                <p className='mx-auto text-2xl font-black font-montserray'>Tus Mascotas</p>
-                <ul className='items-center w-1/2 mx-auto md:hidden'>
-                  <PetAvatar img='./img/Chucky.png' name='Chucky'></PetAvatar>
-                  <PetAvatar img='./img/Darth_Vader.png' name='Darth Vader'></PetAvatar>
-                  <PetAvatar img='./img/Lucifer.png' name='Lucifer'></PetAvatar>
-                  <PetAvatar img='./img/Juan.png' name='Juan'></PetAvatar>
-                </ul>
-              </div>
-            </div>
-          )}
-          <p className='w-full text-center logo'>
-            <Link className='block p-4' to='/'>
-              PetCare
-            </Link>
-          </p>
-        </div>
-      </div>
+      <Sidebar></Sidebar>
     </>
   )
 }
