@@ -13,10 +13,6 @@ const Calendar = connectDB.define<CalendarModel>('Calendar',
       allowNull: false,
       primaryKey: true,
     },
-    htmlLink: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     summary: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,8 +23,8 @@ const Calendar = connectDB.define<CalendarModel>('Calendar',
     start: {
       type: DataTypes.DATE,
     },
-    end: {
-      type: DataTypes.DATE,
+    time: {
+      type: DataTypes.STRING,
     },
     petId: {
       type: DataTypes.UUID,

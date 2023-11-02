@@ -3,7 +3,7 @@ class CreateEventDTO {
   summary: string
   description: string
   start: string
-  end: string
+  time: string
   petId: string;
 }
 
