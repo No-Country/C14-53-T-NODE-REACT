@@ -21,7 +21,6 @@ export const createPets = async (req: RequestExtends, res: Response) => {
     if (req.file) {
       console.log("Ingreso al if REQ.FILE");
       const urlCloudinary = await uploadImage(req.file.path)
-      console.log("URL CLOUDINARI", urlCloudinary);
       if (urlCloudinary) {
         // Asigna la URL a image
         image = urlCloudinary.url
