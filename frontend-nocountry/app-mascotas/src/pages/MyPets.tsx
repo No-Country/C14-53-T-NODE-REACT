@@ -162,7 +162,7 @@ export const MyPets = () => {
 
         <AddHistoryModal isVisible={showAddHistoryModal} onClose={() => setShowAddHistoryModal(false)} />
         <SeeEventsModal isVisible={showEventsModal} onClose={() => setShowEventsModal(false)} />
-        <AddActivityModal isVisible={showActivityModal} onClose={() => setShowActivityModal(false)} />
+        <AddActivityModal isVisible={showActivityModal} petInfo={selectedPet} onClose={() => setShowActivityModal(false)} />
       </main>
     </>
   )

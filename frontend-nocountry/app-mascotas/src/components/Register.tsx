@@ -54,7 +54,6 @@ function Register() {
         setLoading(true)
         const response = await RegisterRequest(values)
 
-        console.log(response)
 
         if (response.status === 200) {
           setLoading(false)
