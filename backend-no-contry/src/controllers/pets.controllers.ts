@@ -25,7 +25,6 @@ export const createPets = async (req: RequestExtends, res: Response) => {
       if (urlCloudinary) {
         // Asigna la URL a image
         image = urlCloudinary.url
-        console.log("IMAGEN: ", image);
         // Borra la imagen que se guarda en el path uploads
         await fs.unlink(req.file.path)
       } else {
