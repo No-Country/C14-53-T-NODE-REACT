@@ -7,6 +7,9 @@ import fs from "fs-extra"
 
 export const createPets = async (req: RequestExtends, res: Response) => {
 
+  console.log("REQ.FILE", req.file);
+  console.log("REQ.FILES", req.files);
+
   if (typeof req.user === 'string') {
     res.status(401).json({ msg: "Token de usuario no válido" });
     return;
