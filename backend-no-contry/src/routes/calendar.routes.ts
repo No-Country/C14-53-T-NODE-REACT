@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { getCalendar, getCalendarRedirect, getSchedulEvent } from "../controllers/calendar.controller";
+import { createEventCalendar, getCalendar } from "../controllers/calendar.controller";
+import { checkJWT } from "../middleware/session.middleware";
 
 const router = Router();
 
-router.get("/", getCalendar)
-router.get("/redirect", getCalendarRedirect)
-router.post("/schedule_event/:id", getSchedulEvent)
+router.get("/", checkJWT, getCalendar)
+router.post("/", checkJWT, createEventCalendar)
+//router.get("/redirect", getCalendarRedirect)
+//router.post("/schedule_event/:id", getSchedulEvent)
 
 export default router;

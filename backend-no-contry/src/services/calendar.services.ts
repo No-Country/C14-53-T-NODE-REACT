@@ -1,10 +1,9 @@
 import { CreateEventDTO } from "../dto/createEvent.dto";
 import Calendar from "../models/calendar.model";
 
-const createEvent = async ({ htmlLink, description, summary, end, start, petId }: CreateEventDTO) => {
+const createEvent = async ({ description, summary, end, start, petId }: CreateEventDTO) => {
 
   const newEvent = await Calendar.create({
-    htmlLink,
     summary,
     description,
     start,
@@ -16,4 +15,10 @@ const createEvent = async ({ htmlLink, description, summary, end, start, petId }
 
 }
 
-export { createEvent }
+const findAllEvent = async () => {
+  const events = await Calendar.findAll()
+  return events
+
+}
+
+export { createEvent, findAllEvent }
