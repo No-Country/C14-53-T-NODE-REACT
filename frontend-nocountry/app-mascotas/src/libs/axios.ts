@@ -9,7 +9,7 @@ const authApi = axios.create({
 authApi.interceptors.request.use(config => {
   const token = useGlobalStore.getState().token
 
-  ;(config.headers as AxiosHeaders).set('Authorization', `Bearer ${token}`)
+    ; (config.headers as AxiosHeaders).set('Authorization', `Bearer ${token}`)
 
   return config
 })
