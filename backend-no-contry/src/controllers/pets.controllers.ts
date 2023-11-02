@@ -7,23 +7,25 @@ import fs from "fs-extra"
 
 export const createPets = async (req: RequestExtends, res: Response) => {
 
-  console.log("REQ.FILE", req.file);
-  console.log("REQ.FILES", req.files);
-
   if (typeof req.user === 'string') {
+    console.log("Paso por el if req.user");
     res.status(401).json({ msg: "Token de usuario no válido" });
     return;
   }
 
   try {
     const userId = req.user?.id;
+    console.log("USERID: ", userId);
     let { name, surname, birthdate, image, breed, species, descriptions, weight } = req.body
 
     if (req.file) {
+      console.log("Ingreso al if REQ.FILE");
       const urlCloudinary = await uploadImage(req.file.path)
+      console.log("URL CLOUDINARI", urlCloudinary);
       if (urlCloudinary) {
         // Asigna la URL a image
         image = urlCloudinary.url
+        console.log("IMAGEN: ", image);
         // Borra la imagen que se guarda en el path uploads
         await fs.unlink(req.file.path)
       } else {
