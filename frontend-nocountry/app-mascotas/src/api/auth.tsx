@@ -7,3 +7,7 @@ export const LoginRequest = async (data: object) => {
 export const RegisterRequest = async (data: object) => {
   return axios.post('/api/v1/auth/register', data)
 }
+
+export const tokenRequest = async () => {
+  return axios.post('/api/v1/auth/logout')
+}

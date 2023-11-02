@@ -2,8 +2,8 @@
 import { Link } from 'react-router-dom'
 import { PetAvatar } from './Pets/PetAvatar'
 import { GetPets } from '../api/pets'
-import { useEffect } from 'react'
 import { useGlobalStore } from '../store/globalStore'
+import { useEffect } from 'react'
 
 const Dashboard = () => {
   const MyPets = useGlobalStore(state => state.pets)
@@ -13,11 +13,13 @@ const Dashboard = () => {
     return await GetPets()
   }
 
+
   useEffect(() => {
     getPets().then(res => {
       setMyPets(res.data?.pets)
     })
-  }, [MyPets, setMyPets])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
@@ -78,14 +80,16 @@ const Dashboard = () => {
             </div>
           </div>
           <div className='flex-col hidden max-w-screen-xl col-span-2 text-center md:block'>
-            {MyPets ? (
+            {MyPets.length ? (
               <div className='p-7 md:px-10 h-full rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
                 <a href='/mypets' className='inline-block mb-5 text-2xl font-black font-montserrat'>
                   Tus mascotas
                 </a>
                 <div className='grid mb-10 gap-7 md:grid-cols-2'>
                   {MyPets?.slice(0, 6).map((pet: any, index: any) => (
-                    <PetAvatar fn={null} key={index} img={pet.image} name={pet.name}></PetAvatar>
+                    <Link to={`/mypets?pet=${index}`} key={index}>
+                      <PetAvatar fn={null} key={index} img={pet.image} name={pet.name}></PetAvatar>
+                    </Link>
                   ))}
                 </div>
               </div>
