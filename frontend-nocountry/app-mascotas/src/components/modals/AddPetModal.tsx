@@ -33,7 +33,7 @@ const AddPetModal: React.FC<ModalProps> = ({ isVisible, onClose }) => {
     register,
     reset,
     handleSubmit,
-    watch,
+    // watch,
     setValue,
     formState: { errors }
   } = useForm<FormData>()
