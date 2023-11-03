@@ -54,7 +54,6 @@ function Register() {
         setLoading(true)
         const response = await RegisterRequest(values)
 
-
         if (response.status === 200) {
           setLoading(false)
           const token = response.data.token

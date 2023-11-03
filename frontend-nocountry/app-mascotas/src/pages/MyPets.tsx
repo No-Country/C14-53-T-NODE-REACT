@@ -31,7 +31,7 @@ export const MyPets = () => {
   const [selectedPet, setSelectedPet] = useState<Pet>()
   const setMyPets = useGlobalStore(state => state.setPets)
   const MyPets = useGlobalStore(state => state.pets)
-  const [pets, setPets] = useState<Pet[]>()
+  const logout = useGlobalStore(state => state.logout)
 
   const Toast = Swal.mixin({
     toast: true,
@@ -57,11 +57,17 @@ export const MyPets = () => {
   }, [])
 
   useEffect(() => {
-    getPets().then(res => {
-      setPets(res.data?.pets)
-      setMyPets(res.data?.pets)
-      // setPet(0)
-    })
+    getPets().then(
+      res => {
+        setMyPets(res.data?.pets)
+        // setPet(0)
+      },
+      rej => {
+        if (rej.response.data == 'Sesión no valida') {
+          logout()
+        }
+      }
+    )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showAddPetModal])
 
@@ -77,7 +83,7 @@ export const MyPets = () => {
 
   function deletePet(id: string) {
     Swal.fire({
-      title: `¿Estas seguro de que quieres eliminar a ${selectedPet?.name}`,
+      title: `¿Estas seguro de que quieres eliminar a ${selectedPet?.name}?`,
       text: 'No seras capaz de revertir esto',
       icon: 'warning',
       showCancelButton: true,
@@ -86,9 +92,11 @@ export const MyPets = () => {
       confirmButtonText: 'Si, borrar!'
     }).then(result => {
       if (result.isConfirmed) {
+        const newPets = MyPets.filter((pet: any) => pet.id != id)
+        setMyPets(newPets)
+
         DeletePet(id).then(res => {
           if (res.status == 200 && res.data.message == 'pet removed') {
-
             Toast.fire({
               icon: 'success',
               title: 'Mascota eliminada'
@@ -118,7 +126,7 @@ export const MyPets = () => {
                   </a>
                   <div className='.n-scrollbar flex pl-2 md:pl-0 lg:pl-2 overflow-x-scroll lg:overflow-x-hidden scroll-smooth py-2 w-[99%] lg:w-[91%]  gap-2 lg:gap-6 xl:gap-3'>
                     <div id='firstslide' className='flex gap-4'>
-                      {pets ? pets?.slice(0, 6).map((pet: any, index: any) => <PetAvatar fn={() => setPet(index)} key={index} img={pet.image} name={pet.name}></PetAvatar>) : <PetAvatarSkeleton />}
+                      {MyPets ? MyPets?.slice(0, 6).map((pet: any, index: any) => <PetAvatar fn={() => setPet(index)} key={index} img={pet.image} name={pet.name}></PetAvatar>) : <PetAvatarSkeleton />}
                       <div id='anchor'></div>
                     </div>
                   </div>
