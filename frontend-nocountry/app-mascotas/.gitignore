@@ -8,8 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 
-# Avoiding protected routes to test in responsively.app
-./src/App.tsx
 
 node_modules
 dist
