@@ -8,7 +8,7 @@ export const MedicalRecords = () => {
   const MyPets = useGlobalStore(state => state.pets)
 
   return (
-    <section className="flex flex-col lg:flex-row h-[100vh] overflow-x-hidden overflow-y-hidden top-20 w-screen  relative z-30 items-center lg:items-start lg:gap-12 gap-4 ">
+    <section className="flex flex-col lg:flex-row h-[90vh] overflow-x-hidden overflow-y-hidden top-20 w-screen  relative z-30 items-center lg:items-start lg:gap-12 gap-4 ">
 
 
       <div className='containerbox w-[90%]  lg:w-auto  lg:ml-8  lg:mt-6 xl:mt-12 xl:ml-16  lg:flex  rounded-2xl  '>
