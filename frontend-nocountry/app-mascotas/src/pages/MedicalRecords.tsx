@@ -8,19 +8,19 @@ export const MedicalRecords = () => {
   const MyPets = useGlobalStore(state => state.pets)
 
   return (
-    <section className="flex h-screen w-screen relative jusfify-center items-center gap-12">
+    <section className="flex h-screen w-screen relative z-30 jusfify-center items-center gap-12">
 
-      <div className='w-[280px] hidden lg:flex ml-80 rounded-2xl containerbox '>
+      <div className='containerbox w-[280px] hidden lg:flex ml-80 rounded-2xl  '>
         <div className='h-[150px] md:w-[180px] md:min-h-[500px] text-center md:pt-5 lg:min-w-[270px] 2xl:h-[800px] overflow-auto'>
-
           <p className='text-[15px] my-2 md:mb-5 md:text-xl font-bold font-montserrat'>Tus Mascotas</p>
-
           <div className='flex justify-center gap-3 md:gap-7 md:grid'>
             {MyPets ? MyPets?.slice(0, 6).map((pet: any, index: any) => <PetAvatar fn={null} key={index} img={pet.image} name={pet.name}></PetAvatar>) : <PetAvatarSkeleton />
             }
           </div>
         </div>
       </div>
+
+
 
       <div className="containerbox w-[120vh] h-[800px] relative text-montserrat">
         <h1 className="text-[48px] font-black uppercase absolute top-[-37px] left-[-30px]">Historia medica</h1>
