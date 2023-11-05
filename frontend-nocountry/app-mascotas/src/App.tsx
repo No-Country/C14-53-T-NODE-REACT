@@ -14,6 +14,7 @@ import { Profile } from './components/Profile'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { ProtectedRouteAfterLogin } from './components/ProtectedRouteAfterLogin'
 import { useGlobalStore } from './store/globalStore'
+import { MedicalRecords } from './pages/MedicalRecords'
 
 function App() {
   const isAuth = useGlobalStore(state => state.isAuth)
@@ -34,6 +35,7 @@ function App() {
             <Route element={<ProtectedRoute isAllowed={isAuth} />}>
               <Route path='/calendar' element={<MyCalendar />} />
               <Route path='/mypets' element={<MyPets />} />
+              <Route path='/medicalrecords' element={<MedicalRecords />} />
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/profile' element={<Profile />} />
             </Route>
