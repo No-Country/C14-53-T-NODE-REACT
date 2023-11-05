@@ -1,4 +1,4 @@
-export const PetAvatar = ({ img, name, fn }: { img: string; name: string, fn?: any }) => {
+export const PetAvatar = ({ img, name, fn }: { img: string | null; name: string, fn?: any }) => {
   if (img === null) {
     img = './img/anonym-pet.jpeg'
   }
