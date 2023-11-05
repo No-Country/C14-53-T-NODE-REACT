@@ -17,7 +17,7 @@ import { useGlobalStore } from './store/globalStore'
 import { MedicalRecords } from './pages/MedicalRecords'
 
 function App() {
-  const isAuth = useGlobalStore(state => state.isAuth)
+  // const isAuth = useGlobalStore(state => state.isAuth)
 
   return (
     <Router>
@@ -26,19 +26,19 @@ function App() {
           <Navbar></Navbar>
 
           <Routes>
-            <Route element={<ProtectedRouteAfterLogin isAllowed={isAuth} />}>
-              <Route path='/' element={<HomePage />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-            </Route>
+            {/* <Route element={<ProtectedRouteAfterLogin isAllowed={isAuth} />}> */}
+            <Route path='/' element={<HomePage />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            {/* </Route> */}
 
-            <Route element={<ProtectedRoute isAllowed={isAuth} />}>
-              <Route path='/calendar' element={<MyCalendar />} />
-              <Route path='/mypets' element={<MyPets />} />
-              <Route path='/medicalrecords' element={<MedicalRecords />} />
-              <Route path='/dashboard' element={<Dashboard />} />
-              <Route path='/profile' element={<Profile />} />
-            </Route>
+            {/* <Route element={<ProtectedRoute isAllowed={isAuth} />}> */}
+            <Route path='/calendar' element={<MyCalendar />} />
+            <Route path='/mypets' element={<MyPets />} />
+            <Route path='/medicalrecords' element={<MedicalRecords />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/profile' element={<Profile />} />
+            {/* </Route> */}
 
             <Route path='*' element={<PageNotFound />}></Route>
           </Routes>

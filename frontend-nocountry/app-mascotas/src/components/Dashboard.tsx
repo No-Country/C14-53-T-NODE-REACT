@@ -62,12 +62,13 @@ const Dashboard = () => {
                 </a>
               </div>
               <div className='flex flex-col'>
-                <a href='#' className='text-center group'>
+
+                <Link to='/medicalrecords' className='text-center group'>
                   <div className='overflow-hidden rounded-[20px] mb-4 shadow-3xl'>
                     <img className='transition-transform group-hover:scale-105' src='./img/dashboard-img-03.png' alt='Icono Cumpleaños' />
                   </div>
                   <p className='font-bold group-hover:underline font-montserrat'>Historial Clinico</p>
-                </a>
+                </Link>
               </div>
               <div className='flex flex-col'>
                 <Link to='/mypets' className='text-center group'>
