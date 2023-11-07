@@ -7,16 +7,17 @@ export const Medicaments = () => {
     <section className="flex flex-col lg:flex-row h-[90vh] overflow-x-hidden overflow-y-hidden top-16 w-screen  relative z-20 items-center  lg:justify-center lg:items-center lg:gap-12 gap-2 ">
 
 
-      <div className='containerbox p-4 lg:ml-8  lg:mt-6 xl:mt-12 xl:ml-16 scale-75 lg:scale-100  lg:flex  rounded-2xl  '>
+      <div className='containerbox p-4 lg:ml-8  lg:mt-6 xl:mt-12 xl:ml-16  lg:scale-100  lg:flex  rounded-2xl  '>
         <div className='flex flex-col items-center gap-2'>
-          <img className='w-[100px] rounded-[20px] shadow-3xl h-[100px]  transition-transform group-hover:scale-105' src='./img/add-pills.jpg' alt='add-pills' />
-          <p className="text-montserrat font-bold ">Agregar medicamento</p>
+          <img className='w-[50px] h-[50px] lg:w-[100px] rounded-[20px] shadow-3xl lg:h-[100px]  transition-transform group-hover:scale-105' src='./img/add-pills.jpg' alt='add-pills' />
+          <p className="text-xs lg:text-2xl text-montserrat font-bold ">Agregar medicamento</p>
         </div>
       </div>
 
 
 
       <div className="containerbox xl:mt-12 h-[380px] lg:mt-6 2xl:ml-12 md:h-[500px] w-[90%] lg:w-[75%] py-2 xl:w-[120vh] flex flex-col items-center lg:h-[600px] xl:h-[700px] relative text-montserrat">
+
         <h1 className=" text-lg  lg:text-3xl xl:text-[48px] font-black lg:uppercase lg:absolute lg:left-[-25px] lg:top-[-20px] xl:top-[-22px] xl:left-[-30px]">Medicamentos</h1>
 
 
@@ -93,7 +94,7 @@ export const Medicaments = () => {
         </div>
 
       </div>
-      <div className="flex justify-center gap-3 md:justify-around   mobilepanel   h-[70px] w-[55%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+      <div className="flex justify-center gap-3 md:justify-around  relative mobilepanel   h-[70px] w-[55%] lg:hidden rounded-xl  shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
 
         <button >
           <svg width="48" height="48" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
