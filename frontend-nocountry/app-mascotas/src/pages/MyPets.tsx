@@ -140,7 +140,7 @@ export const MyPets = () => {
             )}
           </div>
 
-          <div className='h-[45vh] overflow-y-hidden flex flex-col  lg:flex-row  lg:gap-4 items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[95%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
+          <div className='h-[43vh] overflow-y-hidden flex flex-col  lg:flex-row  lg:gap-4 items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[95%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
             <button className='absolute lg:hidden right-8 '>
               <img className='md:scale-150' src='./img/addtasks.svg' alt='add-task-button' />
             </button>
@@ -196,7 +196,7 @@ export const MyPets = () => {
           </div>
         </div>
 
-        <div className='hidden lg:flex flex-col text-montserrat py-8 items-center gap-12 h-[78vh]   mb-8 mx-8  relative  lg:w-[90%] xl:w-[50%] 2xl:w-[40%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
+        <div className='hidden lg:flex flex-col text-montserrat py-8 items-center gap-12 h-[68vh]   mb-8 mx-8  relative  lg:w-[90%] xl:w-[50%] 2xl:w-[40%]  rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]'>
           <h2 className='text-3xl font-black xl:text-4xl'>Acciones</h2>
           <ul className='font-bold text-left lg:text-lg xl:text-2xl'>
             <li className='py-4'>
