@@ -43,7 +43,7 @@ export const Birthdays = () => {
             </p>
 
 
-            <div className="hidden absolute bottom-8 left-8 lg:flex flex-col lg:gap-2 xl:gap-4  font-bold xl:text-3xl">
+            <div className="hidden absolute bottom-8 left-8 lg:flex flex-col lg:gap-2 xl:gap-4  font-bold xl:text-2xl">
               <button>Agregar notas</button>
               <button>Modificar notas</button>
               <button>Eliminar notas</button>
