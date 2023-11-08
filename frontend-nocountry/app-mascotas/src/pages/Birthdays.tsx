@@ -1,5 +1,10 @@
 import { PetAvatar } from "../components/Pets/PetAvatar"
+import { PetAvatarSkeleton } from "../components/skeletons/PetAvatarSkeleton"
+
+import { useGlobalStore } from '../store/globalStore'
+
 export const Birthdays = () => {
+  const MyPets = useGlobalStore(state => state.pets)
   return (
     <section className="text-montserrat h-[90vh] w-screen absolute top-20 lg:top-10 flex flex-col lg:flex-row items-center gap-3 md:gap-12 lg:gap-10">
 
@@ -7,13 +12,8 @@ export const Birthdays = () => {
         <div className='pb-2  text-center   lg:h-[600px] xl:h-[65vh] overflow-auto'>
           <p className='text-md my-2 lg:mb-5 lg:text-xl font-bold font-montserrat'>Tus Mascotas</p>
           <div className='flex justify-center gap-3 lg:gap-7 lg:grid px-6'>
-            {/* {MyPets ? MyPets?.slice(0, 6).map((pet: any, index: any) => <PetAvatar fn={null} key={index} img={pet.image} name={pet.name}></PetAvatar>) : <PetAvatarSkeleton /> */}
-            {/* } */}
-            <PetAvatar img={null} name={"Test"} fn={null} />
-            <PetAvatar img={null} name={"Test"} fn={null} />
-            <PetAvatar img={null} name={"Test"} fn={null} />
-            <PetAvatar img={null} name={"Test"} fn={null} />
-
+            {MyPets ? MyPets?.slice(0, 6).map((pet: any, index: any) => <PetAvatar fn={null} key={index} img={pet.image} name={pet.name}></PetAvatar>) : <PetAvatarSkeleton />
+            }
           </div>
         </div>
       </div>
