@@ -12,7 +12,11 @@ body {
   position: relative;
 }
 
-
+.borders {
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+}
 
 
 .hamburgerMenu {
