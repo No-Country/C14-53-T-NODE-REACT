@@ -25,7 +25,7 @@ function Navbar() {
   return (
     <>
       <nav className='container mx-auto'>
-        <div className='container fixed top-0 z-40 w-full -translate-x-1/2 left-2/4'>
+        <div className='container fixed top-0 z-30 w-full -translate-x-1/2 left-2/4'>
           <div className='px-3 py-4 mx-auto'>
             <div className='flex items-center justify-between self-baseline'>
               <div className='flex'>
@@ -67,7 +67,7 @@ function Navbar() {
                   </li>
                 </ul>
               ) : (
-                <div className='items-center hidden w-2/5 mb-4 md:flex'>
+                <div className='items-center hidden w-2/5 mb-4   md:flex'>
                   <form action='search' className='relative flex flex-auto'>
                     <input id='search-desktop' name='search' type='text' className='w-full pl-3 pr-[43px] py-2 border border-black rounded-md ' placeholder='Busca una mascota por especie o raza...' />
                     <button type='submit' className='absolute right-0 h-full pr-2 -translate-y-1/2 top-1/2'>
