@@ -50,17 +50,18 @@ const Dashboard = () => {
                 </Link>
               </div>
               <div className='flex flex-col'>
-                <a href='#' className='text-center group'>
+                <Link to='/stadistics' className='text-center group'>
                   <div className='overflow-hidden rounded-[20px] mb-4 shadow-3xl'>
-                    <img className='transition-transform group-hover:scale-105' src='./img/dashboard-img-04.png' alt='Icono Estadisticas' />
+                    <img className='transition-transform group-hover:scale-125' src='./img/dashboard-img-04.png' alt='Icono Estadisticas' />
                   </div>
                   <p className='font-bold group-hover:underline font-montserrat'>Estadisticas</p>
-                </a>
+                </Link>
+
               </div>
               <div className='flex flex-col'>
                 <Link to='/birthdays' className='text-center group'>
                   <div className='overflow-hidden rounded-[20px] mb-4 shadow-3xl'>
-                    <img className='transition-transform group-hover:scale-105' src='./img/dashboard-img-05.png' alt='Icono Cumpleaños' />
+                    <img className='transition-transform group-hover:scale-125' src='./img/dashboard-img-05.png' alt='Icono Cumpleaños' />
                   </div>
                   <p className='font-bold group-hover:underline font-montserrat'>Cumpleaños</p>
                 </Link>
@@ -68,7 +69,7 @@ const Dashboard = () => {
               <div className='flex flex-col'>
                 <Link to='/medicaments' className='text-center group'>
                   <div className='overflow-hidden rounded-[20px] mb-4 shadow-3xl'>
-                    <img className='transition-transform group-hover:scale-105' src='./img/dashboard-img-06.png' alt='Icono Cumpleaños' />
+                    <img className='transition-transform group-hover:scale-125' src='./img/dashboard-img-06.png' alt='Icono Cumpleaños' />
                   </div>
                   <p className='font-bold group-hover:underline font-montserrat'>Medicamentos</p>
                 </Link>
@@ -77,7 +78,7 @@ const Dashboard = () => {
 
                 <Link to='/medicalrecords' className='text-center group'>
                   <div className='overflow-hidden rounded-[20px] mb-4 shadow-3xl'>
-                    <img className='transition-transform group-hover:scale-105' src='./img/dashboard-img-03.png' alt='Icono Cumpleaños' />
+                    <img className='transition-transform group-hover:scale-125' src='./img/dashboard-img-03.png' alt='Icono Cumpleaños' />
                   </div>
                   <p className='font-bold group-hover:underline font-montserrat'>Historial Clinico</p>
                 </Link>
@@ -85,7 +86,7 @@ const Dashboard = () => {
               <div className='flex flex-col'>
                 <Link to='/mypets' className='text-center group'>
                   <div className='overflow-hidden rounded-[20px] mb-4 shadow-3xl'>
-                    <img className='transition-transform group-hover:scale-105' src='./img/dashboard-img-07.png' alt='Icono Mis Mascotas' />
+                    <img className='transition-transform group-hover:scale-125' src='./img/dashboard-img-07.png' alt='Icono Mis Mascotas' />
                   </div>
                   <p className='font-bold group-hover:underline font-montserrat'>Mis Mascotas</p>
                 </Link>
