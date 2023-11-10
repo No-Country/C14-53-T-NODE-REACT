@@ -11,10 +11,10 @@ export const CalendarChart = ({ data /* see data tab */ }: { data: any }) => (
   <ResponsiveCalendar
     data={data}
     from="2015-03-01"
-    to="2016-07-12"
+    to="2015-12-31"
     emptyColor="#eeeeee"
     colors={['#61cdbb', '#97e3d5', '#e8c1a0', '#f47560']}
-    margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+    margin={{ left: 40 }}
     yearSpacing={40}
     monthBorderColor="#ffffff"
     dayBorderWidth={2}
@@ -23,10 +23,9 @@ export const CalendarChart = ({ data /* see data tab */ }: { data: any }) => (
       {
         anchor: 'bottom-right',
         direction: 'row',
-        translateY: 36,
         itemCount: 4,
-        itemWidth: 42,
-        itemHeight: 36,
+        itemWidth: 34,
+        itemHeight: 25,
         itemsSpacing: 14,
         itemDirection: 'right-to-left'
       }

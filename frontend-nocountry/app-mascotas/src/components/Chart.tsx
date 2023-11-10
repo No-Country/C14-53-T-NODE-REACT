@@ -17,7 +17,7 @@ export const Chart = ({ data /* see data tab */ }: { data: any }) => (
       'Paseos',
     ]}
     indexBy="name"
-    margin={{ top: 50, right: 100, bottom: 70, left: 60 }}
+    margin={{ right: 10, bottom: 40, left: 50 }}
     padding={0.3}
     valueScale={{ type: 'linear' }}
     indexScale={{ type: 'band', round: true }}
@@ -89,7 +89,7 @@ export const Chart = ({ data /* see data tab */ }: { data: any }) => (
         translateX: 120,
         translateY: 0,
         itemsSpacing: 1,
-        itemWidth: 100,
+        itemWidth: 110,
         itemHeight: 40,
         itemDirection: 'left-to-right',
         itemOpacity: 0.85,
