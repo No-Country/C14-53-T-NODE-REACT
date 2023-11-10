@@ -17,6 +17,7 @@ import { useGlobalStore } from './store/globalStore'
 import { MedicalRecords } from './pages/MedicalRecords'
 import { Medicaments } from './pages/Medicaments'
 import { Birthdays } from './pages/Birthdays'
+import { Stadistics } from './pages/Stadistics'
 
 function App() {
   const isAuth = useGlobalStore(state => state.isAuth)
@@ -41,6 +42,7 @@ function App() {
               <Route path='/medicalrecords' element={<MedicalRecords />} />
               <Route path='/birthdays' element={<Birthdays />} />
               <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/stadistics' element={<Stadistics />} />
               <Route path='/profile' element={<Profile />} />
             </Route>
 

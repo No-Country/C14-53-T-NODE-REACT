@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nivo/bar": "^0.83.0",
+    "@nivo/calendar": "^0.83.0",
     "@types/js-cookie": "^3.0.5",
     "axios": "^1.5.1",
     "date-fns": "^2.30.0",
