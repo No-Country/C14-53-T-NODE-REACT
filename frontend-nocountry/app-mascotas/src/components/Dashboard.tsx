@@ -35,12 +35,12 @@ const Dashboard = () => {
 
   return (
     <>
-      <main className='container relative z-20 mx-auto pt-[86px] md:pt-[150px]'>
-        <div className='grid gap-3 px-3 md:grid-cols-5 py-7 md:py-0'>
+      <main className='container relative z-20 mx-auto  md:pt-[150px] overflow-y-hidden'>
+        <div className='grid gap-3 px-3 md:grid-cols-5 py-4  md:py-0'>
           <div className='flex flex-col max-w-screen-xl col-span-3 px-3 mx-auto'>
-            <h1 className='mt-12 lg:mt-0 font-black leading-tight md:mb-8 text-1xl md:text-4xl font-montserrat'>¿QUE QUIERES HACER HOY DIA?</h1>
+            <h1 className='mt-16 lg:mt-0 font-black leading-tight md:mb-8 text-1xl md:text-4xl font-montserrat'>¿QUE QUIERES HACER HOY DIA?</h1>
 
-            <div className='grid gap-4 grid-cols-2 md:grid-cols-3 py-7 md:py-0 '>
+            <div className='grid gap-4 grid-cols-2 md:grid-cols-3 py-5 md:py-0 text-xs md:text-xl '>
               <div className='flex flex-col'>
                 <Link to='/calendar' className='text-center group'>
                   <div className='overflow-hidden rounded-[20px] mb-4 shadow-3xl'>
