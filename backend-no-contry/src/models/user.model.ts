@@ -36,6 +36,9 @@ const User = connectDB.define<UserModel>('User',
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
     }
   },
   {

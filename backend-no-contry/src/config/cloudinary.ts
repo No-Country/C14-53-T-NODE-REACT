@@ -13,6 +13,6 @@ cloudinary.config({
 // Subir imagenes
 export async function uploadImage(filePath: string) {
   return await cloudinary.uploader.upload(filePath, {
-    folder: "Images"
+    folder: "PetCare"
   })
 }
