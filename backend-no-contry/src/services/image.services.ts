@@ -8,7 +8,7 @@ const uploadImageCreate = async (data: { image: { data: Buffer } }): Promise<{ s
 };
 
 const deleteImageDestroy = async (data: { image: { data: string } }): Promise<any> => {
-  const publicId = data.image.data;  
+  const publicId = data.image.data;  // Suponiendo que el ID de la imagen está almacenado en data.image.data
   const resultImage = await deleteImage(publicId);
   return resultImage;
 };
