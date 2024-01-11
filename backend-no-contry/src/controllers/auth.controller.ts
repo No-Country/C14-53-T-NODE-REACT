@@ -57,6 +57,7 @@ const profileUser = async (req: RequestExtends, res: Response): Promise<AuthInte
       id: findUser?.id,
       email: findUser?.email,
       name: findUser?.name,
+      dni: findUser?.dni,
       image: findUser?.image 
     })
 

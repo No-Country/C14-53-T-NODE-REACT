@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { 
+  userImageChange,
   findAll, 
   findById, 
   deleteByID, 
@@ -73,4 +74,17 @@ const deleteUserById = async (req: Request, res: Response): Promise<{ msg: strin
 
 }
 
-export { getUserById, updateUserById, deleteUserById, getAllUser }
+const uploadUserImage = async (req: Request, res: Response): Promise<{ msg: string } | void> => {
+
+  try {
+    const { id } = req.params
+    const { files } = req.files as Express.Multer.File[]
+    const user = await userImageChange(id, files)
+    res.json(user)
+  } catch (error) {
+    handleHttp(res, 'Error cambiando imagen de usuario', error)
+  }
+
+}
+
+export { getUserById, updateUserById, deleteUserById, getAllUser, uploadUserImage }

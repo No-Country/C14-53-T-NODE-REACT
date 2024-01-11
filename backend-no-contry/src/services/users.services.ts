@@ -71,4 +71,31 @@ const deleteByID = async (id: string): Promise<{ msg: string }> => {
 
 }
 
-export { findAll, findById, updateById, deleteByID }
+const userImageChange = async (id: string, files: CreateUserDTO): Promise<UserInterface | { msg: string }> => {
+
+  const findUser = await User.findOne({ where: { id: id } })
+
+  if (!findUser) {
+    return { msg: "Usuario no encontrado" }
+  }
+
+  const resultImage = await uploadImageCreate(files)
+
+  const user = await User.update(
+    {
+      image: resultImage.secureUrl
+    },
+    { where: { id } }
+  )
+
+  return user
+
+}
+
+export { 
+  findAll, 
+  findById, 
+  updateById, 
+  deleteByID, 
+  userImageChange 
+}
