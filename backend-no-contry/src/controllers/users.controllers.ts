@@ -78,7 +78,7 @@ const uploadUserImage = async (req: Request, res: Response): Promise<{ msg: stri
 
   try {
     const { id } = req.params
-    const { files } = req.files as Express.Multer.File[]
+    const files = req.files as Express.Multer.File[];
     const user = await userImageChange(id, files)
     res.json(user)
   } catch (error) {

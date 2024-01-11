@@ -39,7 +39,11 @@ const User = connectDB.define<UserModel>('User',
     },
     image: {
       type: DataTypes.STRING,
+    },
+    publicId: {
+      type: DataTypes.STRING,
     }
+
   },
   {
     timestamps: false,

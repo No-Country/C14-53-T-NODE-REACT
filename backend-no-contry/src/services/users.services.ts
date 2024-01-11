@@ -1,6 +1,7 @@
 import { CreateUserDTO } from '../dto/createUser.dto'
 import { UserInterface } from '../interfaces/user.interface'
 import User from '../models/user.model'
+import { uploadImageCreate } from './image.services'
 
 // // Crear usuario
 // const createById = async (user: CreateUserDTO): Promise<UserInterface> => {
@@ -71,7 +72,9 @@ const deleteByID = async (id: string): Promise<{ msg: string }> => {
 
 }
 
-const userImageChange = async (id: string, files: CreateUserDTO): Promise<UserInterface | { msg: string }> => {
+
+
+const userImageChange = async (id: string, files: Express.Multer.File[]): Promise< { msg: string }> => {
 
   const findUser = await User.findOne({ where: { id: id } })
 
@@ -83,12 +86,13 @@ const userImageChange = async (id: string, files: CreateUserDTO): Promise<UserIn
 
   const user = await User.update(
     {
-      image: resultImage.secureUrl
+      image: resultImage.secureUrl,
+      publicId: resultImage.publicId
     },
     { where: { id } }
   )
 
-  return user
+  return { msg: "Imagen del usuario actualizada correctamente" }
 
 }
 
