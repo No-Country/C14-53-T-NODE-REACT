@@ -1,6 +1,6 @@
 import { uploadImage, deleteImage } from '../config/cloudinary';
 
-const uploadImageCreate = async (data: { image: { data: Buffer } }): Promise<string> => {
+const uploadImageCreate = async (data: { image: { data: Buffer } }): Promise<{ secureUrl: string, publicId: string }> => {
   const buffer = data.image.data;
   const urlImage = await uploadImage(buffer);
   console.log(urlImage);
@@ -8,10 +8,11 @@ const uploadImageCreate = async (data: { image: { data: Buffer } }): Promise<str
 };
 
 const deleteImageDestroy = async (data: { image: { data: string } }): Promise<any> => {
-  const imageBuffer = Buffer.from(data.image.data, 'base64');
-  const resultImage = await deleteImage(imageBuffer);
+  const publicId = data.image.data;  
+  const resultImage = await deleteImage(publicId);
   return resultImage;
 };
+
 
 export {
   uploadImageCreate,
