@@ -74,17 +74,21 @@ const deleteUserById = async (req: Request, res: Response): Promise<{ msg: strin
 
 }
 
-const uploadUserImage = async (req: Request, res: Response): Promise<{ msg: string } | void> => {
 
+
+const uploadUserImage = async (req: Request, res: Response): Promise< { msg: string } | void> => {
   try {
     const { id } = req.params
-    const files = req.files as Express.Multer.File[];
-    const user = await userImageChange(id, files)
+      
+    if (!req.file) {
+      return { msg: 'No se proporcionó ninguna imagen' }
+    }
+    const buffer = req.file.buffer      
+    const user = await userImageChange(id, buffer)
     res.json(user)
   } catch (error) {
     handleHttp(res, 'Error cambiando imagen de usuario', error)
   }
-
-}
+};
 
 export { getUserById, updateUserById, deleteUserById, getAllUser, uploadUserImage }

@@ -1,3 +1,4 @@
+import { uploadImageBuffer } from '../config/cloudinary'
 import { CreateUserDTO } from '../dto/createUser.dto'
 import { UserInterface } from '../interfaces/user.interface'
 import User from '../models/user.model'
@@ -74,26 +75,28 @@ const deleteByID = async (id: string): Promise<{ msg: string }> => {
 
 
 
-const userImageChange = async (id: string, files: Express.Multer.File[]): Promise< { msg: string }> => {
 
-  const findUser = await User.findOne({ where: { id: id } })
 
-  if (!findUser) {
-    return { msg: "Usuario no encontrado" }
-  }
+const userImageChange = async  (id: string, buffer: Buffer): Promise<{ secureUrl: string; publicId: string } | { msg: string } > => {
 
-  const resultImage = await uploadImageCreate(files)
+    const findUser = await User.findOne({ where: { id: id } })
+    if (!findUser) return { msg: "Usuario no encontrado" }
 
-  const user = await User.update(
-    {
-      image: resultImage.secureUrl,
-      publicId: resultImage.publicId
-    },
-    { where: { id } }
-  )
+    const userImage = await uploadImageBuffer(buffer)
 
-  return { msg: "Imagen del usuario actualizada correctamente" }
-
+    await User.update(
+       {
+         image: userImage.secureUrl,
+         publicId: userImage.publicId
+       },
+       { where: { id: id} }
+    )
+  
+    return {
+      secureUrl: userImage.secureUrl,
+      publicId: userImage.publicId
+    };   
+    
 }
 
 export { 

@@ -14,15 +14,15 @@ cloudinary.config({
 })
 
 // Subir imagenes
-// export async function uploadImage(filePath: string) {
-//   return await cloudinary.uploader.upload(filePath, {
-//     folder: "PetCare"
-//   })
-// }
+async function uploadImage(filePath: string) {
+  return await cloudinary.uploader.upload(filePath, {
+    folder: "PetCare"
+  })
+}
 
-const uploadImage = (buffer: Buffer): Promise<{ secureUrl: string; publicId: string }> => {
+const uploadImageBuffer = (buffer: Buffer): Promise<{ secureUrl: string; publicId: string }  > => {
   const folder = 'PetCare'
-  return new Promise((resolve, reject) => {
+return new Promise((resolve, reject) => {
     cloudinary.uploader.upload_stream({ resource_type: 'auto', folder }, (error: any, result: any) => {
       if (error) {
         reject(error.message);
@@ -38,6 +38,7 @@ const deleteImage = async (publicId: string): Promise<any> => {
 };
 
 export {
+  uploadImageBuffer,
   uploadImage,
   deleteImage
 };
