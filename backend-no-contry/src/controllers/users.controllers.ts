@@ -1,10 +1,16 @@
 import { Request, Response } from "express";
-import { findAll, findById, deleteByID, updateById } from "../services/users.services";
+import { 
+  userImageChange,
+  findAll, 
+  findById, 
+  deleteByID, 
+  updateById } from "../services/users.services";
 import { UserInterface } from "../interfaces/user.interface";
 import { handleHttp } from "../utils/error.handle";
-//import { CreateUserDTO } from "../dto/createUser.dto";
+// import { CreateUserDTO } from "../dto/createUser.dto";
 import { RequestExtends } from "../interfaces/reqExtends.interface";
-
+import { UploadedFile } from 'express-fileupload';
+  
 
 // const createUser = async (req: Request, res: Response): Promise<UserInterface> => {
 
@@ -69,4 +75,27 @@ const deleteUserById = async (req: Request, res: Response): Promise<{ msg: strin
 
 }
 
-export { getUserById, updateUserById, deleteUserById, getAllUser }
+const uploadUserImage = async (req: Request, res: Response): Promise<{ msg: string } | void> => {
+  try {
+    const { id } = req.params;
+
+    if (!req.files ) return ({ msg: 'No se ha subido ningún archivo' })
+    
+    const uploadedFile = req.files.image as UploadedFile;
+
+    const buffer: Buffer = uploadedFile.data;
+
+     const user = await userImageChange(id, buffer);
+     res.json(user);
+  } catch (error) {
+    handleHttp(res, 'Error al cargar la imagen de usuario', error);
+  }
+};
+
+export { 
+    getUserById, 
+    updateUserById, 
+    deleteUserById, 
+    getAllUser, 
+    uploadUserImage
+   }

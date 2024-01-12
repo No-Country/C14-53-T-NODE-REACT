@@ -1,6 +1,8 @@
+import { deleteImage, uploadImageBuffer } from '../config/cloudinary'
 import { CreateUserDTO } from '../dto/createUser.dto'
 import { UserInterface } from '../interfaces/user.interface'
 import User from '../models/user.model'
+
 
 // // Crear usuario
 // const createById = async (user: CreateUserDTO): Promise<UserInterface> => {
@@ -71,4 +73,35 @@ const deleteByID = async (id: string): Promise<{ msg: string }> => {
 
 }
 
-export { findAll, findById, updateById, deleteByID }
+
+const userImageChange = async  (id: string, buffer: Buffer): Promise<{ secureUrl: string; publicId: string } | { msg: string } > => {
+
+    const findUser  = await User.findOne({ where: { id: id } })
+    if (!findUser) return { msg: "Usuario no encontrado" }
+   
+    if (findUser.publicId) await deleteImage(findUser.publicId)
+
+    const userImage = await uploadImageBuffer(buffer)
+
+    await User.update(
+       {
+         image: userImage.secureUrl,
+         publicId: userImage.publicId
+       },
+       { where: { id: id} }
+    )
+  
+    return {
+      secureUrl: userImage.secureUrl,
+      publicId: userImage.publicId
+    };   
+    
+}
+
+export { 
+  findAll, 
+  findById, 
+  updateById, 
+  deleteByID, 
+  userImageChange 
+}

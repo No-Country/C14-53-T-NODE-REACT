@@ -8,9 +8,7 @@ export interface UserResponse extends Omit<UserInterface, 'password'> {
   token: string;
 }
 
-
 const registerService = async (bodyAuth: UserInterface): Promise<UserResponse | { msg: string }> => {
-
 
   const findUser = await User.findOne({ where: { email: bodyAuth.email } })
 

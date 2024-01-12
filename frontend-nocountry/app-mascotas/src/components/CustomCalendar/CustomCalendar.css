@@ -1,0 +1,25 @@
+/* Estilo de la barra de desplazamiento en todos los navegadores */
+/* Ancho y color de la barra de desplazamiento */
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:vertical {
+  width:  5px;
+  background: #B0B0B0;
+  border-radius: 5px;
+}
+
+
+/* Fondo de la pista de la barra de desplazamiento */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track:vertical {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 400px) {
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+  }
+}

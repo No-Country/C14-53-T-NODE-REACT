@@ -5,6 +5,8 @@ import { router } from './routes';
 import morgan from 'morgan';
 import { connectDB } from './config/dbConfig'
 import cookieParser from 'cookie-parser';
+import fileUpload from 'express-fileupload';
+
 
 // Creo el servidor
 const app: Express = express();
@@ -24,6 +26,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
+app.use(fileUpload())
 
 // Ruta principal
 app.use('/api/v1', router)

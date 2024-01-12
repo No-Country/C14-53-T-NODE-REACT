@@ -32,7 +32,7 @@ const loginControler = async (req: Request, res: Response): Promise<AuthInterfac
   }
 }
 
-const profileUser = async (req: RequestExtends, res: Response) => {
+const profileUser = async (req: RequestExtends, res: Response): Promise<AuthInterface | void> => {
   const token = req.cookies.token
 
   if (typeof req.user === 'string') {
@@ -57,6 +57,8 @@ const profileUser = async (req: RequestExtends, res: Response) => {
       id: findUser?.id,
       email: findUser?.email,
       name: findUser?.name,
+      dni: findUser?.dni,
+      image: findUser?.image 
     })
 
   } catch (error) {
