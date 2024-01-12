@@ -5,11 +5,12 @@ import {
   findById, 
   deleteByID, 
   updateById } from "../services/users.services";
-import { UserInterface } from "../interfaces/user.interface";
-import { handleHttp } from "../utils/error.handle";
-// import { CreateUserDTO } from "../dto/createUser.dto";
-import { RequestExtends } from "../interfaces/reqExtends.interface";
-
+  import { UserInterface } from "../interfaces/user.interface";
+  import { handleHttp } from "../utils/error.handle";
+  // import { CreateUserDTO } from "../dto/createUser.dto";
+  import { RequestExtends } from "../interfaces/reqExtends.interface";
+  import { UploadedFile } from 'express-fileupload';
+  
 
 // const createUser = async (req: Request, res: Response): Promise<UserInterface> => {
 
@@ -74,46 +75,22 @@ const deleteUserById = async (req: Request, res: Response): Promise<{ msg: strin
 
 }
 
-interface uploadedFile {
-  name: string;
-  data: Buffer;
-  size: number;
-  encoding: string;
-  tempFilePath: string;
-  truncated: boolean;
-  mimetype: string;
-  md5: string;
-  mv: Function;
-}
-
-interface uploadedFiles {
-  image:  uploadedFile
-}
-
-
-const uploadUserImage = async (req: Request, res: Response): Promise< { msg: string } | void> => {
+const uploadUserImage = async (req: Request, res: Response): Promise<{ msg: string } | void> => {
   try {
-    
-    const { id } = req.params
-    const upload = req.files as Express.Multer.File[]
+    const { id } = req.params;
 
-    if (!upload) return { msg: 'El archivo no es válido' }
+    if (!req.files ) return ({ msg: 'No se ha subido ningún archivo' })
     
-    console.log(upload)
-    // console.log(upload.image.data)
-   
-   const buffer: Buffer = upload.image.data
-      
-    const user = await userImageChange(id, buffer)
-    res.json(user)
+    const uploadedFile = req.files.image as UploadedFile;
+
+    const buffer: Buffer = uploadedFile.data;
+
+     const user = await userImageChange(id, buffer);
+     res.json(user);
   } catch (error) {
-    handleHttp(res, 'Error al carga la imagen de usuario', error)
+    handleHttp(res, 'Error al cargar la imagen de usuario', error);
   }
 };
-
-
-
-
 
 export { 
     getUserById, 
