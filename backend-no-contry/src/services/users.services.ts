@@ -74,9 +74,6 @@ const deleteByID = async (id: string): Promise<{ msg: string }> => {
 }
 
 
-
-
-
 const userImageChange = async  (id: string, buffer: Buffer): Promise<{ secureUrl: string; publicId: string } | { msg: string } > => {
 
     const findUser = await User.findOne({ where: { id: id } })

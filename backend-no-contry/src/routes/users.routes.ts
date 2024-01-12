@@ -3,7 +3,8 @@ import {
     getAllUser, 
     getUserById, 
     updateUserById, 
-    deleteUserById
+    deleteUserById,
+    uploadUserImage
     } from "../controllers/users.controllers";
 import { adminProfile } from "../middleware/adminSession.middleware";
 import { validateUser } from "../middleware/validateUser.middleware";
@@ -17,6 +18,6 @@ router.get('/:id', validateUser, getUserById);
 router.patch('/:id', validateUser, updateUserById);
 router.delete('/:id', validateUser, deleteUserById);
 
-router.patch('/image')
+router.patch('/image/:id', validateUser, uploadUserImage)
 
 export default router;

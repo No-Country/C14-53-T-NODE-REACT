@@ -74,21 +74,51 @@ const deleteUserById = async (req: Request, res: Response): Promise<{ msg: strin
 
 }
 
+interface uploadedFile {
+  name: string;
+  data: Buffer;
+  size: number;
+  encoding: string;
+  tempFilePath: string;
+  truncated: boolean;
+  mimetype: string;
+  md5: string;
+  mv: Function;
+}
+
+interface uploadedFiles {
+  image:  uploadedFile
+}
 
 
 const uploadUserImage = async (req: Request, res: Response): Promise< { msg: string } | void> => {
   try {
+    
     const { id } = req.params
+    const upload = req.files as Express.Multer.File[]
+
+    if (!upload) return { msg: 'El archivo no es válido' }
+    
+    console.log(upload)
+    // console.log(upload.image.data)
+   
+   const buffer: Buffer = upload.image.data
       
-    if (!req.file) {
-      return { msg: 'No se proporcionó ninguna imagen' }
-    }
-    const buffer = req.file.buffer      
     const user = await userImageChange(id, buffer)
     res.json(user)
   } catch (error) {
-    handleHttp(res, 'Error cambiando imagen de usuario', error)
+    handleHttp(res, 'Error al carga la imagen de usuario', error)
   }
 };
 
-export { getUserById, updateUserById, deleteUserById, getAllUser, uploadUserImage }
+
+
+
+
+export { 
+    getUserById, 
+    updateUserById, 
+    deleteUserById, 
+    getAllUser, 
+    uploadUserImage
+   }
