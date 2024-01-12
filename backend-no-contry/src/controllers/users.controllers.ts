@@ -5,11 +5,11 @@ import {
   findById, 
   deleteByID, 
   updateById } from "../services/users.services";
-  import { UserInterface } from "../interfaces/user.interface";
-  import { handleHttp } from "../utils/error.handle";
-  // import { CreateUserDTO } from "../dto/createUser.dto";
-  import { RequestExtends } from "../interfaces/reqExtends.interface";
-  import { UploadedFile } from 'express-fileupload';
+import { UserInterface } from "../interfaces/user.interface";
+import { handleHttp } from "../utils/error.handle";
+// import { CreateUserDTO } from "../dto/createUser.dto";
+import { RequestExtends } from "../interfaces/reqExtends.interface";
+import { UploadedFile } from 'express-fileupload';
   
 
 // const createUser = async (req: Request, res: Response): Promise<UserInterface> => {

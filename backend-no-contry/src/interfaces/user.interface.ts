@@ -11,5 +11,6 @@ export interface UserInterface extends AuthInterface {
   name: string;
   dni: string;
   role?: UserRole;
-  image?: string 
+  image?: string; 
+  publicId?: string
 }
