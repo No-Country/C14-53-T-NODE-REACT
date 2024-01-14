@@ -18,7 +18,7 @@ function HomePage() {
               </div>
             </div>
 
-            <div className='flex items-center justify-end order-1 w-3/5 px-3 mx-auto mb-7 md:order-2 md:w-4/5 '>
+            <div className='flex items-center justify-end order-1 w-3/5 px-3 mx-auto mb-7 md:order-2 md:w-4/5 md:mt-[6rem] '>
               <img src='./img/home-dog.png' alt='Dog smiling' />
             </div>
           </div>
