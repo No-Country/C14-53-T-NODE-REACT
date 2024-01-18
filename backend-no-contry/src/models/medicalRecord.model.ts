@@ -1,9 +1,9 @@
-import { Sequelize, Model, DataTypes } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 import { connectDB } from '../config/dbConfig';
-import { MedicalSchemaType } from '../interfaces/medicalSchema';
 import Pet from './petModel';
+import { MedicalInterface } from '../interfaces/medical.interface';
 
-interface MedicalModel extends Model, MedicalSchemaType { }
+interface MedicalModel extends Model, MedicalInterface { }
 
 export const MedicalRecord = connectDB.define<MedicalModel>('MedicalRecord',
   {

@@ -4,18 +4,6 @@ import { UserInterface } from '../interfaces/user.interface'
 import User from '../models/user.model'
 
 
-// // Crear usuario
-// const createById = async (user: CreateUserDTO): Promise<UserInterface> => {
-//   const { name, email, password } = user
-//   const saveUser = await User.create({
-//     name,
-//     email,
-//     password
-//   })
-//   return saveUser
-// }
-
-// Buscar todos los usuarios
 const findAll = async (): Promise<UserInterface[]> => {
   const users = await User.findAll()
   return users

@@ -6,7 +6,7 @@ import User from "../models/user.model";
 const checkJWT = (req: RequestExtends, res: Response, next: NextFunction) => {
 
   try {
-
+    
     // Obtener el jwt que genera el usuario
     const jwtByUser = req.headers.authorization || '';
 
@@ -22,7 +22,7 @@ const checkJWT = (req: RequestExtends, res: Response, next: NextFunction) => {
       res.status(400).send("Token no proporcionado");
       return;
     }
-
+    
     (async () => {
       if (typeof req.user === 'object' && req.user !== null) {
         const { id } = req.user;

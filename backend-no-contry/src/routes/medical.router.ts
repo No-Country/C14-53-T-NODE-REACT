@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { createMedicalController, findMedicalController, findAllMedicalController } from "../controllers/medical.controller";
 import { schemaValidator } from "../utils/schemaValidator";
-import {CreateMedicalSchema, ParamsMedicalSchema, MedicalSchema } from "../interfaces/medicalSchema";
+import {CreateMedicalSchema, ParamsMedicalSchema, MedicalSchema } from "../validator/medicalSchema";
+import { checkJWT } from "../middleware/session.middleware";
 
 const router: Router = Router()
 
-router.post('/', schemaValidator(CreateMedicalSchema), createMedicalController)
+// router.post('/', checkJWT ,schemaValidator(CreateMedicalSchema), createMedicalController)
+router.post('/', checkJWT, createMedicalController)
 router.get('/:id', schemaValidator(ParamsMedicalSchema), findMedicalController)
 router.get('/', schemaValidator(MedicalSchema), findAllMedicalController)
 

@@ -23,7 +23,7 @@ router.use('/users', checkJWT, userRouter)
 router.use('/auth', authRouter)
 router.use('/types', typeSupplierRouter)
 router.use('/supplier', supplirRouter)
-router.use('/medical', medicalRouter)
+router.use('/medical', checkJWT, medicalRouter)
 router.use('/calendar', calendarRouter)
 
 export { router }

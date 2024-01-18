@@ -1,27 +1,28 @@
 import { Request, Response } from "express";
-import { CreateMedicalType, MedicalSchemaType, FindMedicalType } from "../interfaces/medicalSchema";
+import { MedicalSchemaType, FindMedicalType} from "../validator/medicalSchema";
 import { MedicalRecord } from "../models/medicalRecord.model";
+import { RequestExtends } from "../interfaces/reqExtends.interface";
+import { JwtPayload } from "jsonwebtoken";
+import { handleHttp } from "../utils/error.handle";
+import { createNewMedical } from "../services/medical.services";
 
 
 
-
-export const createMedicalController = async (req: Request<unknown, unknown, CreateMedicalType>, res: Response) => {
+ const createMedicalController = async (req: RequestExtends, res: Response): Promise< { msg: string } | void > => {
   try {
-    const { date, treatment, type, note } = req.body;
-    const saveMedical: MedicalSchemaType = await MedicalRecord.create({
-      date,
-      treatment,
-      type,
-      note
-    })
-    return res.status(200).json({ message: 'created medical', data: saveMedical });
+
+    const userId = (req.user as JwtPayload)?.id    
+    const newMedical = await createNewMedical(userId, req.body)
+    res.json(newMedical)
+
   } catch (error) {
-    return res.status(500).json({ message: 'unexpected error' })
+    
+    handleHttp(res, 'Error obtenido de medicina', error)
   }
 
 }
 
-export const findMedicalController = async (req: Request<FindMedicalType>, res: Response) => {
+const findMedicalController = async (req: Request<FindMedicalType>, res: Response) => {
   try {
     const { id } = req.params;
     const medical = await MedicalRecord.findOne({ where: { id } })
@@ -32,7 +33,7 @@ export const findMedicalController = async (req: Request<FindMedicalType>, res: 
   }
 }
 
-export const findAllMedicalController = async (_req: Request, res: Response) => {
+const findAllMedicalController = async (_req: Request, res: Response) => {
   try {
     const medical: MedicalSchemaType[] = await MedicalRecord.findAll()
     return res.status(200).json({ message: 'all medical record', data: medical })
@@ -40,4 +41,11 @@ export const findAllMedicalController = async (_req: Request, res: Response) => 
     return res.status(500).json({ error, message: 'unexpected error' })
   }
 
+}
+
+
+export {
+  createMedicalController,
+  findMedicalController,
+  findAllMedicalController
 }
