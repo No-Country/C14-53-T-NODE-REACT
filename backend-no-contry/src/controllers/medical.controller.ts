@@ -5,7 +5,8 @@ import { handleHttp } from "../utils/error.handle";
 import { 
          createNewMedical, 
          searchMedicalId, 
-         searchMedicalAll } from "../services/medical.services";
+         searchMedicalAll, 
+         modifyMedical} from "../services/medical.services";
 
  const createMedicalController = async (req: RequestExtends, res: Response): Promise< { msg: string } | void > => {
   try {
@@ -49,9 +50,23 @@ const allMedicalController = async (req: RequestExtends, res: Response): Promise
 
 }
 
+const modifyMedicalController = async (req: RequestExtends, res: Response): Promise< { msg: string } | void > =>{
+  try {
+
+    const userId = (req.user as JwtPayload)?.id 
+    const medical = await modifyMedical(userId, req.params.id, req.body)
+    res.json(medical)
+
+  } catch (error) {
+  
+    handleHttp(res, 'Error en historia medica', error)
+  }
+
+}
 
 export {
   createMedicalController,
   findMedicalController,
-  allMedicalController
+  allMedicalController,
+  modifyMedicalController
 }
