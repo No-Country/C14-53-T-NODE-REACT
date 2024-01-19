@@ -1,5 +1,4 @@
 import { MedicalInterface } from "../interfaces/medical.interface";
-import { PetInterface } from "../interfaces/pet.interface";
 import { MedicalRecord } from "../models/medicalRecord.model";
 import { findByIdPet } from "./pets.services";
 
