@@ -12,8 +12,9 @@ export const CreateMedicalSchema = z.object({
 });
 
 export const FindMedicalSchema = z.object({
-    params: z.object({
+    query: z.object({
         id: z.string(),
+        petMedicalId: z.string(),
     }),
     body: z.object({
         date: z.date(),
@@ -26,10 +27,13 @@ export const FindMedicalSchema = z.object({
 
 })
 
-export const ParamsMedicalSchema = z.object({
-    params: z.object({
+export const QueryMedicalSchema = z.object({
+    body: z.object({
         id: z.string(),
+        petMedicalId: z.string()
+
     }),
+    
 })
 
 export const MedicalSchema = z.object({
@@ -43,8 +47,3 @@ export const MedicalSchema = z.object({
 })
 
 
-
-export type CreateMedicalType = z.infer<typeof CreateMedicalSchema>['body']
-export type FindMedicalType = z.infer<typeof FindMedicalSchema>['params']
-export type MedicalSchemaType = z.infer<typeof MedicalSchema>
-export type PutPetType = z.infer<typeof FindMedicalSchema>['body']
