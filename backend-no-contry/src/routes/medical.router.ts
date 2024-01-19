@@ -7,7 +7,7 @@ import { checkJWT } from "../middleware/session.middleware";
 const router: Router = Router()
 
 router.post('/', checkJWT, schemaValidator(CreateMedicalSchema), createMedicalController)
-router.get('/:id', schemaValidator(ParamsMedicalSchema), findMedicalController)
+router.get('/:id', checkJWT, schemaValidator(ParamsMedicalSchema), findMedicalController)
 router.get('/', schemaValidator(MedicalSchema), findAllMedicalController)
 
 
