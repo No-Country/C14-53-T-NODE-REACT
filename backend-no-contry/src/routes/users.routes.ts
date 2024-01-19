@@ -12,7 +12,6 @@ import { validateUser } from "../middleware/validateUser.middleware";
 
 const router: Router = Router();
 
-// router.post('/', createUser);
 router.get('/', adminProfile, getAllUser);
 router.get('/:id', validateUser, getUserById);
 router.patch('/:id', validateUser, updateUserById);

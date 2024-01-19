@@ -5,4 +5,5 @@ export interface PetInterface {
   birthdate: String,
   image: string,
   breed: string,
+  userId: string
 }
