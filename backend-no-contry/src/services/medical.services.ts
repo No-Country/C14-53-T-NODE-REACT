@@ -22,8 +22,22 @@ const searchMedicalId = async (userId: string, id: string, petMedicalId: string 
     if(userId !== pet.userId) return { msg: "Mascota no pertenece a usuario" } 
     
     const medical = await findMedicalId(id)
-     if ('msg' in medical) return { msg: medical.msg }
+    if ('msg' in medical) return { msg: medical.msg }
     if(medical.petMedicalId !== petMedicalId) return { msg: "Historia medica no pertenece a la mascota" } 
+    
+    return medical
+
+}
+
+const searchMedicalAll = async (userId: string, id: string): Promise<MedicalInterface[] | { msg: string }>  =>{
+  
+    const pet = await findByIdPet(id)
+    if ('msg' in pet) return { msg: pet.msg }
+    if(userId !== pet.userId) return { msg: "Mascota no pertenece a usuario" } 
+    
+    const medical = await findMedicalAll(id)
+    if ('msg' in medical) return { msg: medical.msg }
+    if(medical[0].petMedicalId !== id) return { msg: "Historia medica no pertenece a la mascota" } 
     
     return medical
 
@@ -35,10 +49,20 @@ const findMedicalId = async ( id: string ) => {
     if (!medical) return { msg: "Historia medica no encontrada" }
    
     return medical
-    
+
+}
+
+const findMedicalAll = async ( id: string ) => {
+   
+    const medical = await MedicalRecord.findAll( {where:{ petMedicalId: id}})
+    if (!medical) return { msg: "Historia medica no encontrada" }
+   
+    return medical
+
 }
 
 export {
     createNewMedical,
-    searchMedicalId
+    searchMedicalId,
+    searchMedicalAll
 }
