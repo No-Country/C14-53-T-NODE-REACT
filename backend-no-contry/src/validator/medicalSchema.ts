@@ -30,12 +30,11 @@ export const updateMedicalSchema = z.object({
         id: z.string().uuid()
     }),
     body: z.object({
-        date: z.date(),
-        treatment: z.string(),
-        type: z.string(),
-        note: z.string(),
+        date: z.coerce.date(),
+        treatment: z.string().min(2, "Too short treatment").max(100, "Too long treatment"),
+        type: z.string().min(2, "Too short type").max(50, "Too long type"),
+        note: z.string().max(500, "Too long note").optional(),
         petMedicalId: z.string().uuid(),
-
     })
 })
 

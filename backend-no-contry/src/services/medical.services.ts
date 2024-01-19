@@ -47,20 +47,17 @@ const searchMedicalAll = async (userId: string, id: string): Promise<MedicalInte
 const modifyMedical = async (userId: string, id: string, body: MedicalInterface): Promise<MedicalInterface | { msg: string }>  =>{
   
     const { petMedicalId, ...restBody } = body
-
-    const pet = await findByIdPet( petMedicalId)
+    const pet = await findByIdPet(petMedicalId)
     if ('msg' in pet) return { msg: pet.msg }
     if(userId !== pet.userId) return { msg: "Mascota no pertenece a usuario" } 
 
     let medical = await findMedicalId(id)
     if ('msg' in medical) return { msg: medical.msg }
-
     
     await modifyMedicalId(id, {...restBody, petMedicalId})
 
     medical = await findMedicalId(id)
     if ('msg' in medical) return { msg: medical.msg }
-     
     
     return medical
 

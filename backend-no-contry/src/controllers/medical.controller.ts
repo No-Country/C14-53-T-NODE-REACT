@@ -54,17 +54,15 @@ const modifyMedicalController = async (req: RequestExtends, res: Response): Prom
   try {
 
     const userId = (req.user as JwtPayload)?.id 
-     await modifyMedical(userId, req.params.id, req.body)
-    res.json()
+    const medical = await modifyMedical(userId, req.params.id, req.body)
+    res.json(medical)
 
   } catch (error) {
   
     handleHttp(res, 'Error en historia medica', error)
   }
 
-
 }
-
 
 export {
   createMedicalController,
