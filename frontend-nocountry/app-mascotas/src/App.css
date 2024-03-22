@@ -4,6 +4,7 @@
 html,
 body {
   background-color: #f6f3e9;
+  overflow-y: hidden;
   /* overflow-y: hidden;
   overflow-x: hidden; */
 }
