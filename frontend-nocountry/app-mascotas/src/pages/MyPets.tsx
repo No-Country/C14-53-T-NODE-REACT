@@ -162,7 +162,7 @@ export const MyPets = () => {
             )}
           </div>
 
-          <div className="h-[47vh] overflow-y-hidden flex flex-col  lg:flex-row  lg:gap-4 items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[95%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
+          <div className="h-[43vh] overflow-y-hidden flex flex-col  lg:flex-row  lg:gap-4 items-center py-6 lg:mt-0 text-montserrat relative w-[85%] lg:w-[90%] xl:w-[95%]  md:mx-8 rounded-xl lg:rounded-2xl shadow-[0_0_38px_0_rgba(0,0,0,0.25)] bg-[#F6F3E9]">
             <button className="absolute lg:hidden right-8 ">
               <img
                 className="md:scale-150"
